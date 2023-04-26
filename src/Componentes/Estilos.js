@@ -4,6 +4,7 @@ export const Container = styled.View`
     flex:2;
     justify-content:center;
     align-items:center;
+    background-color:${props => props.theme.background};
 `;// ok
 
 export const Title = styled.Text`
@@ -12,7 +13,7 @@ export const Title = styled.Text`
     align-items:center;
     font-size:24px; 
     margin-bottom:40px;
-    color:green;
+    color:${props => props.theme.color};
 `;//ok
 
 
@@ -24,7 +25,7 @@ export const ButtonContainer = styled.TouchableOpacity`
 `;// ok 
 
 export const ButtonText = styled.Text`
-    color:green;
+    color:${props => props.theme.color};
     font-size:16px;
 
 `;
@@ -43,7 +44,7 @@ export const InputArea = styled.TextInput`
 
 `;
 export const ButtonText2 = styled.Text`
-    color: green;
+    color: ${props =>props.theme.color};
     font-size:12px;
     height:40px;
     margin-right :110px;
