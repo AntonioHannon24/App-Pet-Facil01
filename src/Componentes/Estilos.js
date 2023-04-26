@@ -48,4 +48,4 @@ export const ButtonText2 = styled.Text`
     font-size:12px;
     height:40px;
     margin-right :110px;
-`;s
+`;
