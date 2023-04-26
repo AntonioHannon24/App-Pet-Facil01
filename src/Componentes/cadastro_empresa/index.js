@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ButtonContainer, ButtonText, Container, InputArea, Title } from '../Estilos.js';
 
-export default function Cadastro_emp() {
+export default function Cadastro_emp({ navigation }) {
   return (
     <Container>
       <Title>Cadastro Empresa</Title>

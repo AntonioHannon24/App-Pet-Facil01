@@ -1,7 +1,7 @@
 import React from 'react';
 import {ButtonContainer, ButtonText, Container, InputArea, Title } from '../Estilos';
 
-export default function Cadastro() {
+export default function Cadastro({ navigation }) {
   return (
     <Container>
       <Title>Cadastro Cliente</Title>
@@ -10,11 +10,11 @@ export default function Cadastro() {
       <InputArea placeholder="Endereço"/>
       <InputArea placeholder="Cidade"/>
       <InputArea placeholder="Telefone"/>
-      <InputArea placeholder="Pet"/>
-      <ButtonContainer onPress={() => navigation.navigate('Login')}>
+      
+      <ButtonContainer >
         <ButtonText>Cadastrar</ButtonText>
       </ButtonContainer>
-      <ButtonContainer>
+      <ButtonContainer onPress={() => navigation.navigate('Login')}>
         <ButtonText>Voltar</ButtonText>
       </ButtonContainer>
     </Container>

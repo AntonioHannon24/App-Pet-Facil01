@@ -42,10 +42,24 @@ export const InputArea = styled.TextInput`
     box-shadow :2px 2px 5px green;
 
 `;
-
 export const ButtonText2 = styled.Text`
     color: green;
     font-size:12px;
     height:40px;
     margin-right :110px;
+`;
+
+export const ErrorMessage = styled.Text`
+
+    font-size:12;
+    color:red;
+    font-weight:bold;
+    margin-bottom:5px;
+
+`;
+
+
+export const PressBox = styled.Pressable`
+    width:100%;
+    align-items:center
 `;
