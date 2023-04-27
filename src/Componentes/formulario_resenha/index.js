@@ -1,7 +1,6 @@
 import React from 'react';
 import { ButtonContainer, ButtonText, Container, InputArea, Title } from '../Estilos';
 
-
 export default function RecuperarSenha() {
   return (
     <Container>
