@@ -1,9 +1,8 @@
 import React,{ useState } from 'react';
-import { View } from 'react-native';
 import { ThemeProvider } from 'styled-components';
 import themes from './src/theme'
 import Home from './src/Home';
-import { SwitchTheme } from './styles';
+import { SwitchTheme, Container } from './styles';
 
 export default function App() {
 
@@ -19,14 +18,14 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <View style={{height:80}}>
+      <Container>
           <SwitchTheme 
             trackColor={{false: 'white', true: 'dark'}}
             thumbColor={isEnabled ? 'white' : 'dark'}
             onValueChange={toggleSwitch}
             value={isEnabled}
           />
-      </View>
+      </Container>
       <Home/>
     </ThemeProvider>
   );
