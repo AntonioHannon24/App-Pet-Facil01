@@ -11,10 +11,11 @@ export default function TelaLogin({ navigation }) {
     password: yup.string().min(6, "A senha deve ter pelo menos 6 caracteres").required("Digite sua senha!")
   })
 
-  const { control, handleSubmit, formState: { errors } } = useForm({ 
-                                                              resolver: yupResolver(schema)});
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema)
+  });
 
-  function handleSignIn(data) {console.log(data)}
+  function handleSignIn(data) { console.log(data) }
 
   return (
     <Container>
