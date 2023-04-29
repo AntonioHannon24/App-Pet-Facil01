@@ -11,19 +11,17 @@ export default function TelaLogin({ navigation }) {
     password: yup.string().min(6, "A senha deve ter pelo menos 6 caracteres").required("Digite sua senha!")
   })
 
-  const { control, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(schema)
-  })
+  const { control, handleSubmit, formState: { errors } } = useForm({ 
+                                                              resolver: yupResolver(schema)});
 
-
-  function handleSignIn(data) {
-    console.log(data)
-  }
+  function handleSignIn(data) {console.log(data)}
 
   return (
     <Container>
       <PressBox onPress={Keyboard.dismiss}>
+
         <Title>Login</Title>
+
         {errors.email && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
         <Controller
           control={control}
@@ -32,6 +30,7 @@ export default function TelaLogin({ navigation }) {
             <InputArea placeholder="Email" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.email} />
           )}
         />
+
         {errors.password && <ErrorMessage>{errors.password?.message}</ErrorMessage>}
         <Controller
           control={control}
@@ -56,8 +55,8 @@ export default function TelaLogin({ navigation }) {
         <ButtonContainer onPress={() => navigation.navigate('Cadastro_emp')}>
           <ButtonText>Cadastro Empresa</ButtonText>
         </ButtonContainer>
-      </PressBox>
 
+      </PressBox>
     </Container>
   );
 }
