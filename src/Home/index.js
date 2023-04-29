@@ -12,14 +12,14 @@ const Stack = createStackNavigator();
 export default function Home() {
   return (
     <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen name="Login" component={TelaLogin} />
-      <Stack.Screen name="Cadastro" component={Cadastro} />
-      <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
-      <Stack.Screen name="TelaPrincipal" component={TelaPrincipal} />
-      <Stack.Screen name="Cadastro_emp" component={Cadastro_emp} />
-    </Stack.Navigator>
-  </NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={TelaLogin} />
+        <Stack.Screen name="Cadastro" component={Cadastro} />
+        <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
+        <Stack.Screen name="TelaPrincipal" component={TelaPrincipal} />
+        <Stack.Screen name="Cadastro_emp" component={Cadastro_emp} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

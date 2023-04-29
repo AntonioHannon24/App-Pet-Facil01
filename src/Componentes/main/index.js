@@ -38,19 +38,19 @@ const TelaPrincipal = () => {
     },
   ];
   return (
-  <ContainerMain>
+    <ContainerMain>
       {users.map((user, index) => (
-      <Loop key={index}>
-            <IconeContainer>
-              <Icone source={require('./img/horario.png')}/> 
-            </IconeContainer>
-          <Icon source={require('./img/profile.png')}/>
+        <Loop key={index}>
+          <IconeContainer>
+            <Icone source={require('./img/horario.png')} />
+          </IconeContainer>
+          <Icon source={require('./img/profile.png')} />
           <Nome>{user.nome}</Nome>
           <DispoFuncao>{user.função}</DispoFuncao>
           <DispoFuncao>{user.disponibilidade}</DispoFuncao>
-          {index < users.length - 1 && <Linha/>}
+          {index < users.length - 1 && <Linha />}
         </Loop>))}
-  </ContainerMain>
+    </ContainerMain>
   );
 };
 
