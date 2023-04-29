@@ -14,10 +14,12 @@ export const Title = styled.Text`
     font-size:24px; 
     margin-bottom:40px;
     color:${props => props.theme.color};
+
 `;//ok
 
 
 export const ButtonContainer = styled.TouchableOpacity`
+    
     padding-vertical:2px;
     padding-horizontal:16px;
     border-radius:8px;
@@ -56,7 +58,6 @@ export const ErrorMessage = styled.Text`
     color:red;
     font-weight:bold;
     margin-bottom:5px;
-
 `;
 
 
