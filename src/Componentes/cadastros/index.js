@@ -8,7 +8,7 @@ export default function Cadastro({ navigation }) {
 
   const schema = yup.object({// verifica o erro e transmite a mensagem
     nome: yup.string().required("Digite seu nome"),
-    cpf: yup.string().min(11, "teste").required("Digite seu CPF"),
+    cpf: yup.string().min(11, "O CPF tem 11 caracteres").required("Digite seu CPF"),
     endereco: yup.string().required("Digite seu endereço"),
     cidade: yup.string().required("Digite sua cidade"),
     telefone: yup.string().min(11, "O numero deve conter DDD + 9 + oito digitos ").required("Digite seu telefone"),
