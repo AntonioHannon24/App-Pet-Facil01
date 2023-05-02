@@ -6,7 +6,7 @@ import { SwitchTheme, Container } from './styles';
 
 export default function App() {
 
-  const [isEnabled, setIsEnabled] = useState("dark");
+  const [isEnabled, setIsEnabled] = useState("red");
   const [backgroundTheme, setBackgroundTheme] = useState('light')
 
   //função que muda o background 
