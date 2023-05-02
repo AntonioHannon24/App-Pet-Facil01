@@ -11,13 +11,14 @@ export default function TelaLogin  ({ navigation }) {
 
 const [data,setData] = useState([])
 
+/*
 useEffect(()=>{
   fetch("http://192.168.1.106:3333/api/estabelecimentos")
   .then(response=>response.json())
   .then(data=>setData(data))
   .catch(err=>console.log(err))
 })
-
+*/
 
 
   const schema = yup.object({
