@@ -3,8 +3,22 @@ import { Keyboard } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useEffect, useState } from 'react';
 
-export default function TelaLogin({ navigation }) {
+
+
+export default function TelaLogin  ({ navigation }) {
+
+const [data,setData] = useState([])
+
+useEffect(()=>{
+  fetch("http://192.168.1.106:3333/api/estabelecimentos")
+  .then(response=>response.json())
+  .then(data=>setData(data))
+  .catch(err=>console.log(err))
+})
+
+
 
   const schema = yup.object({
     email: yup.string().email("E-mail invalido").required("Digite seu E-mail"),
@@ -15,7 +29,8 @@ export default function TelaLogin({ navigation }) {
     resolver: yupResolver(schema)
   });
 
-  function handleSignIn(data) { console.log(data) }
+  function handleSignIn(data) { console.log(data) 
+    navigation.navigate('TelaPrincipal')}
 
   return (
     <Container>
