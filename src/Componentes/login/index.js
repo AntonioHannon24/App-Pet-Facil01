@@ -1,9 +1,12 @@
-import { Container, ButtonText, ButtonContainer, Title, InputArea, ButtonText2, ErrorMessage, PressBox } from '../Estilos';
+import { Container, ButtonText, ButtonContainer, ButtonContainerForm, Title, InputArea,
+          ErrorMessage, PressBox,ButtonText3 } from '../Estilos';
+import { ButtonLogin, ButtonGreen, TextButtonLogin, ImageContainer, LoginImage, InputAreaLogin } from './Style';
 import { Keyboard } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect, useState } from 'react';
+
 
 
 
@@ -38,13 +41,16 @@ useEffect(()=>{
       <PressBox onPress={Keyboard.dismiss}>
 
         <Title>Login</Title>
+        <ImageContainer>
+          <LoginImage source={require('./img/login.png')}/>
+        </ImageContainer>
 
         {errors.email && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
         <Controller
           control={control}
           name='email'
           render={({ field: { onChange, onBlur, value } }) => (
-            <InputArea placeholder="Email" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.email} />
+            <InputAreaLogin placeholder="Email" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.email} />
           )}
         />
 
@@ -53,25 +59,28 @@ useEffect(()=>{
           control={control}
           name='password'
           render={({ field: { onChange, onBlur, value } }) => (
-            <InputArea secureTextEntry={true} placeholder="Digite sua senha" onChangeText={onChange} onBlur={onBlur} value={value} />
+            <InputAreaLogin secureTextEntry={true} placeholder="Digite sua senha" onChangeText={onChange} onBlur={onBlur} value={value} />
           )}
         />
 
-        <ButtonContainer onPress={() => navigation.navigate('RecuperarSenha')}>
-          <ButtonText2>Esqueci minha senha</ButtonText2>
-        </ButtonContainer>
+        <ButtonContainerForm onPress={() => navigation.navigate('RecuperarSenha')}>
+          <ButtonText3>Esqueci minha senha</ButtonText3>
+        </ButtonContainerForm>
 
-        <ButtonContainer onPress={handleSubmit(handleSignIn)}>
-          <ButtonText>Entrar</ButtonText>
-        </ButtonContainer>
+        <ButtonLogin onPress={handleSubmit(handleSignIn)}>
+          <TextButtonLogin>Entrar</TextButtonLogin>
+        </ButtonLogin>
 
-        <ButtonContainer onPress={() => navigation.navigate('Cadastro')}>
+      
+
+
+        <ButtonGreen onPress={() => navigation.navigate('Cadastro')}>
           <ButtonText>Cadastro</ButtonText>
-        </ButtonContainer>
+        </ButtonGreen>
 
-        <ButtonContainer onPress={() => navigation.navigate('Cadastro_emp')}>
-          <ButtonText>Cadastro Empresa</ButtonText>
-        </ButtonContainer>
+        <ButtonGreen onPress={() => navigation.navigate('Cadastro_emp')}>
+          <ButtonText>Sou Empresa</ButtonText>
+        </ButtonGreen>
 
       </PressBox>
     </Container>

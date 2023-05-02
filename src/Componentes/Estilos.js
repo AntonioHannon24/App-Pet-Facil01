@@ -20,15 +20,34 @@ export const Title = styled.Text`
 
 export const ButtonContainer = styled.TouchableOpacity`
     
+    padding:10px;
+    margin:4px;
+    margin-bottom:1px;
+    border-radius:8px;
+    align-items:flex-end;
+    background-color:#fff;
+    border:1px solid black;
+
+  
+
+`;// ok 
+
+
+
+export const ButtonContainerForm = styled.TouchableOpacity`
+    
     padding-vertical:2px;
     padding-horizontal:16px;
     border-radius:8px;
     align-items:flex-end;
+
 `;// ok 
+
 
 export const ButtonText = styled.Text`
     color:${props => props.theme.color};
     font-size:16px;
+    padding-horizontal:40px;
 
 `;
 
@@ -41,7 +60,7 @@ export const InputArea = styled.TextInput`
     border-color:transparent;
     margin-bottom:15px;
     padding-horizontal:10px;
-    border-radius:10px;
+    border-radius:50px;
     box-shadow :2px 2px 5px green;
 
 `;
@@ -50,7 +69,16 @@ export const ButtonText2 = styled.Text`
     font-size:12px;
     height:40px;
     margin-right :110px;
+    font-shadow:1px solid black;
 `;
+
+export const ButtonText3 = styled.Text`
+    color: ${props =>props.theme.color};
+    font-size:12px;
+    height:40px;
+    margin-right :110px;
+`;
+
 
 export const ErrorMessage = styled.Text`
 
