@@ -82,7 +82,7 @@ export const ButtonText3 = styled.Text`
 
 export const ErrorMessage = styled.Text`
 
-    font-size:12;
+    font-size:12px;
     color:red;
     font-weight:bold;
     margin-bottom:5px;

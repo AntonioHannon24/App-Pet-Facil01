@@ -1,6 +1,6 @@
 import { Container, ButtonText, ButtonContainer, ButtonContainerForm, Title, InputArea,
-          ErrorMessage, PressBox,ButtonText3 } from '../Estilos';
-import { ButtonLogin, ButtonGreen, TextButtonLogin, ImageContainer, LoginImage, InputAreaLogin } from './Style';
+          ErrorMessage, PressBox,ButtonText3 } from '../../Componentes/Estilos';
+import { ButtonLogin, ButtonGreen, TextButtonLogin, ImageContainer, LoginImage, InputAreaLogin } from '../Style';
 import { Keyboard } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
 import * as yup from 'yup'
@@ -78,7 +78,7 @@ useEffect(()=>{
           <ButtonText>Cadastro</ButtonText>
         </ButtonGreen>
 
-        <ButtonGreen onPress={() => navigation.navigate('Cadastro_emp')}>
+        <ButtonGreen onPress={() => navigation.navigate('Login_Estabelecimento')}>
           <ButtonText>Sou Empresa</ButtonText>
         </ButtonGreen>
 
