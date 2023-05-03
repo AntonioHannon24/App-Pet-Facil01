@@ -42,7 +42,7 @@ useEffect(()=>{
 
         <Title>Bem vindo PetHelper</Title>
         <ImageContainer>
-          <LoginImage source={require('./img/login.png')}/>
+          <LoginImage source={require('../img/login.png')}/>
         </ImageContainer>
 
         {errors.email && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
