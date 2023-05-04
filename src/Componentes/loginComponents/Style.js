@@ -52,6 +52,7 @@ export const TextButtonLogin = styled.Text`
 
 export const InputAreaLogin = styled.TextInput`
 
+    
     width:310px;
     height:50px;
     border-width:1px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonContainer, ButtonText, Container, InputArea, Title, ErrorMessage } from '../Estilos';
+import { ButtonContainer, ButtonText, Container, InputArea, Title, ErrorMessage } from '../../Estilos';
 import { useForm, Controller } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'

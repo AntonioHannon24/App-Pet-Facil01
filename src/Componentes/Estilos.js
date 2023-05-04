@@ -21,13 +21,15 @@ export const Title = styled.Text`
 export const ButtonContainer = styled.TouchableOpacity`
     
     padding:10px;
-    margin:4px;
-    margin-bottom:1px;
+    height:40px;
+    width:200px;
+    margin-top:10px
+    margin-bottom:5px;
     border-radius:8px;
     align-items:flex-end;
     background-color:#fff;
     border:1px solid black;
-
+    align-items:center;
   
 
 `;// ok 
@@ -53,7 +55,7 @@ export const ButtonText = styled.Text`
 
 export const InputArea = styled.TextInput`
 
-    width:60%;
+    width:300px;
     height:40px;
     border-width:1px;
     background-color:white;
@@ -62,6 +64,7 @@ export const InputArea = styled.TextInput`
     padding-horizontal:10px;
     border-radius:50px;
     box-shadow :2px 2px 5px green;
+    
 
 `;
 export const ButtonText2 = styled.Text`

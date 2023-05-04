@@ -1,5 +1,5 @@
 import { Container, ButtonText, ButtonContainer, ButtonContainerForm, Title, InputArea,
-          ErrorMessage, PressBox,ButtonText3 } from '../../Componentes/Estilos';
+          ErrorMessage, PressBox,ButtonText3 } from '../../Estilos';
 import { ButtonLogin, ButtonGreen, TextButtonLogin, ImageContainer, LoginImage, InputAreaLogin } from '../Style';
 import { Keyboard } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 
 
 
-export default function LoginEstabelecimento  ({ navigation }) {
+export default function TelaLogin  ({ navigation }) {
 
 const [data,setData] = useState([])
 
@@ -34,13 +34,13 @@ useEffect(()=>{
   });
 
   function handleSignIn(data) { console.log(data) 
-    navigation.navigate('TelaPrincipal')}
+    navigation.navigate('TelaUsuarios')}
 
   return (
     <Container>
       <PressBox onPress={Keyboard.dismiss}>
 
-        <Title>Bem vindo PetHelper</Title>
+        <Title>Login</Title>
         <ImageContainer>
           <LoginImage source={require('../img/login.png')}/>
         </ImageContainer>
@@ -50,7 +50,8 @@ useEffect(()=>{
           control={control}
           name='email'
           render={({ field: { onChange, onBlur, value } }) => (
-            <InputAreaLogin placeholder="Email" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.email} />
+            <InputAreaLogin placeholder="E-mail" onChangeText={onChange} onBlur={onBlur} 
+                                  value={value} err={errors.email} textAlign="center"/>
           )}
         />
 
@@ -59,7 +60,8 @@ useEffect(()=>{
           control={control}
           name='password'
           render={({ field: { onChange, onBlur, value } }) => (
-            <InputAreaLogin secureTextEntry={true} placeholder="Digite sua senha" onChangeText={onChange} onBlur={onBlur} value={value} />
+            <InputAreaLogin secureTextEntry={true} placeholder="Digite sua senha" textAlign="center" 
+                                             onChangeText={onChange} onBlur={onBlur} value={value}/>
           )}
         />
 
@@ -74,12 +76,12 @@ useEffect(()=>{
       
 
 
-        <ButtonGreen onPress={() => navigation.navigate('Cadastro_emp')}>
-          <ButtonText>Nova Empresa</ButtonText>
+        <ButtonGreen onPress={() => navigation.navigate('Cadastro')}>
+          <ButtonText>Cadastro</ButtonText>
         </ButtonGreen>
 
-        <ButtonGreen onPress={() => navigation.navigate('Login')}>
-          <ButtonText>Sou Cliente</ButtonText>
+        <ButtonGreen onPress={() => navigation.navigate('Login_Estabelecimento')}>
+          <ButtonText>Sou Empresa</ButtonText>
         </ButtonGreen>
 
       </PressBox>

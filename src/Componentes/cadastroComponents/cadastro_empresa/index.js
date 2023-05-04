@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ButtonContainer, ButtonText, Container, InputArea, Title, ErrorMessage, PressBox } from '../Estilos.js';
+import { ButtonContainer, ButtonText, Container, InputArea, Title, ErrorMessage, PressBox } from "../../Estilos";
 import { Keyboard } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
 import * as yup from 'yup'

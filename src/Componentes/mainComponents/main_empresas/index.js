@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { ContainerMain, DispoFuncao, Icon, Icone, IconeContainer, Linha, Loop, Nome } from './estilos_main.js'
+import { ContainerMain, DispoFuncao, Icon, Icone, IconeContainer, Linha, Loop, Nome } from "../estilos_main";
 
-const TelaPrincipal = () => {
+const TelaEstabelecimentos = () => {
 
 
   const users = [
@@ -10,31 +10,31 @@ const TelaPrincipal = () => {
       nome: 'Usuário 1',
       função: 'Médico(a) Veterinário',
       disponibilidade: 'Segunda a Sexta, 8h às 17h',
-      icon: require("./img/profile.png"),
+      icon: require("../img/profile.png"),
     },
     {
       nome: 'Usuário 2',
       função: 'Auxíliar tosador',
       disponibilidade: 'Segunda a Sexta, 9h às 18h',
-      icon: require('./img/profile.png'),
+      icon: require('../img/profile.png'),
     },
     {
       nome: 'Usuário 3',
       função: 'Tosador',
       disponibilidade: 'Segunda a Sexta, 10h às 19h',
-      icon: require('./img/profile.png'),
+      icon: require('../img/profile.png'),
     },
     {
       nome: 'Usuário 4 ',
       função: 'Tosador',
       disponibilidade: 'Segunda a Sexta, 10h às 19h',
-      icon: require('./img/profile.png'),
+      icon: require('../img/profile.png'),
     },
     {
       nome: 'Usuário 5',
       função: 'Tosador',
       disponibilidade: 'Segunda a Sexta, 10h às 19h',
-      icon: require('./img/profile.png'),
+      icon: require('../img/profile.png'),
     },
   ];
   return (
@@ -42,9 +42,9 @@ const TelaPrincipal = () => {
       {users.map((user, index) => (
         <Loop key={index}>
           <IconeContainer>
-            <Icone source={require('./img/horario.png')} />
+            <Icone source={require('../img/horario.png')} />
           </IconeContainer>
-          <Icon source={require('./img/profile.png')} />
+          <Icon source={require('../img/profile.png')} />
           <Nome>{user.nome}</Nome>
           <DispoFuncao>{user.função}</DispoFuncao>
           <DispoFuncao>{user.disponibilidade}</DispoFuncao>
@@ -54,6 +54,6 @@ const TelaPrincipal = () => {
   );
 };
 
-export default TelaPrincipal;
+export default TelaEstabelecimentos;
 
 
