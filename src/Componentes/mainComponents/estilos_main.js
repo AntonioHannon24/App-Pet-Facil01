@@ -1,10 +1,12 @@
 import styled from "styled-components/native";
 
-export const ContainerMain = styled.View`
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-`;// ok
+
+export const ContainerMain = styled.View(props=>({
+    display:"flex",
+    flexDirection:"column",
+    flex:"2",
+}));// ok 
+
 
 export const IconeContainer = styled.View`
     flex-direction:row;
@@ -44,3 +46,18 @@ export const Linha = styled.View`
 
 `;// ok
 export const Loop = styled.View``;
+
+
+export const PerfilContainer = styled.View`
+    
+    background-color:red;
+    
+    flex-grow:2;
+`;
+
+export const ButtonsContainer = styled.View`
+    padding:20px;
+    background-color:blue;  
+    flex-grow:2;
+    align-items:center;
+`;

@@ -18,21 +18,21 @@ export const Title = styled.Text`
 `;//ok
 
 
-export const ButtonContainer = styled.TouchableOpacity`
+export const ButtonContainer = styled.TouchableOpacity(props=>({
     
-    padding:10px;
-    height:40px;
-    width:200px;
-    margin-top:10px
-    margin-bottom:5px;
-    border-radius:8px;
-    align-items:flex-end;
-    background-color:#fff;
-    border:1px solid black;
-    align-items:center;
+    padding:"10px",
+    height:"40px",
+    width:props.width || "200px",
+    marginTop:"10px",
+    marginBottom:"5px",
+    borderRadius:"8px",
+    alignItems:"flex-end",
+    backgroundColor:"#fff",
+    border:"1px solid black",
+    alignItems:"center",
   
 
-`;// ok 
+}));// ok 
 
 
 

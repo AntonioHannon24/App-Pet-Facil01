@@ -8,6 +8,7 @@ import TelaEstabelecimentos from '../Componentes/mainComponents/main_empresas';
 import TelaUser from '../Componentes/mainComponents/main_clientes';
 import CadastroEmpresas from "../Componentes/cadastroComponents/cadastro_empresa"
 import LoginEstabelecimento from '../Componentes/loginComponents/login_empresa';
+import TelaFuncionarios from '../Componentes/mainComponents/main_empresas/funcionarios';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export default function Home() {
         <Stack.Screen name="Cadastro" component={CadastroClientes} />
         <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} />
         <Stack.Screen name="TelaEstabelecimentos" component={TelaEstabelecimentos}/>
+        <Stack.Screen name="TelaFuncionarios" component={TelaFuncionarios}/>
         <Stack.Screen name="TelaUsuarios" component={TelaUser}/>
         <Stack.Screen name="Cadastro_emp" component={CadastroEmpresas} />
       </Stack.Navigator>
