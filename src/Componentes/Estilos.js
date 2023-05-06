@@ -48,8 +48,8 @@ export const ButtonContainerForm = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
     color:${props => props.theme.color};
-    font-size:16px;
-    padding-horizontal:40px;
+    font-size:14px;
+    padding-top: 1px;
 
 `;
 
