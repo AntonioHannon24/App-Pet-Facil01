@@ -3,8 +3,7 @@ import styled from 'styled-components/native';
 
 export const ContainerMain = styled.View`
     flex: 1;
-  //justify-content: center;
-  //align-items: center;
+    margin-top: 10px;
 `;
 
 export const IconLogin = styled.Image`
@@ -22,6 +21,8 @@ export const TextContainer = styled.View`
 export const WelcomeText = styled.Text`
     font-size: 15px;
     font-weight: bold;
+    flex-wrap: wrap;
+    width: 70%;
 `;
 
 export const PetContainer = styled.View`
@@ -43,10 +44,24 @@ export const ButtonsContainer = styled.View`
 `;
 
 export const ButtonsContainer2 = styled.View`
-    padding:110px;
+    padding:50px;
     background-color:red;  
     flex-direction: column;
     align-items:center;
     display: flex;
     margin-bottom: 50px;
 `;
+
+export const PetTextContainer = styled.View` //array de pets
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-right: 250px;
+  margin-top: 8px;
+`;
+
+export const View = styled.View`
+  flex-direction: column;
+  margin-bottom: 30px;
+`;
+

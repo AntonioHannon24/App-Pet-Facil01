@@ -1,21 +1,28 @@
 import React from 'react';
 
-import {ContainerMain, IconLogin, TextContainer, WelcomeText, PetContainer, PetText, ButtonsContainer, ButtonsContainer2} from "./Style";
+import {ContainerMain, IconLogin, TextContainer, WelcomeText, PetTextContainer, View, PetText, ButtonsContainer, ButtonsContainer2} from "./Style";
 import { ButtonContainer, ButtonText } from "../../Estilos.js"
 
 
 const width = "110px";
 
 const TelaUser = () => {
-  //const pets = ["Pet 1", "Pet 2", "Pet 3"]; // array com informações dos pets
 
   return (
     <ContainerMain>
-
       <TextContainer>
         <IconLogin source={require('../img/profile.png')} />
-        <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
-      </TextContainer> 
+        <View>
+          <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
+          <PetTextContainer>
+            <PetText>Pet 1</PetText>
+            <PetText>Pet 2</PetText>
+            <PetText>Pet 3</PetText>
+          </PetTextContainer>
+        </View> 
+    </TextContainer>
+
+
 
       <ButtonsContainer>
           <ButtonContainer width={width}>
