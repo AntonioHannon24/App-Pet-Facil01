@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {ContainerMain, IconLogin, TextContainer, WelcomeText, PetTextContainer, View, PetText, ButtonsContainer, ButtonsContainer2} from "./Style";
+import {ContainerMain, TextContainer, WelcomeText, PetTextContainer, View, PetText, ButtonsContainer2} from "./Style";
+import { IconLogin,ButtonsContainerPainel } from '../estilos_main';
 import { ButtonContainer, ButtonText } from "../../Estilos.js"
-
 
 const width = "110px";
 
@@ -24,7 +24,7 @@ const TelaUser = () => {
 
 
 
-      <ButtonsContainer>
+      <ButtonsContainerPainel>
           <ButtonContainer width={width}>
             <ButtonText >Meu perfil</ButtonText>
           </ButtonContainer>
@@ -34,7 +34,7 @@ const TelaUser = () => {
           <ButtonContainer width={width}>
             <ButtonText >PetHelpers</ButtonText>
           </ButtonContainer>
-      </ButtonsContainer>
+      </ButtonsContainerPainel>
 
       <ButtonsContainer2>
           <ButtonContainer width={"300px"}>

@@ -1,20 +1,33 @@
 import React from 'react';
 
-import { ButtonsContainer, ContainerMain, PerfilContainer } from "../estilos_main";
+import { ButtonsContainerColumn, ContainerMain, PerfilContainer,ButtonsContainerPainel, IconLogin } from "../estilos_main";
 import { ButtonContainer, ButtonText } from "../../Estilos"
 
 const TelaEstabelecimentos = ({navigation}) => {
 
   const width = "330px";
+  const widthButton = "110px";
 
 
   return (
     <ContainerMain>
-      <PerfilContainer>
-          <ButtonText>teste</ButtonText>
+       <PerfilContainer>
+          <IconLogin source={require('../img/profile.png')}/>
       </PerfilContainer>
 
-      <ButtonsContainer>
+      <ButtonsContainerPainel>
+          <ButtonContainer width={widthButton}>
+            <ButtonText >Administrativo</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={widthButton}>
+            <ButtonText >Agendamentos</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={widthButton}>
+            <ButtonText >Publicações</ButtonText>
+          </ButtonContainer>
+      </ButtonsContainerPainel>
+
+      <ButtonsContainerColumn>
           <ButtonContainer width={width}>
             <ButtonText >Meu perfil</ButtonText>
           </ButtonContainer>
@@ -30,7 +43,7 @@ const TelaEstabelecimentos = ({navigation}) => {
           <ButtonContainer width={width}>
             <ButtonText >Outra Ideia</ButtonText>
           </ButtonContainer>
-      </ButtonsContainer>
+      </ButtonsContainerColumn>
     </ContainerMain>
   );
 };

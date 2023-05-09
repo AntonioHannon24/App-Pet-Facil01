@@ -61,3 +61,26 @@ export const ButtonsContainer = styled.View`
     flex-grow:2;
     align-items:center;
 `;
+
+export const ButtonsContainerPainel = styled.View`
+    padding:20px;
+    background-color:blue;  
+    flex-direction: row;
+    align-items:center;
+    display: flex;
+`;
+
+export const IconLogin = styled.Image`
+    width: 100px;
+    height: 100px;
+    margin-right: 8px;
+    margin-left: 20px;
+`;
+
+
+export const ButtonsContainerColumn = styled.View`
+    padding:20px;
+    background-color:blue;  
+    flex-grow:2;
+    align-items:center;
+`;
