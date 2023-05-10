@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {ContainerMain, TextContainer, WelcomeText, PetTextContainer, View, PetText, ButtonsContainer2} from "./Style";
 import { IconLogin,ButtonsContainerPainel } from '../estilos_main';
 import { ButtonContainer, ButtonText } from "../../Estilos.js"
 
-const width = "110px";
+import MeuPerfil from './MeuPerfil'
+import Agendamentos from './Agendamentos';
 
-const TelaUser = () => {
+const TelaUser = ({ navigation }) => {
+
+  const [selectedScreen, setSelectedScreen] = useState('MeuPerfil');
+  const widthButton = "110px";
+
+  const selectScreen = (screen) => {
+    setSelectedScreen(screen);
+  };
 
   return (
     <ContainerMain>
@@ -22,38 +30,28 @@ const TelaUser = () => {
         </View> 
     </TextContainer>
 
+    <ButtonsContainerPainel>
+          <ButtonContainer width={widthButton}>
+            <ButtonText onPress={() => selectScreen('MeuPerfil')}>Meu Perfil</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={widthButton}>
+            <ButtonText onPress={() => selectScreen('Agendamentos')}>Agendamentos</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={widthButton}>
+            <ButtonText onPress={() => selectScreen('PetHelpers')}>PetHelpers</ButtonText>
+          </ButtonContainer>
+        </ButtonsContainerPainel>
 
-
-      <ButtonsContainerPainel>
-          <ButtonContainer width={width}>
-            <ButtonText >Meu perfil</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText >Agendamentos</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText >PetHelpers</ButtonText>
-          </ButtonContainer>
-      </ButtonsContainerPainel>
-
-      <ButtonsContainer2>
-          <ButtonContainer width={"300px"}>
-            <ButtonText >Carteirinha Meu Pet</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={"300px"}>
-            <ButtonText >Administração de Pets</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={"300px"}>
-            <ButtonText >Administração de Perfil</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={"300px"}>
-            <ButtonText >Notícias Mundo Pet</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={"300px"}>
-            <ButtonText >Dicas de Saúde</ButtonText>
-          </ButtonContainer>
-
-      </ButtonsContainer2>
+      {selectedScreen === "MeuPerfil" && (
+      <MeuPerfil/>
+      )}
+      {selectedScreen === 'Agendamentos' && (
+        <Agendamentos />
+      )}
+      {selectedScreen === 'PetHelpers' && (
+        <PetHelpers />
+      )}
+      
     </ContainerMain>
   );
 };
