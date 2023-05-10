@@ -1,35 +1,22 @@
 import React from 'react';
 
-import { ContainerMain, DispoFuncao, Icon, Icone, IconeContainer, Linha, Loop, Nome } from "../../estilos_main";
+import { ButtonsContainerColumn, ContainerMain, ButtonsContainerPainel, IconLogin, PerfilContainer } from "../../estilos_main";
+import { ButtonContainer, ButtonText } from "../../../Estilos"
+import { Text } from 'react-native';
 
-const TelaFuncionarios = () => {
+const TelaFuncionarios = ({ navigation }) => {
 
+  const widthButton = "120px";
 
-  const users = [
-    {
-      nome: 'Usuário 1',
-      função: 'Médico(a) Veterinário',
-      disponibilidade: 'Segunda a Sexta, 8h às 17h',
-      icon: require("../../img/profile.png"),
-    }, 
-  ];
   return (
     <ContainerMain>
-      {users.map((user, index) => (
-        <Loop key={index}>
-          <IconeContainer>
-            <Icone source={require('../../img/horario.png')} />
-          </IconeContainer>
-          <Icon source={require('../../img/profile.png')} />
-          <Nome>{user.nome}</Nome>
-          <DispoFuncao>{user.função}</DispoFuncao>
-          <DispoFuncao>{user.disponibilidade}</DispoFuncao>
-          {index < users.length - 1 && <Linha />}
-        </Loop>))}
+      <ButtonsContainerColumn>
+        <Text>Tela de Funcionarios</Text>
+      </ButtonsContainerColumn>
+
     </ContainerMain>
   );
 };
 
 export default TelaFuncionarios;
-
 

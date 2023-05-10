@@ -49,10 +49,9 @@ export const Loop = styled.View``;
 
 
 export const PerfilContainer = styled.View`
-    
-    background-color:red;
-    
-    flex-grow:2;
+    padding-top:20px;
+    background-color:gray;
+    flex:1;
 `;
 
 export const ButtonsContainer = styled.View`
@@ -63,10 +62,12 @@ export const ButtonsContainer = styled.View`
 `;
 
 export const ButtonsContainerPainel = styled.View`
-    padding:20px;
-    background-color:blue;  
+
+    flex:1;
+    background-color:red;  
     flex-direction: row;
-    align-items:center;
+    align-items:flex-end;
+    justify-content:center;
     display: flex;
 `;
 
@@ -80,7 +81,13 @@ export const IconLogin = styled.Image`
 
 export const ButtonsContainerColumn = styled.View`
     padding:20px;
-    background-color:blue;  
-    flex-grow:2;
+    background-color:green;  
+    flex:2;
     align-items:center;
+`;
+
+export const ImageContainer = styled.View`
+    margin-top:40px;
+    background-color:gray;  
+    flex:3;
 `;

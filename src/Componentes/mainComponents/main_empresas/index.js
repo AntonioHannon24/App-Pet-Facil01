@@ -1,51 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { ButtonsContainerColumn, ContainerMain, PerfilContainer,ButtonsContainerPainel, IconLogin } from "../estilos_main";
-import { ButtonContainer, ButtonText } from "../../Estilos"
+import { ButtonContainer, ButtonText } from "../../Estilos";
+import { ContainerMain, IconLogin, PerfilContainer, ButtonsContainerPainel, ImageContainer, ButtonsContainerColumn } from "../estilos_main";
 
-const TelaEstabelecimentos = ({navigation}) => {
+import Administrativo from './Administrativo';
+import Agendamentos from './Agendamentos'
+import Publicacoes from './publicacoes';
 
-  const width = "330px";
-  const widthButton = "110px";
+const TelaEstabelecimentos = ({ navigation }) => {
+
+  const [selectedScreen, setSelectedScreen] = useState('administrativo');
+  const widthButton = "120px";
+
+  const selectScreen = (screen) => {
+    setSelectedScreen(screen);
+  };
 
 
   return (
     <ContainerMain>
-       <PerfilContainer>
-          <IconLogin source={require('../img/profile.png')}/>
+      <PerfilContainer>
+        <ImageContainer>
+          <IconLogin source={require("../img/profile.png")} />
+        </ImageContainer>
+        <ButtonsContainerPainel>
+          <ButtonContainer width={widthButton}>
+            <ButtonText onPress={() => selectScreen('administrativo')}>Administrativo</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={widthButton}>
+            <ButtonText onPress={() => selectScreen('agendamentos')}>Agendamentos</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={widthButton}>
+            <ButtonText onPress={() => selectScreen('publicacoes')}>Publicações</ButtonText>
+          </ButtonContainer>
+        </ButtonsContainerPainel>
       </PerfilContainer>
 
-      <ButtonsContainerPainel>
-          <ButtonContainer width={widthButton}>
-            <ButtonText >Administrativo</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={widthButton}>
-            <ButtonText >Agendamentos</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={widthButton}>
-            <ButtonText >Publicações</ButtonText>
-          </ButtonContainer>
-      </ButtonsContainerPainel>
-
-      <ButtonsContainerColumn>
-          <ButtonContainer width={width}>
-            <ButtonText >Meu perfil</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText onPress={() => navigation.navigate('TelaFuncionarios')}>Gerenciamento de funcionarios</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText >Gerenciamento de servicos</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText >Avaliações</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText >Outra Ideia</ButtonText>
-          </ButtonContainer>
-      </ButtonsContainerColumn>
+      {selectedScreen === "administrativo" && (
+        <Administrativo />
+      )}
+      {selectedScreen === 'agendamentos' && (
+        <Agendamentos />
+      )}
+      {selectedScreen === 'publicacoes' && (
+        <Publicacoes />
+      )}
     </ContainerMain>
-  );
+  )
 };
 
 export default TelaEstabelecimentos;
