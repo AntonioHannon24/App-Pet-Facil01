@@ -37,7 +37,7 @@ const TelaEstabelecimentos = ({ navigation }) => {
       </PerfilContainer>
 
       {selectedScreen === "administrativo" && (
-        <Administrativo />
+        <Administrativo nav={navigation}/>
       )}
       {selectedScreen === 'agendamentos' && (
         <Agendamentos />

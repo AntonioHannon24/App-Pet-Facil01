@@ -1,25 +1,27 @@
-import React from 'react';
-
 import { ButtonContainer, ButtonText } from "../../../Estilos";
-import { ContainerMain, IconLogin, PerfilContainer, ButtonsContainerPainel, ImageContainer, ButtonsContainerColumn } from "../../estilos_main";
+import { ContainerMain, ButtonsContainerColumn } from "../../estilos_main";
 
-const Administrativo = ({ navigation }) => {
 
+const Administrativo = ({ nav }) => {
+
+    const navi = nav;
 
     const width = "330px";
-
 
     return (
         <ContainerMain>
             <ButtonsContainerColumn>
                 <ButtonContainer width={width}>
-                    <ButtonText >Meu perfil</ButtonText>
+                    <ButtonText onPress={()=> navi.navigate("PerfilEstabelecimento")}>
+                                                               Meu perfil</ButtonText>
                 </ButtonContainer>
                 <ButtonContainer width={width}>
-                    <ButtonText>Gerenciamento de funcionarios</ButtonText>
+                    <ButtonText onPress={()=> navi.navigate("GerenciamentoFuncionarios")}>
+                                                Gerenciamento de funcionarios</ButtonText>
                 </ButtonContainer>
                 <ButtonContainer width={width}>
-                    <ButtonText >Gerenciamento de servicos</ButtonText>
+                    <ButtonText onPress={()=> navi.navigate("GerenciamentoServicos")}
+                                                  >Gerenciamento de servicos</ButtonText>
                 </ButtonContainer>
                 <ButtonContainer width={width}>
                     <ButtonText >Avaliações</ButtonText>
@@ -29,7 +31,6 @@ const Administrativo = ({ navigation }) => {
                 </ButtonContainer>
             </ButtonsContainerColumn>
         </ContainerMain>
-        
     )
 };
 
