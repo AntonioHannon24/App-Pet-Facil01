@@ -1,24 +1,16 @@
 import React from 'react';
-
-import { ButtonContainer, ButtonText } from "../../../Estilos";
-import { ContainerMain, IconLogin, PerfilContainer, ButtonsContainerPainel, ImageContainer, ButtonsContainerColumn } from "../../estilos_main";
+import { ContainerMain, ButtonsContainer2 } from "../../estilos_main";
 import { Text } from 'react-native';
-const Publicacoes = ({ navigation }) => {
 
-    const widthButton = "120px";
-
-
+const EstabPublicacoes = ({ navigation }) => {
 
     return (
-
         <ContainerMain>
-            <ContainerMain>
-                <ButtonsContainerColumn>
-                    <Text>Tela de Publicações</Text>
-                </ButtonsContainerColumn>
-            </ContainerMain>
+            <ButtonsContainer2>
+                <Text>Tela Publicações</Text>
+            </ButtonsContainer2>
         </ContainerMain>
     )
 };
 
-export default Publicacoes;
+export default EstabPublicacoes;

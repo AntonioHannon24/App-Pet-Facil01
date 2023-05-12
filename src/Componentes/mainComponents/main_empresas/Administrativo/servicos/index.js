@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ButtonsContainerColumn, ContainerMain } from "../../../estilos_main";
+import { ButtonsContainer2, ContainerMain } from "../../../estilos_main";
 
 import { Text } from 'react-native';
 
@@ -10,9 +10,9 @@ const GerenciamentoServicos = () => {
 
   return (
     <ContainerMain>
-      <ButtonsContainerColumn>
+      <ButtonsContainer2>
         <Text>Gerenciamento servicos</Text>
-      </ButtonsContainerColumn>
+      </ButtonsContainer2>
 
     </ContainerMain>
   );

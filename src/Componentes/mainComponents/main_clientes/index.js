@@ -1,7 +1,8 @@
 import React from 'react';
 
-import {ContainerMain, IconLogin, TextContainer, WelcomeText, PetTextContainer, View, PetText, ButtonsContainer, ButtonsContainer2} from "./Style";
+import {ContainerMain, IconLogin , PetTextContainer, View, PetText} from "./Style";
 import { ButtonContainer, ButtonText } from "../../Estilos.js"
+import { WelcomeText,TextContainer, ButtonsContainer,ButtonsContainer2 } from '../estilos_main';
 
 const TelaUser = ({ nav }) => {
 

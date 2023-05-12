@@ -1,19 +1,18 @@
 import React from 'react';
 
 
-import { ContainerMain, ButtonsContainerColumn } from "../../estilos_main";
-import { Text } from 'react-native';
-const Agendamentos = ({ navigation }) => {
+import { ContainerMain, ButtonsContainer2 } from "../../estilos_main";
+import { Text} from 'react-native';
+
+const EstabAgendamentos = ({ navigation }) => {
 
     return (
         <ContainerMain>
-            <ContainerMain>
-                <ButtonsContainerColumn>
-                    <Text>Tela de Agendamentos</Text>
-                </ButtonsContainerColumn>
-            </ContainerMain>
+            <ButtonsContainer2>
+                <Text>Tela Agendamentos</Text>
+            </ButtonsContainer2>
         </ContainerMain>
-    )
+    );
 };
 
-export default Agendamentos;
+export default EstabAgendamentos;

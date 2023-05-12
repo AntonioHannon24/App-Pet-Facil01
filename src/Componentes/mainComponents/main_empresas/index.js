@@ -1,50 +1,58 @@
-import React, { useState } from 'react';
-
+import React from "react";
 import { ButtonContainer, ButtonText } from "../../Estilos";
-import { ContainerMain, IconLogin, PerfilContainer, ButtonsContainerPainel, ImageContainer, ButtonsContainerColumn } from "../estilos_main";
-
-import Administrativo from './Administrativo';
-import Agendamentos from './Agendamentos'
-import Publicacoes from './publicacoes';
+import { ContainerMain, IconLogin, ButtonsContainer, TextContainer, WelcomeText,ButtonsContainer2 } from "../estilos_main";
+import { View } from 'react-native';
 
 const TelaEstabelecimentos = ({ navigation }) => {
 
-  const [selectedScreen, setSelectedScreen] = useState('administrativo');
-  const widthButton = "120px";
-
-  const selectScreen = (screen) => {
-    setSelectedScreen(screen);
-  };
-
+  const width = "130px";
+  const buttonWidth = "330px";
 
   return (
     <ContainerMain>
-      <PerfilContainer>
-        <ImageContainer>
-          <IconLogin source={require("../img/profile.png")} />
-        </ImageContainer>
-        <ButtonsContainerPainel>
-          <ButtonContainer width={widthButton}>
-            <ButtonText onPress={() => selectScreen('administrativo')}>Administrativo</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={widthButton}>
-            <ButtonText onPress={() => selectScreen('agendamentos')}>Agendamentos</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={widthButton}>
-            <ButtonText onPress={() => selectScreen('publicacoes')}>Publicações</ButtonText>
-          </ButtonContainer>
-        </ButtonsContainerPainel>
-      </PerfilContainer>
+      <TextContainer>
 
-      {selectedScreen === "administrativo" && (
-        <Administrativo nav={navigation}/>
-      )}
-      {selectedScreen === 'agendamentos' && (
-        <Agendamentos />
-      )}
-      {selectedScreen === 'publicacoes' && (
-        <Publicacoes />
-      )}
+        <IconLogin source={require("../img/profile.png")} />
+        <View>
+          <WelcomeText>Bem vindo Pethelpers </WelcomeText>
+        </View>
+      </TextContainer>
+
+      <ButtonsContainer>
+        <ButtonContainer width={width}>
+          <ButtonText>Administrativo</ButtonText>
+        </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText onPress={() => navigation.navigate('EstabAgendamentos')}>Agendamentos</ButtonText>
+        </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText onPress={() => navigation.navigate('EstabPublicacoes')}>Publicações</ButtonText>
+        </ButtonContainer>
+      </ButtonsContainer>
+
+      <ContainerMain>
+
+        <ButtonsContainer2>
+          <ButtonContainer width={buttonWidth}>
+            <ButtonText onPress={() => navigation.navigate("PerfilEstabelecimento")}>
+              Meu perfil</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={buttonWidth}>
+            <ButtonText onPress={() => navigation.navigate("GerenciamentoFuncionarios")}
+                                        >Gerenciamento de funcionarios</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={buttonWidth}>
+            <ButtonText onPress={() => navigation.navigate("GerenciamentoServicos")}
+                                        >Gerenciamento de servicos</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={buttonWidth}>
+            <ButtonText >Avaliações</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={buttonWidth}>
+            <ButtonText >Outra Ideia</ButtonText>
+          </ButtonContainer>
+        </ButtonsContainer2>
+      </ContainerMain>
     </ContainerMain>
   )
 };

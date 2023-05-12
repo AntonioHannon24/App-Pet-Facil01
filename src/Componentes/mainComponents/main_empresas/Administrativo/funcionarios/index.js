@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ButtonsContainerColumn, ContainerMain } from "../../../estilos_main";
+import { ButtonsContainer2, ContainerMain } from "../../../estilos_main";
 
 import { Text } from 'react-native';
 
@@ -10,9 +10,9 @@ const GerenciamentoFuncionarios = ({ navigation }) => {
 
   return (
     <ContainerMain>
-      <ButtonsContainerColumn>
+      <ButtonsContainer2>
         <Text>Tela de Funcionarios</Text>
-      </ButtonsContainerColumn>
+      </ButtonsContainer2>
 
     </ContainerMain>
   );

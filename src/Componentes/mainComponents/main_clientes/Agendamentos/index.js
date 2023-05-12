@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, } from 'react-native';
 
-
-import {ContainerMain, IconLogin, TextContainer, WelcomeText, PetTextContainer, View, PetText, ButtonsContainer, ButtonsContainer2} from "./Style";
-import { ButtonContainer, ButtonText } from "../../Estilos.js"
-
+import { ContainerMain, IconLogin, ButtonsContainer, WelcomeText } from "../../estilos_main";
+import { ButtonContainer, ButtonText } from "../../../Estilos"
+import { PetText } from '../Style';
 
 const width = "110px";
 
-const AgendamentosClientes = ({ navigation }) => { 
+const AgendamentosClientes = ({ navigation }) => {
   return (
     <ContainerMain>
       <TextContainer>
-        <IconLogin source={require('../img/profile.png')} />
+        <IconLogin source={require("../../img/profile.png")} />
         <View>
           <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
           <PetTextContainer>
@@ -20,19 +18,18 @@ const AgendamentosClientes = ({ navigation }) => {
             <PetText>Pet 2</PetText>
             <PetText>Pet 3</PetText>
           </PetTextContainer>
-        </View> 
-    </TextContainer>
-
+        </View>
+      </TextContainer>
       <ButtonsContainer>
-          <ButtonContainer width={width}>
-            <ButtonText >Meu perfil</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText>Agendamentos</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText >PetHelpers</ButtonText>
-          </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText >Meu perfil</ButtonText>
+        </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText>Agendamentos</ButtonText>
+        </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText >PetHelpers</ButtonText>
+        </ButtonContainer>
       </ButtonsContainer>
     </ContainerMain>
   );
@@ -106,5 +103,5 @@ const AgendamentosClientes = ({ navigation }) => {
       </Container>
     );
   };*/
-  
-  export default Calendar;
+
+export default AgendamentosClientes;

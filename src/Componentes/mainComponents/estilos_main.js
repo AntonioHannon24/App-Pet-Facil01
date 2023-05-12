@@ -54,10 +54,11 @@ export const PerfilContainer = styled.View`
     flex:1;
 `;
 
+
 export const ButtonsContainer = styled.View`
     padding:20px;
     background-color:blue;  
-    flex-grow:2;
+    flex-direction: row;
     align-items:center;
 `;
 
@@ -78,16 +79,29 @@ export const IconLogin = styled.Image`
     margin-left: 20px;
 `;
 
-
-export const ButtonsContainerColumn = styled.View`
-    padding:20px;
-    background-color:green;  
-    flex:2;
-    align-items:center;
-`;
-
 export const ImageContainer = styled.View`
     margin-top:40px;
     background-color:gray;  
     flex:3;
+`;
+export const TextContainer = styled.View`
+    flex-direction: row;
+  //align-items: center;
+`;
+
+export const WelcomeText = styled.Text`
+    font-size: 15px;
+    font-weight: bold;
+    flex-wrap: wrap;
+    width: 70%;
+`;
+
+
+export const ButtonsContainer2 = styled.View`
+    padding:50px;
+    background-color:red;  
+    flex-direction: column;
+    align-items:center;
+    display: flex;
+    margin-bottom: 50px;
 `;
