@@ -5,7 +5,6 @@ import TelaLogin  from "../Componentes/loginComponents/login_clientes"
 import CadastroClientes from "../Componentes/cadastroComponents/cadastro_clientes";
 import RecuperarSenha from '../Componentes/formulario_resenha';
 import TelaEstabelecimentos from '../Componentes/mainComponents/main_empresas';
-import TelaUser from '../Componentes/mainComponents/main_clientes';
 import CadastroEmpresas from "../Componentes/cadastroComponents/cadastro_empresa"
 import LoginEstabelecimento from '../Componentes/loginComponents/login_empresa';
 import GerenciamentoFuncionarios from '../Componentes/mainComponents/main_empresas/Administrativo/funcionarios';
@@ -14,6 +13,8 @@ import GerenciamentoServicos from '../Componentes/mainComponents/main_empresas/A
 import AgendamentosClientes from '../Componentes/mainComponents/main_clientes/Agendamentos';
 import EstabAgendamentos from '../Componentes/mainComponents/main_empresas/Agendamentos';
 import EstabPublicacoes from '../Componentes/mainComponents/main_empresas/publicacoes';
+import PetHelpers from '../Componentes/mainComponents/main_clientes/PetHelpers';
+import TelaUser from '../Componentes/mainComponents/main_clientes';
 
 
 const Stack = createStackNavigator();
@@ -32,9 +33,10 @@ export default function Home() {
         <Stack.Screen name="GerenciamentoFuncionarios" component={GerenciamentoFuncionarios}/>
         <Stack.Screen name="PerfilEstabelecimento" component={PerfilEstabelecimento}/>
         <Stack.Screen name="GerenciamentoServicos" component={GerenciamentoServicos}/>
-        <Stack.Screen name="TelaUsuarios" component={TelaUser}/>
         <Stack.Screen name="Cadastro_emp" component={CadastroEmpresas} />
-        <Stack.Screen name="Agendamentos" component={AgendamentosClientes} />
+        <Stack.Screen name="AgendamentosClientes" component={AgendamentosClientes} />
+        <Stack.Screen name="PetHelpers" component={PetHelpers} />
+        <Stack.Screen name="TelaUsuarios" component={TelaUser}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

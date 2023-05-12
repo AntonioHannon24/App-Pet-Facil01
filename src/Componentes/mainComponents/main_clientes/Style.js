@@ -19,15 +19,13 @@ export const PetContainer = styled.View`
 
 export const PetText = styled.Text`
     margin-right: 8px;
-    margin-left: 60px;
-
 `;
 
 export const PetTextContainer = styled.View` //array de pets
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  margin-right: 250px;
+  margin-right: 270px;
   margin-top: 8px;
 `;
 

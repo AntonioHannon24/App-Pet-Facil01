@@ -1,12 +1,9 @@
 import React from 'react';
-
 import {ContainerMain, IconLogin , PetTextContainer, View, PetText} from "./Style";
 import { ButtonContainer, ButtonText } from "../../Estilos.js"
 import { WelcomeText,TextContainer, ButtonsContainer,ButtonsContainer2 } from '../estilos_main';
 
-const TelaUser = ({ nav }) => {
-
-const navi = nav;
+const TelaUser = ({ navigation }) => {
 
 const width = "110px";
 
@@ -26,13 +23,13 @@ const width = "110px";
 
       <ButtonsContainer>
           <ButtonContainer width={width}>
-            <ButtonText >Meu perfil</ButtonText>
+            <ButtonText onPress={()=> navigation.navigate("TelaUser")} >Meu perfil</ButtonText>
           </ButtonContainer>
           <ButtonContainer width={width}>
-            <ButtonText onPress={()=> navi.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
+            <ButtonText onPress={()=> navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
           </ButtonContainer>
           <ButtonContainer width={width}>
-            <ButtonText >PetHelpers</ButtonText>
+            <ButtonText onPress={()=> navigation.navigate("PetHelpers")} >PetHelpers</ButtonText>
           </ButtonContainer>
       </ButtonsContainer>
 

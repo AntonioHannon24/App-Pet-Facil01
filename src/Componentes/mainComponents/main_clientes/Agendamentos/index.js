@@ -1,8 +1,9 @@
-import { View, } from 'react-native';
-
-import { ContainerMain, IconLogin, ButtonsContainer, WelcomeText } from "../../estilos_main";
-import { ButtonContainer, ButtonText } from "../../../Estilos"
-import { PetText } from '../Style';
+import React from 'react';
+import { Text } from 'react-native';
+import {ContainerMain, IconLogin , PetTextContainer, View, PetText} from "../Style";
+import { ButtonContainer, ButtonText } from "../../../Estilos.js"
+import { WelcomeText,TextContainer, ButtonsContainer} from '../../estilos_main.js';
+//import * as Styles from './styles';
 
 const width = "110px";
 
@@ -21,15 +22,15 @@ const AgendamentosClientes = ({ navigation }) => {
         </View>
       </TextContainer>
       <ButtonsContainer>
-        <ButtonContainer width={width}>
-          <ButtonText >Meu perfil</ButtonText>
-        </ButtonContainer>
-        <ButtonContainer width={width}>
-          <ButtonText>Agendamentos</ButtonText>
-        </ButtonContainer>
-        <ButtonContainer width={width}>
-          <ButtonText >PetHelpers</ButtonText>
-        </ButtonContainer>
+          <ButtonContainer width={width}>
+            <ButtonText onPress={()=> navigation.navigate("TelaUser")} >Meu perfil</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={width}>
+            <ButtonText onPress={()=> navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={width}>
+            <ButtonText onPress={()=> navigation.navigate("PetHelpers")} >PetHelpers</ButtonText>
+          </ButtonContainer>
       </ButtonsContainer>
     </ContainerMain>
   );
