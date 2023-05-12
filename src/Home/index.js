@@ -11,6 +11,8 @@ import LoginEstabelecimento from '../Componentes/loginComponents/login_empresa';
 import GerenciamentoFuncionarios from '../Componentes/mainComponents/main_empresas/Administrativo/funcionarios';
 import PerfilEstabelecimento from '../Componentes/mainComponents/main_empresas/Administrativo/perfil';
 import GerenciamentoServicos from '../Componentes/mainComponents/main_empresas/Administrativo/servicos';
+import Agendamentos from '../Componentes/mainComponents/main_empresas/Agendamentos';
+import AgendamentosClientes from '../Componentes/mainComponents/main_clientes/Agendamentos';
 
 
 const Stack = createStackNavigator();
@@ -29,6 +31,7 @@ export default function Home() {
         <Stack.Screen name="GerenciamentoServicos" component={GerenciamentoServicos}/>
         <Stack.Screen name="TelaUsuarios" component={TelaUser}/>
         <Stack.Screen name="Cadastro_emp" component={CadastroEmpresas} />
+        <Stack.Screen name="Agendamentos" component={AgendamentosClientes} />
       </Stack.Navigator>
     </NavigationContainer>
   );

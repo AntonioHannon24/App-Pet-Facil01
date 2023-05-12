@@ -2,7 +2,43 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 
-const Calendar = () => {
+import {ContainerMain, IconLogin, TextContainer, WelcomeText, PetTextContainer, View, PetText, ButtonsContainer, ButtonsContainer2} from "./Style";
+import { ButtonContainer, ButtonText } from "../../Estilos.js"
+
+
+const width = "110px";
+
+const AgendamentosClientes = ({ navigation }) => { 
+  return (
+    <ContainerMain>
+      <TextContainer>
+        <IconLogin source={require('../img/profile.png')} />
+        <View>
+          <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
+          <PetTextContainer>
+            <PetText>Pet 1</PetText>
+            <PetText>Pet 2</PetText>
+            <PetText>Pet 3</PetText>
+          </PetTextContainer>
+        </View> 
+    </TextContainer>
+
+      <ButtonsContainer>
+          <ButtonContainer width={width}>
+            <ButtonText >Meu perfil</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={width}>
+            <ButtonText>Agendamentos</ButtonText>
+          </ButtonContainer>
+          <ButtonContainer width={width}>
+            <ButtonText >PetHelpers</ButtonText>
+          </ButtonContainer>
+      </ButtonsContainer>
+    </ContainerMain>
+  );
+};
+
+/*const Calendar = ({ navigation }) => {
     const [selectedDate, setSelectedDate] = useState(null);
   
     // Função chamada quando uma célula do calendário é clicada
@@ -69,6 +105,6 @@ const Calendar = () => {
         <CalendarContainer>{renderCalendarCells()}</CalendarContainer>
       </Container>
     );
-  };
+  };*/
   
   export default Calendar;

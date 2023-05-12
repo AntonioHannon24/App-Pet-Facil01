@@ -6,6 +6,20 @@ export const ContainerMain = styled.View`
     margin-top: 10px;
 `;
 
+export const IconLogin = styled.Image`
+    width: 100px;
+    height: 100px;
+    margin-right: 8px;
+    margin-left: 20px;
+`;
+
+export const ButtonsContainer = styled.View`
+    padding:20px;
+    background-color:blue;  
+    flex-direction: row;
+    align-items:center;
+`;
+
 export const TextContainer = styled.View`
     flex-direction: row;
   //align-items: center;

@@ -10,7 +10,7 @@ export const ContainerMain = styled.View(props=>({
 
 export const IconeContainer = styled.View`
     flex-direction:row;
-    align-items:center
+    align-items:center;
     margin-top:5px;
 
 `;// ok
