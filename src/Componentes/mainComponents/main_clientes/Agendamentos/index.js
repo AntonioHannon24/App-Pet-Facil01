@@ -1,13 +1,32 @@
-import React from 'react';
-import { Text } from 'react-native';
-import {ContainerMain, IconLogin , PetTextContainer, View, PetText} from "../Style";
-import { ButtonContainer, ButtonText } from "../../../Estilos.js"
-import { WelcomeText,TextContainer, ButtonsContainer} from '../../estilos_main.js';
+import React, { useState } from 'react';
+import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
+import { ButtonContainer, ButtonText } from "../../../Estilos.js";
+import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
+import {Container, CalendarContainer, DateItem, DateText} from './Style'
+import Calendar from './Calendar'; // Importe o componente do calendário
 //import * as Styles from './styles';
 
 const width = "110px";
 
 const AgendamentosClientes = ({ navigation }) => {
+  const [selectedDate, setSelectedDate] = React.useState(null);
+
+  const handleDatePress = (date) => {
+    setSelectedDate(date);
+  };
+
+  const renderDateItem = (date) => {
+    const isSelected = selectedDate === date;
+
+    return (
+      <DateItem
+        onPress={() => handleDatePress(date)}
+      >
+        <DateText isSelected={isSelected}>{date}</DateText>
+      </DateItem>
+    );
+  };
+
   return (
     <ContainerMain>
       <TextContainer>
@@ -22,87 +41,55 @@ const AgendamentosClientes = ({ navigation }) => {
         </View>
       </TextContainer>
       <ButtonsContainer>
-          <ButtonContainer width={width}>
-            <ButtonText onPress={()=> navigation.navigate("TelaUser")} >Meu perfil</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText onPress={()=> navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText onPress={()=> navigation.navigate("PetHelpers")} >PetHelpers</ButtonText>
-          </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText onPress={() => navigation.navigate("TelaUser")}>Meu perfil</ButtonText>
+        </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
+        </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText onPress={() => navigation.navigate("PetHelpers")}>PetHelpers</ButtonText>
+        </ButtonContainer>
       </ButtonsContainer>
+
+      {/* Coloque o código do calendário aqui */}
+      <Container>
+        <CalendarContainer>
+          {renderDateItem('01')}
+          {renderDateItem('02')}
+          {renderDateItem('03')}
+          {renderDateItem('04')}
+          {renderDateItem('05')}
+          {renderDateItem('06')}
+          {renderDateItem('07')}
+          {renderDateItem('08')}
+          {renderDateItem('09')}
+          {renderDateItem('10')}
+          {renderDateItem('11')}
+          {renderDateItem('12')}
+          {renderDateItem('13')}
+          {renderDateItem('14')}
+          {renderDateItem('15')}
+          {renderDateItem('16')}
+          {renderDateItem('17')}
+          {renderDateItem('18')}
+          {renderDateItem('19')}
+          {renderDateItem('20')}
+          {renderDateItem('21')}
+          {renderDateItem('22')}
+          {renderDateItem('23')}
+          {renderDateItem('24')}
+          {renderDateItem('25')}
+          {renderDateItem('26')}
+          {renderDateItem('27')}
+          {renderDateItem('28')}
+          {renderDateItem('29')}
+          {renderDateItem('30')}
+          {renderDateItem('31')}
+        </CalendarContainer>
+      </Container>
     </ContainerMain>
   );
 };
-
-/*const Calendar = ({ navigation }) => {
-    const [selectedDate, setSelectedDate] = useState(null);
-  
-    // Função chamada quando uma célula do calendário é clicada
-    const handleCellClick = (date) => {
-      setSelectedDate(date);
-      // Adicione aqui a lógica para realizar o agendamento com a data selecionada
-      console.log('Agendamento para', date);
-    };
-  
-    // Função para criar as células do calendário
-    const renderCalendarCells = () => {
-      // Obtenha o ano e mês atual
-      const currentDate = new Date();
-      const currentYear = currentDate.getFullYear();
-      const currentMonth = currentDate.getMonth();
-  
-      // Obtenha o primeiro dia do mês
-      const firstDay = new Date(currentYear, currentMonth, 1);
-      const startDay = firstDay.getDay();
-  
-      // Obtenha o número de dias no mês
-      const lastDay = new Date(currentYear, currentMonth + 1, 0);
-      const numDays = lastDay.getDate();
-  
-      // Array com os nomes dos dias da semana
-      const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-  
-      // Cria as células do calendário
-      const calendarCells = [];
-      let day = 1;
-      for (let i = 0; i < 6; i++) {
-        const row = [];
-        for (let j = 0; j < 7; j++) {
-          if (i === 0 && j < startDay) {
-            row.push(
-              <Cell key={`${i}-${j}`}>
-                <Text>&nbsp;</Text>
-              </Cell>
-            );
-          } else if (day > numDays) {
-            break;
-          } else {
-            const date = new Date(currentYear, currentMonth, day);
-            const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-            row.push(
-              <Cell
-                key={`${i}-${j}`}
-                onPress={() => handleCellClick(formattedDate)}
-              >
-                <Text>{day}</Text>
-              </Cell>
-            );
-            day++;
-          }
-        }
-        calendarCells.push(<Row key={i}>{row}</Row>);
-      }
-      return calendarCells;
-    };
-  
-    return (
-      <Container>
-        <Header>Calendário de Agendamento</Header>
-        <CalendarContainer>{renderCalendarCells()}</CalendarContainer>
-      </Container>
-    );
-  };*/
 
 export default AgendamentosClientes;

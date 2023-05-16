@@ -1,36 +1,31 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
 
-export const Header = styled.Text`
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;
-
-export const CalendarContainer = styled.View`
-  border-width: 1px;
-  border-color: #ccc;
-  padding: 10px;
-`;
-
-export const Row = styled.View`
+const CalendarContainer = styled.View`
   flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid black;
 `;
 
-export const Cell = styled.TouchableOpacity`
-  flex: 1;
+const DateItem = styled.TouchableOpacity`
+  width: 50px; /* Ajuste a largura conforme necessário */
+  height: 50px; /* Ajuste a altura conforme necessário */
   align-items: center;
   justify-content: center;
-  padding-vertical: 5px;
-  border-width: 1px;
-  border-color: #ccc;
+  padding: 5px;
 `;
 
-export const SelectedCell = styled(Cell)`
-  background-color: #e0e0e0;
+const DateText = styled.Text`
+  color: ${({ isSelected }) => (isSelected ? 'green' : 'black')};
+  font-size: 14px; /* Ajuste o tamanho da fonte conforme necessário */
 `;
+
+export { Container, CalendarContainer, DateItem, DateText };
