@@ -17,7 +17,7 @@ export const PetContainer = styled.View`
     flex: 1;
 `;
 
-export const PetText = styled.Text`
+export const PetText = styled.TouchableOpacity`
     margin-right: 8px;
 `;
 

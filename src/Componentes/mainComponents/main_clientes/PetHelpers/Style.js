@@ -8,6 +8,9 @@ export const TextContainer2 = styled.View`
     border-color: black;
     border-radius: 8px;
     border-bottom-left-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
 `;
 
 export const View2 = styled.View`
@@ -15,6 +18,8 @@ export const View2 = styled.View`
     margin-bottom: 30px;
     flex-wrap: wrap;
     width: 60%;
+    margin-left: 10px;
+    margin-right: 10px;
 `;
 
 export const DescriContainer2 = styled.View` //array de pets

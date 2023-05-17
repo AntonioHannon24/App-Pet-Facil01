@@ -57,7 +57,7 @@ export const PerfilContainer = styled.View`
 
 export const ButtonsContainer = styled.View`
     padding:20px;
-    background-color:blue;  
+    //background-color:blue;  
     flex-direction: row;
     align-items:center;
 `;
@@ -99,7 +99,7 @@ export const WelcomeText = styled.Text`
 
 export const ButtonsContainer2 = styled.View`
     padding:50px;
-    background-color:red;  
+    //background-color:red;  
     flex-direction: column;
     align-items:center;
     display: flex;

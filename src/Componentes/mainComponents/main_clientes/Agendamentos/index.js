@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js";
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
-import {Container, CalendarContainer, DateItem, DateText} from './Style'
+import {Container, CalendarContainer, DateItem, DateText, ButtonContainer2} from './Style'
 import Calendar from './Calendar'; // Importe o componente do calendário
 //import * as Styles from './styles';
 
@@ -88,6 +88,13 @@ const AgendamentosClientes = ({ navigation }) => {
           {renderDateItem('31')}
         </CalendarContainer>
       </Container>
+
+      <ButtonContainer2 width={width}>
+          <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Confirmar agendamento</ButtonText>
+      </ButtonContainer2>
+      <ButtonContainer2 width={width}>
+          <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Meus Agendamentos</ButtonText>
+      </ButtonContainer2>
     </ContainerMain>
   );
 };
