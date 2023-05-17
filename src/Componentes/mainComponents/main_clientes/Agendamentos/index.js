@@ -2,30 +2,48 @@ import React, { useState } from 'react';
 import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js";
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
-import {Container, CalendarContainer, DateItem, DateText, ButtonContainer2} from './Style'
+import {Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine} from './Style'
 import Calendar from './Calendar'; // Importe o componente do calendário
 //import * as Styles from './styles';
 
 const width = "110px";
 
 const AgendamentosClientes = ({ navigation }) => {
-  const [selectedDate, setSelectedDate] = React.useState(null);
+const [selectedDate, setSelectedDate] = React.useState(null);
+const [confirmedDate, setConfirmedDate] = useState(null);
+const [isConfirmed, setIsConfirmed] = useState(false);
 
-  const handleDatePress = (date) => {
-    setSelectedDate(date);
+const handleDatePress = (date) => {
+  if (isConfirmed) {
+    return; // O agendamento já foi confirmado, não faça nenhuma alteração
+  }
+  setSelectedDate(date);
+};
+
+
+
+const renderDateItem = (date) => {
+  const isSelected = selectedDate === date;
+  const confirmed = isConfirmed && isSelected;
+
+  return (
+    <DateItem onPress={() => handleDatePress(date)}>
+      <DateText isSelected={isSelected} confirmed={confirmed}>
+        {date}
+        {confirmed && <ConfirmationLine />}
+      </DateText>
+    </DateItem>
+  );
+};
+
+  
+  const confirmAgendamento = () => {
+    if (selectedDate) {
+      setConfirmedDates([...confirmedDates, selectedDate]);
+      setIsConfirmed(true);
+    }
   };
-
-  const renderDateItem = (date) => {
-    const isSelected = selectedDate === date;
-
-    return (
-      <DateItem
-        onPress={() => handleDatePress(date)}
-      >
-        <DateText isSelected={isSelected}>{date}</DateText>
-      </DateItem>
-    );
-  };
+  
 
   return (
     <ContainerMain>
@@ -90,8 +108,11 @@ const AgendamentosClientes = ({ navigation }) => {
       </Container>
 
       <ButtonContainer2 width={width}>
-          <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Confirmar agendamento</ButtonText>
+        <ButtonText onPress={() => setIsConfirmed(true)}>Confirmar agendamento</ButtonText>
       </ButtonContainer2>
+
+
+
       <ButtonContainer2 width={width}>
           <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Meus Agendamentos</ButtonText>
       </ButtonContainer2>

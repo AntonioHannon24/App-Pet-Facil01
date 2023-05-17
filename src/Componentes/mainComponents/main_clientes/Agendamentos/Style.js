@@ -26,8 +26,19 @@ const DateItem = styled.TouchableOpacity`
 `;
 
 const DateText = styled.Text`
-  color: ${({ isSelected }) => (isSelected ? 'green' : 'black')};
+  color: ${({ isSelected, confirmed }) => (isSelected ? 'green' : confirmed ? 'gray' : 'black')};
   font-size: 16px; /* Ajuste o tamanho da fonte conforme necessário */
+  position: relative;
+`;
+
+const ConfirmationLine = styled.View`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: gray;
+  transform: rotate(-45deg);
 `;
 
 const ButtonContainer2 = styled.TouchableOpacity`
@@ -41,4 +52,4 @@ const ButtonContainer2 = styled.TouchableOpacity`
 
 
 
-export { Container, CalendarContainer, DateItem, DateText, ButtonContainer2 };
+export { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine };
