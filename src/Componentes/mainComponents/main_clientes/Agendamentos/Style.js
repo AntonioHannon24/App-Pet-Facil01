@@ -51,5 +51,4 @@ const ButtonContainer2 = styled.TouchableOpacity`
   `;
 
 
-
 export { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine };
