@@ -2,48 +2,56 @@ import React, { useState } from 'react';
 import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js";
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
-import {Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine} from './Style'
+import {Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine} from './Style';
 import Calendar from './Calendar'; // Importe o componente do calendário
-//import * as Styles from './styles';
+import FloatingScreen from './FloatingScreen';
 
 const width = "110px";
 
 const AgendamentosClientes = ({ navigation }) => {
-const [selectedDate, setSelectedDate] = React.useState(null);
-const [confirmedDate, setConfirmedDate] = useState(null);
-const [isConfirmed, setIsConfirmed] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [isFloatingScreenVisible, setFloatingScreenVisible] = useState(false);
+  const [selectedPet, setSelectedPet] = useState(null);
+  const [confirmedDate, setConfirmedDate] = useState(null);
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
-const handleDatePress = (date) => {
-  if (isConfirmed) {
-    return; // O agendamento já foi confirmado, não faça nenhuma alteração
-  }
-  setSelectedDate(date);
-};
-
-
-
-const renderDateItem = (date) => {
-  const isSelected = selectedDate === date;
-  const confirmed = isConfirmed && isSelected;
-
-  return (
-    <DateItem onPress={() => handleDatePress(date)}>
-      <DateText isSelected={isSelected} confirmed={confirmed}>
-        {date}
-        {confirmed && <ConfirmationLine />}
-      </DateText>
-    </DateItem>
-  );
-};
-
-  
-  const confirmAgendamento = () => {
-    if (selectedDate) {
-      setConfirmedDates([...confirmedDates, selectedDate]);
-      setIsConfirmed(true);
+  const handleDatePress = (date) => {
+    if (isConfirmed) {
+      return;
     }
+    setSelectedDate(date);
+    setFloatingScreenVisible(true);
   };
-  
+
+  const handlePetSelect = (pet) => {
+    setSelectedPet(pet);
+    setFloatingScreenVisible(false);
+    // Marque a data como agendada e execute outras ações necessárias
+  };
+
+  const handleFloatingScreenClose = () => {
+    setFloatingScreenVisible(false);
+  };
+
+  const renderDateItem = (date) => {
+    const isSelected = selectedDate === date;
+    const confirmed = isConfirmed && isSelected;
+
+    return (
+      <DateItem onPress={() => handleDatePress(date)}>
+        <DateText isSelected={isSelected} confirmed={confirmed}>
+          {date}
+          {confirmed && <ConfirmationLine />}
+        </DateText>
+      </DateItem>
+    );
+  };
+
+  const pets = [
+    { id: 1, name: 'Pet 1' },
+    { id: 2, name: 'Pet 2' },
+    { id: 3, name: 'Pet 3' },
+  ];
 
   return (
     <ContainerMain>
@@ -70,7 +78,6 @@ const renderDateItem = (date) => {
         </ButtonContainer>
       </ButtonsContainer>
 
-      {/* Coloque o código do calendário aqui */}
       <Container>
         <CalendarContainer>
           {renderDateItem('01')}
@@ -107,17 +114,26 @@ const renderDateItem = (date) => {
         </CalendarContainer>
       </Container>
 
+      {isFloatingScreenVisible && (
+        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }}>
+          <FloatingScreen
+            pets={pets}
+            onPetSelect={handlePetSelect}
+            onClose={handleFloatingScreenClose}
+          />
+        </View>
+      )}
+      
       <ButtonContainer2 width={width}>
         <ButtonText onPress={() => setIsConfirmed(true)}>Confirmar agendamento</ButtonText>
       </ButtonContainer2>
 
-
-
       <ButtonContainer2 width={width}>
-          <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Meus Agendamentos</ButtonText>
+        <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Meus Agendamentos</ButtonText>
       </ButtonContainer2>
     </ContainerMain>
   );
 };
 
 export default AgendamentosClientes;
+

@@ -37,7 +37,7 @@ const ConfirmationLine = styled.View`
   left: 0;
   right: 0;
   height: 1px;
-  background-color: gray;
+  background-color: red;
   transform: rotate(-45deg);
 `;
 
