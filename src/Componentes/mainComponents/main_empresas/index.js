@@ -1,29 +1,29 @@
 import React from "react";
 import { ButtonContainer, ButtonText } from "../../Estilos";
-import { ContainerMain, IconLogin, ButtonsContainer, TextContainer, WelcomeText,ButtonsContainer2 } from "../estilos_main";
+import { ContainerMain, IconLogin, ButtonsContainer, TextContainer, WelcomeText, ButtonsContainer2 } from "../estilos_main";
 import { View } from 'react-native';
 
 const TelaEstabelecimentos = ({ navigation }) => {
 
-  const width = "130px";
+  const width = "125px";
   const buttonWidth = "330px";
 
   return (
     <ContainerMain>
-      <TextContainer>
-
-        <IconLogin source={require("../img/profile.png")} />
+      <TextContainer marginTop="20">
+        <IconLogin source={require('../img/profile.png')} />
         <View>
-          <WelcomeText>Bem vindo Pethelpers </WelcomeText>
+          <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
         </View>
       </TextContainer>
 
-      <ButtonsContainer>
+
+      <ButtonsContainer paddingLeft="4px">
         <ButtonContainer width={width}>
           <ButtonText>Administrativo</ButtonText>
         </ButtonContainer>
         <ButtonContainer width={width}>
-          <ButtonText onPress={() => navigation.navigate('EstabAgendamentos')}>Agendamentos</ButtonText>
+          <ButtonText onPress={() => navigation.navigate('EstabAgendamentos')}>Agenda</ButtonText>
         </ButtonContainer>
         <ButtonContainer width={width}>
           <ButtonText onPress={() => navigation.navigate('EstabPublicacoes')}>Publicações</ButtonText>
@@ -34,16 +34,15 @@ const TelaEstabelecimentos = ({ navigation }) => {
 
         <ButtonsContainer2>
           <ButtonContainer width={buttonWidth}>
-            <ButtonText onPress={() => navigation.navigate("PerfilEstabelecimento")}>
-              Meu perfil</ButtonText>
+            <ButtonText onPress={() => navigation.navigate("PerfilEstabelecimento")}>Meu perfil</ButtonText>
           </ButtonContainer>
           <ButtonContainer width={buttonWidth}>
             <ButtonText onPress={() => navigation.navigate("GerenciamentoFuncionarios")}
-                                        >Gerenciamento de funcionarios</ButtonText>
+            >Gerenciamento de funcionarios</ButtonText>
           </ButtonContainer>
           <ButtonContainer width={buttonWidth}>
             <ButtonText onPress={() => navigation.navigate("GerenciamentoServicos")}
-                                        >Gerenciamento de servicos</ButtonText>
+            >Gerenciamento de servicos</ButtonText>
           </ButtonContainer>
           <ButtonContainer width={buttonWidth}>
             <ButtonText >Avaliações</ButtonText>

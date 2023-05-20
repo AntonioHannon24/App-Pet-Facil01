@@ -55,12 +55,14 @@ export const PerfilContainer = styled.View`
 `;
 
 
-export const ButtonsContainer = styled.View`
-    padding:20px;
-    //background-color:blue;  
-    flex-direction: row;
-    align-items:center;
-`;
+export const ButtonsContainer = styled.View(props=>({
+    paddingTop:20,
+    paddingLeft:props.paddingLeft || 20,
+    paddingRight:20,
+    paddingBottom:20,
+    flexDirection: "row",
+    alignItems:"center",
+}));
 
 export const ButtonsContainerPainel = styled.View`
 
@@ -84,10 +86,10 @@ export const ImageContainer = styled.View`
     background-color:gray;  
     flex:3;
 `;
-export const TextContainer = styled.View`
-    flex-direction: row;
-  //align-items: center;
-`;
+export const TextContainer = styled.View(props=>({
+    flexDirection: "row",
+    marginTop: props.marginTop || "0px",
+}));
 
 export const WelcomeText = styled.Text`
     font-size: 15px;
