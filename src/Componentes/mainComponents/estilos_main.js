@@ -88,7 +88,7 @@ export const ImageContainer = styled.View`
 `;
 export const TextContainer = styled.View(props=>({
     flexDirection: "row",
-    marginTop: props.marginTop || "0px",
+    marginTop: props.marginTop || "0",
 }));
 
 export const WelcomeText = styled.Text`
