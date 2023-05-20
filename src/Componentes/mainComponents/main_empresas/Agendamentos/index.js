@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { IconLogin } from '../../estilos_main.js';
 import { ButtonContainer, ButtonText } from "../../../Estilos.js";
 import { WelcomeText, TextContainer, ButtonsContainer, ContainerMain } from '../../estilos_main.js';
-import {Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine} from './Style';
+import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine } from './Style';
 import FloatingScreen from './FloatingScreen';
 import { View } from 'react-native';
+import ContainerBotoes from '../containerBotoes/index.js';
 
 const width = "110px";
 
@@ -14,6 +15,10 @@ const EstabAgendamentos = ({ navigation }) => {
   const [selectedPet, setSelectedPet] = useState(null);
   const [confirmedDate, setConfirmedDate] = useState(null);
   const [isConfirmed, setIsConfirmed] = useState(false);
+
+  const navigate = (screenName) =>{
+    navigation.navigate(screenName)
+  }
 
   const handleDatePress = (date) => {
     if (isConfirmed) {
@@ -55,24 +60,7 @@ const EstabAgendamentos = ({ navigation }) => {
 
   return (
     <ContainerMain>
-      <TextContainer>
-        <IconLogin source={require("../../img/profile.png")} />
-        <View>
-          <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
-        </View>
-      </TextContainer>
-      <ButtonsContainer>
-        <ButtonContainer width={width}>
-          <ButtonText onPress={() => navigation.navigate("TelaUser")}>Meu perfil</ButtonText>
-        </ButtonContainer>
-        <ButtonContainer width={width}>
-          <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
-        </ButtonContainer>
-        <ButtonContainer width={width}>
-          <ButtonText onPress={() => navigation.navigate("PetHelpers")}>PetHelpers</ButtonText>
-        </ButtonContainer>
-      </ButtonsContainer>
-
+      <ContainerBotoes navigate={navigate}/>
       <Container>
         <CalendarContainer>
           {renderDateItem('01')}
@@ -118,7 +106,7 @@ const EstabAgendamentos = ({ navigation }) => {
           />
         </View>
       )}
-      
+
       <ButtonContainer2 width={width}>
         <ButtonText onPress={() => setIsConfirmed(true)}>Confirmar agendamento</ButtonText>
       </ButtonContainer2>

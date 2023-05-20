@@ -2,36 +2,20 @@ import React from "react";
 import { ButtonContainer, ButtonText } from "../../Estilos";
 import { ContainerMain, IconLogin, ButtonsContainer, TextContainer, WelcomeText, ButtonsContainer2 } from "../estilos_main";
 import { View } from 'react-native';
+import ContainerBotoes from "./containerBotoes";
 
 const TelaEstabelecimentos = ({ navigation }) => {
 
   const width = "125px";
   const buttonWidth = "330px";
 
+  const navigate = (screenName) =>{
+    navigation.navigate(screenName)
+  }
+
   return (
-    <ContainerMain>
-      <TextContainer marginTop="20">
-        <IconLogin source={require('../img/profile.png')} />
-        <View>
-          <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
-        </View>
-      </TextContainer>
-
-
-      <ButtonsContainer paddingLeft="4px">
-        <ButtonContainer width={width}>
-          <ButtonText>Administrativo</ButtonText>
-        </ButtonContainer>
-        <ButtonContainer width={width}>
-          <ButtonText onPress={() => navigation.navigate('EstabAgendamentos')}>Agenda</ButtonText>
-        </ButtonContainer>
-        <ButtonContainer width={width}>
-          <ButtonText onPress={() => navigation.navigate('EstabPublicacoes')}>Publicações</ButtonText>
-        </ButtonContainer>
-      </ButtonsContainer>
-
-      <ContainerMain>
-
+    <ContainerMain>     
+     <ContainerBotoes navigate={navigate}/>
         <ButtonsContainer2>
           <ButtonContainer width={buttonWidth}>
             <ButtonText onPress={() => navigation.navigate("PerfilEstabelecimento")}>Meu perfil</ButtonText>
@@ -51,7 +35,6 @@ const TelaEstabelecimentos = ({ navigation }) => {
             <ButtonText >Outra Ideia</ButtonText>
           </ButtonContainer>
         </ButtonsContainer2>
-      </ContainerMain>
     </ContainerMain>
   )
 };
