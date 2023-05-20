@@ -5,6 +5,7 @@ import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main
 import {Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine} from './Style';
 import Calendar from './Calendar'; // Importe o componente do calendário
 import FloatingScreen from './FloatingScreen';
+import { Text } from 'react-native';
 
 const width = "110px";
 
@@ -60,9 +61,9 @@ const AgendamentosClientes = ({ navigation }) => {
         <View>
           <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
           <PetTextContainer>
-            <PetText>Pet 1</PetText>
-            <PetText>Pet 2</PetText>
-            <PetText>Pet 3</PetText>
+            <PetText><Text>Pet 1</Text></PetText>
+            <PetText><Text>Pet 2</Text></PetText>
+            <PetText><Text>Pet 3</Text></PetText>
           </PetTextContainer>
         </View>
       </TextContainer>

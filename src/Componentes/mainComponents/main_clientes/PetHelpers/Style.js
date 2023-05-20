@@ -23,11 +23,7 @@ export const View2 = styled.View`
 `;
 
 export const DescriContainer2 = styled.View` //array de pets
-    flex-direction: row;
-    flex-wrap: wrap;
-    //align-items: center;
-    margin-right: 270px;
-    margin-top: 8px;
+   
 `;
 
 export const DescriText = styled.Text`

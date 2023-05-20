@@ -2,6 +2,7 @@ import React from 'react';
 import {ContainerMain, IconLogin , PetTextContainer, View, PetText} from "./Style";
 import { ButtonContainer, ButtonText } from "../../Estilos.js"
 import { WelcomeText,TextContainer, ButtonsContainer,ButtonsContainer2 } from '../estilos_main';
+import { Text } from 'react-native';
 
 const TelaUser = ({ navigation }) => {
 
@@ -14,9 +15,9 @@ const width = "110px";
         <View>
           <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
           <PetTextContainer>
-            <PetText>Pet 1</PetText>
-            <PetText>Pet 2</PetText>
-            <PetText>Pet 3</PetText>
+            <PetText><Text>Pet 1</Text></PetText>
+            <PetText><Text>Pet 2</Text></PetText>
+            <PetText><Text>Pet 3</Text></PetText>
           </PetTextContainer>
         </View> 
     </TextContainer>

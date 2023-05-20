@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, ScrollView } from 'react-native'; // Importe ScrollView
+import { Text } from 'react-native'; // Importe ScrollView
 import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js"
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
 import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonText2, ViewButon, IconEmpresa, NomeEmpresa } from './Style'
+import { ScrollView } from 'react-native';
 
 const width = "110px";
 
@@ -49,15 +50,15 @@ const data = [
 const PetHelpers = ({ navigation }) => {
   return (
     <ContainerMain>
-      <ScrollView> {/* Adicione o ScrollView aqui */}
+      <ScrollView>
         <TextContainer>
           <IconLogin source={require("../../img/profile.png")} />
           <View>
             <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
             <PetTextContainer>
-              <PetText>Pet 1</PetText>
-              <PetText>Pet 2</PetText>
-              <PetText>Pet 3</PetText>
+              <PetText><Text>Pet 1</Text></PetText>
+              <PetText><Text>Pet 2</Text></PetText>
+              <PetText><Text>Pet 3</Text></PetText>
             </PetTextContainer>
           </View>
         </TextContainer>
@@ -79,9 +80,9 @@ const PetHelpers = ({ navigation }) => {
             <View2>
               <NomeEmpresa>{item.nomeEmpresa}</NomeEmpresa>
               <DescriContainer2>
-                <DescriText>Localização: {item.localizacao}</DescriText>
-                <DescriText>Serviços: {item.servicos}</DescriText>
-                <DescriText>Avaliações: {item.avaliacoes}</DescriText>
+                <DescriText><Text>Localização:</Text> {item.localizacao}</DescriText>
+                <DescriText><Text>Serviços:</Text> {item.servicos}</DescriText>
+                <DescriText><Text>Avaliações:</Text>{item.avaliacoes}</DescriText>
                 <ViewButon>
                   <ButtonContainer2 width={width}>
                     <ButtonText2>Acessar</ButtonText2>
@@ -91,7 +92,7 @@ const PetHelpers = ({ navigation }) => {
             </View2>
           </TextContainer2>
         ))}
-      </ScrollView> {/* Feche o ScrollView */}
+      </ScrollView>
     </ContainerMain>
   );
 };
