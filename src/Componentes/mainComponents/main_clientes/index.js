@@ -3,10 +3,17 @@ import {ContainerMain, IconLogin , PetTextContainer, View, PetText} from "./Styl
 import { ButtonContainer, ButtonText } from "../../Estilos.js"
 import { WelcomeText,TextContainer, ButtonsContainer,ButtonsContainer2 } from '../estilos_main';
 import { Text } from 'react-native';
+import { Linking } from 'react-native';
+
 
 const TelaUser = ({ navigation }) => {
 
 const width = "110px";
+
+const handleNoticiasMundoPet = () => {
+  Linking.openURL('https://gamma.app/docs/Untitled-p1nb84eemvqg38n');
+};
+
 
   return (
     <ContainerMain>
@@ -44,11 +51,13 @@ const width = "110px";
           <ButtonContainer width={"300px"}>
             <ButtonText >Administração de Perfil</ButtonText>
           </ButtonContainer>
+
           <ButtonContainer width={"300px"}>
-            <ButtonText >Notícias Mundo Pet</ButtonText>
+            <ButtonText onPress={handleNoticiasMundoPet}>Notícias Mundo Pet</ButtonText>
           </ButtonContainer>
+
           <ButtonContainer width={"300px"}>
-            <ButtonText >Dicas de Saúde</ButtonText>
+            <ButtonText onPress={handleNoticiasMundoPet} >Dicas de Saúde</ButtonText>
           </ButtonContainer>
 
       </ButtonsContainer2>
