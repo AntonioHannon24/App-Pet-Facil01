@@ -6,6 +6,7 @@ import ContainerBotoes from "./containerBotoes";
 const TelaEstabelecimentos = ({ navigation }) => {
 
   const width = "125px";
+  const height = "45px";
   const buttonWidth = "330px";
 
   const navigate = (screenName) => {
@@ -16,19 +17,19 @@ const TelaEstabelecimentos = ({ navigation }) => {
     <ContainerMain>
       <ContainerBotoes navigate={navigate} />
       <ButtonsContainer2>
-        <ButtonContainer width={buttonWidth}>
+        <ButtonContainer width={buttonWidth} height={height}>
           <ButtonText onPress={() => navigate("PerfilEstabelecimento")}
           >Perfil Estabelecimento</ButtonText>
         </ButtonContainer>
-        <ButtonContainer width={buttonWidth}>
+        <ButtonContainer width={buttonWidth} height={height}>
           <ButtonText onPress={() => navigate("GerenciamentoFuncionarios")}
           >Gerenciamento de funcionarios</ButtonText>
         </ButtonContainer>
-        <ButtonContainer width={buttonWidth}>
+        <ButtonContainer width={buttonWidth} height={height}>
           <ButtonText onPress={() => navigate("GerenciamentoServicos")}
           >Gerenciamento de servicos</ButtonText>
         </ButtonContainer>
-        <ButtonContainer width={buttonWidth}>
+        <ButtonContainer width={buttonWidth}height={height}>
           <ButtonText >Avaliações</ButtonText>
         </ButtonContainer>
       </ButtonsContainer2>

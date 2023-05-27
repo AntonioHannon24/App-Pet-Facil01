@@ -21,7 +21,7 @@ export const Title = styled.Text`
 export const ButtonContainer = styled.TouchableOpacity(props=>({
     
     padding:"10px",
-    height:"40px",
+    height:props.height ||"40px",
     width:props.width || "200px",
     marginTop:"10px",
     marginBottom:"5px",
@@ -30,6 +30,7 @@ export const ButtonContainer = styled.TouchableOpacity(props=>({
     backgroundColor:"#fff",
     border:"1px solid black",
     alignItems:"center",
+    
   
 
 }));// ok 
@@ -46,13 +47,15 @@ export const ButtonContainerForm = styled.TouchableOpacity`
 `;// ok 
 
 
-export const ButtonText = styled.Text`
-    color:${props => props.theme.color};
-    font-size:15px;
-    padding-top: 1px;
-    height:35px
+export const ButtonText = styled.Text(props=>({
+    color:props.theme.color,
+    fontSize:"15px",
+    paddingTop: "1px",
+    height:props.height ||"20px",
+    
 
-`;
+
+}));
 
 export const InputArea = styled.TextInput`
 
