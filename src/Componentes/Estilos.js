@@ -50,6 +50,7 @@ export const ButtonText = styled.Text`
     color:${props => props.theme.color};
     font-size:15px;
     padding-top: 1px;
+    height:35px
 
 `;
 

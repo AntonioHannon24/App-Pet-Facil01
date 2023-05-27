@@ -1,7 +1,7 @@
 import React from 'react';
-import { ContainerMain, ButtonsContainer2 } from "../../estilos_main";
+import { ContainerMain, ButtonsContainer2 } from "../../../estilos_main";
 import { Text } from 'react-native';
-import ContainerBotoes from '../containerBotoes';
+import ContainerBotoes from '..';
 
 const EstabPublicacoes = ({ navigation }) => {
     const navigate = (screenName) =>{

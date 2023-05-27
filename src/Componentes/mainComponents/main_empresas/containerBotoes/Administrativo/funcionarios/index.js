@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ButtonsContainer2, ContainerMain } from "../../../estilos_main";
+import { ButtonsContainer2, ContainerMain } from "../../../../estilos_main"
 
 import { Text } from 'react-native';
 

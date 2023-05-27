@@ -7,15 +7,14 @@ import RecuperarSenha from '../Componentes/formulario_resenha';
 import TelaEstabelecimentos from '../Componentes/mainComponents/main_empresas';
 import CadastroEmpresas from "../Componentes/cadastroComponents/cadastro_empresa"
 import LoginEstabelecimento from '../Componentes/loginComponents/login_empresa';
-import GerenciamentoFuncionarios from '../Componentes/mainComponents/main_empresas/Administrativo/funcionarios';
-import PerfilEstabelecimento from '../Componentes/mainComponents/main_empresas/Administrativo/perfil';
-import GerenciamentoServicos from '../Componentes/mainComponents/main_empresas/Administrativo/servicos';
+import GerenciamentoFuncionarios from '../Componentes/mainComponents/main_empresas/containerBotoes/Administrativo/funcionarios';
+import GerenciamentoServicos from '../Componentes/mainComponents/main_empresas/containerBotoes/Administrativo/servicos';
 import AgendamentosClientes from '../Componentes/mainComponents/main_clientes/Agendamentos';
-import EstabAgendamentos from '../Componentes/mainComponents/main_empresas/Agendamentos';
-import EstabPublicacoes from '../Componentes/mainComponents/main_empresas/publicacoes';
+import EstabAgendamentos from '../Componentes/mainComponents/main_empresas/containerBotoes/Agendamentos';
+import EstabPublicacoes from '../Componentes/mainComponents/main_empresas/containerBotoes/publicacoes';
 import PetHelpers from '../Componentes/mainComponents/main_clientes/PetHelpers';
 import TelaUser from '../Componentes/mainComponents/main_clientes';
-
+import PerfilEstabelecimento from '../Componentes/mainComponents/main_empresas/containerBotoes/Administrativo/perfil';
 
 const Stack = createStackNavigator();
 

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { IconLogin } from '../../estilos_main.js';
-import { ButtonContainer, ButtonText } from "../../../Estilos.js";
-import { WelcomeText, TextContainer, ButtonsContainer, ContainerMain } from '../../estilos_main.js';
-import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine } from './Style';
-import FloatingScreen from './FloatingScreen';
+import { IconLogin } from '../../../estilos_main.js';
+import { ButtonContainer, ButtonText } from "../../../../Estilos.js";
+import { WelcomeText, TextContainer, ButtonsContainer, ContainerMain } from '../../../estilos_main.js';
+import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine } from './Style.js';
+import FloatingScreen from './FloatingScreen.js';
 import { View } from 'react-native';
-import ContainerBotoes from '../containerBotoes/index.js';
+import ContainerBotoes from '../index.js';
 
 const width = "110px";
 

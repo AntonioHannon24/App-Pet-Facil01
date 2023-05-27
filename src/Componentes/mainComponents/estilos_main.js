@@ -62,6 +62,7 @@ export const ButtonsContainer = styled.View(props=>({
     paddingBottom:20,
     flexDirection: "row",
     alignItems:"center",
+   
 }));
 
 export const ButtonsContainerPainel = styled.View`
