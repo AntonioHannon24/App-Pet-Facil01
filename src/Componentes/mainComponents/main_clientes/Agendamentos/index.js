@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js";
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
-import {Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine} from './Style';
+import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine } from './Style';
 import Calendar from './Calendar'; // Importe o componente do calendário
 import FloatingScreen from './FloatingScreen';
 import { Text } from 'react-native';
@@ -81,6 +81,7 @@ const AgendamentosClientes = ({ navigation }) => {
 
       <Container>
         <CalendarContainer>
+          {/* Renderiza os itens de data no calendário */}
           {renderDateItem('01')}
           {renderDateItem('02')}
           {renderDateItem('03')}
@@ -115,6 +116,7 @@ const AgendamentosClientes = ({ navigation }) => {
         </CalendarContainer>
       </Container>
 
+      {/* Verifica se o FloatingScreen deve ser exibido */}
       {isFloatingScreenVisible && (
         <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }}>
           <FloatingScreen
@@ -124,7 +126,8 @@ const AgendamentosClientes = ({ navigation }) => {
           />
         </View>
       )}
-      
+
+      {/* Botão para confirmar o agendamento */}
       <ButtonContainer2 width={width}>
         <ButtonText onPress={() => setIsConfirmed(true)}>Confirmar agendamento</ButtonText>
       </ButtonContainer2>
@@ -137,4 +140,3 @@ const AgendamentosClientes = ({ navigation }) => {
 };
 
 export default AgendamentosClientes;
-

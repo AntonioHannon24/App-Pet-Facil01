@@ -1,12 +1,12 @@
 import styled from 'styled-components/native';
 
-const Container = styled.View`
+export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
 
-const CalendarContainer = styled.View`
+export const CalendarContainer = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 5px;
@@ -17,7 +17,7 @@ const CalendarContainer = styled.View`
   border-radius: 8px;
 `;
 
-const DateItem = styled.TouchableOpacity`
+export const DateItem = styled.TouchableOpacity`
   width: 50px; /* Ajuste a largura conforme necessário */
   height: 50px; /* Ajuste a altura conforme necessário */
   align-items: center;
@@ -25,13 +25,13 @@ const DateItem = styled.TouchableOpacity`
   padding: 5px;
 `;
 
-const DateText = styled.Text`
+export const DateText = styled.Text`
   color: ${({ isSelected, confirmed }) => (isSelected ? 'green' : confirmed ? 'gray' : 'black')};
   font-size: 16px; /* Ajuste o tamanho da fonte conforme necessário */
   position: relative;
 `;
 
-const ConfirmationLine = styled.View`
+export const ConfirmationLine = styled.View`
   position: absolute;
   top: 50%;
   left: 0;
@@ -41,14 +41,10 @@ const ConfirmationLine = styled.View`
   transform: rotate(-45deg);
 `;
 
-const ButtonContainer2 = styled.TouchableOpacity`
-    
+export const ButtonContainer2 = styled.TouchableOpacity`  
   padding: 10px;
   height: 10px;
   align-items: center;
   justify-content: center;
   margin-bottom: 12px;
-  `;
-
-
-export { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine };
+`;

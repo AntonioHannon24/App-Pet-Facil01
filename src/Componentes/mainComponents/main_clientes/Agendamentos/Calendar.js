@@ -4,10 +4,12 @@ import { Container, CalendarContainer, DateItem, DateText } from './Style';
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
+  // Função para lidar com o pressionamento de uma data
   const handleDatePress = (date) => {
     setSelectedDate(date);
   };
 
+  // Função para renderizar um item de data no calendário
   const renderDateItem = (date) => {
     const isSelected = selectedDate === date;
 
@@ -18,6 +20,7 @@ const Calendar = () => {
     );
   };
 
+  // Função para renderizar o calendário completo
   const renderCalendar = () => {
     const daysInMonth = 31; // Número de dias no mês
     const weeksInMonth = Math.ceil(daysInMonth / 7); // Número de semanas no mês
@@ -36,6 +39,7 @@ const Calendar = () => {
   
     let counter = 1;
   
+    // Loop para renderizar os dias do mês
     for (let week = 0; week < weeksInMonth; week++) {
       const weekRow = [];
   
@@ -56,8 +60,8 @@ const Calendar = () => {
   
     return calendar;
   };
-  
 
+  // Renderiza o calendário dentro de um container
   return <Container>{renderCalendar()}</Container>;
 };
 
