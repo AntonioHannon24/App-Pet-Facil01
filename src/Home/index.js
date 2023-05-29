@@ -15,6 +15,7 @@ import EstabPublicacoes from '../Componentes/mainComponents/main_empresas/contai
 import PetHelpers from '../Componentes/mainComponents/main_clientes/PetHelpers';
 import TelaUser from '../Componentes/mainComponents/main_clientes';
 import PerfilEstabelecimento from '../Componentes/mainComponents/main_empresas/containerBotoes/Administrativo/perfil';
+import CarteirinhaPet from '../Componentes/mainComponents/main_clientes/CarteirinhaPet';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ export default function Home() {
         <Stack.Screen name="AgendamentosClientes" component={AgendamentosClientes} />
         <Stack.Screen name="PetHelpers" component={PetHelpers} />
         <Stack.Screen name="TelaUsuarios" component={TelaUser}/>
+        <Stack.Screen name="CarteirinhaPet" component={CarteirinhaPet}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

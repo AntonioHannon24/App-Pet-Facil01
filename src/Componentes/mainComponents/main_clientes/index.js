@@ -1,19 +1,51 @@
-import React from 'react';
-import {ContainerMain, IconLogin , PetTextContainer, View, PetText} from "./Style";
+import React, { useState } from 'react';
+import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "./Style";
 import { ButtonContainer, ButtonText } from "../../Estilos.js"
-import { WelcomeText,TextContainer, ButtonsContainer,ButtonsContainer2 } from '../estilos_main';
-import { Text } from 'react-native';
-import { Linking } from 'react-native';
-
+import { WelcomeText, TextContainer, ButtonsContainer, ButtonsContainer2 } from '../estilos_main';
+import { Text, Linking } from 'react-native';
 
 const TelaUser = ({ navigation }) => {
+  const width = "110px";
 
-const width = "110px";
+  // Informações dos pets
+  const pets = [
+    {
+      id: 1,
+      nome: 'Pet 1',
+      raca: 'Raça do Pet 1',
+      cor: 'Cor do Pet 1',
+      idade: 3,
+    },
+    {
+      id: 2,
+      nome: 'Pet 2',
+      raca: 'Raça do Pet 2',
+      cor: 'Cor do Pet 2',
+      idade: 4,
+    },
+    {
+      id: 3,
+      nome: 'Pet 3',
+      raca: 'Raça do Pet 3',
+      cor: 'Cor do Pet 3',
+      idade: 2,
+    },
+  ];
 
-const handleNoticiasMundoPet = () => {
-  Linking.openURL('https://gamma.app/docs/Untitled-p1nb84eemvqg38n');
-};
+  // Estado para controlar o pet selecionado
+  const [selectedPetId, setSelectedPetId] = useState(pets[0].id);
 
+  // Função para atualizar o pet selecionado
+  const handlePetSelection = (id) => {
+    setSelectedPetId(id);
+  };
+
+  // Encontre o pet selecionado
+  const selectedPet = pets.find((pet) => pet.id === selectedPetId);
+
+  const handleNoticiasMundoPet = () => {
+    Linking.openURL('https://gamma.app/docs/Untitled-p1nb84eemvqg38n');
+  };
 
   return (
     <ContainerMain>
@@ -22,44 +54,45 @@ const handleNoticiasMundoPet = () => {
         <View>
           <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
           <PetTextContainer>
-            <PetText><Text>Pet 1</Text></PetText>
-            <PetText><Text>Pet 2</Text></PetText>
-            <PetText><Text>Pet 3</Text></PetText>
+            {pets.map((pet) => (
+              <PetText key={pet.id} onPress={() => handlePetSelection(pet.id)}>
+                <Text>{pet.nome}</Text>
+              </PetText>
+            ))}
           </PetTextContainer>
-        </View> 
-    </TextContainer>
+        </View>
+      </TextContainer>
 
       <ButtonsContainer>
-          <ButtonContainer width={width}>
-            <ButtonText onPress={()=> navigation.navigate("TelaUser")} >Meu perfil</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText onPress={()=> navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={width}>
-            <ButtonText onPress={()=> navigation.navigate("PetHelpers")} >PetHelpers</ButtonText>
-          </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText onPress={() => navigation.navigate("TelaUser")}>Meu perfil</ButtonText>
+        </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
+        </ButtonContainer>
+        <ButtonContainer width={width}>
+          <ButtonText onPress={() => navigation.navigate("PetHelpers")}>PetHelpers</ButtonText>
+        </ButtonContainer>
       </ButtonsContainer>
 
       <ButtonsContainer2>
-          <ButtonContainer width={"300px"}>
-            <ButtonText >Carteirinha Meu Pet</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={"300px"}>
-            <ButtonText >Administração de Pets</ButtonText>
-          </ButtonContainer>
-          <ButtonContainer width={"300px"}>
-            <ButtonText >Administração de Perfil</ButtonText>
-          </ButtonContainer>
+        <ButtonContainer width={"300px"}>
+          <ButtonText onPress={() => navigation.navigate("CarteirinhaPet")}>Carteirinha Meu Pet</ButtonText>
+        </ButtonContainer>
+        <ButtonContainer width={"300px"}>
+          <ButtonText>Administração de Pets</ButtonText>
+        </ButtonContainer>
+        <ButtonContainer width={"300px"}>
+          <ButtonText>Administração de Perfil</ButtonText>
+        </ButtonContainer>
 
-          <ButtonContainer width={"300px"}>
-            <ButtonText onPress={handleNoticiasMundoPet}>Notícias Mundo Pet</ButtonText>
-          </ButtonContainer>
+        <ButtonContainer width={"300px"}>
+          <ButtonText onPress={handleNoticiasMundoPet}>Notícias Mundo Pet</ButtonText>
+        </ButtonContainer>
 
-          <ButtonContainer width={"300px"}>
-            <ButtonText onPress={handleNoticiasMundoPet} >Dicas de Saúde</ButtonText>
-          </ButtonContainer>
-
+        <ButtonContainer width={"300px"}>
+          <ButtonText onPress={handleNoticiasMundoPet}>Dicas de Saúde</ButtonText>
+        </ButtonContainer>
       </ButtonsContainer2>
     </ContainerMain>
   );
