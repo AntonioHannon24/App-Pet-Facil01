@@ -7,7 +7,6 @@ import { Text, Linking } from 'react-native';
 const TelaUser = ({ navigation }) => {
   const width = "110px";
 
-  // Informações dos pets
   const pets = [
     {
       id: 1,
@@ -32,15 +31,12 @@ const TelaUser = ({ navigation }) => {
     },
   ];
 
-  // Estado para controlar o pet selecionado
   const [selectedPetId, setSelectedPetId] = useState(pets[0].id);
 
-  // Função para atualizar o pet selecionado
   const handlePetSelection = (id) => {
     setSelectedPetId(id);
   };
 
-  // Encontre o pet selecionado
   const selectedPet = pets.find((pet) => pet.id === selectedPetId);
 
   const handleNoticiasMundoPet = () => {
@@ -77,7 +73,7 @@ const TelaUser = ({ navigation }) => {
 
       <ButtonsContainer2>
         <ButtonContainer width={"300px"}>
-          <ButtonText onPress={() => navigation.navigate("CarteirinhaPet")}>Carteirinha Meu Pet</ButtonText>
+          <ButtonText onPress={() => navigation.navigate("CarteirinhaPet", { petId: selectedPetId })}>Carteirinha Meu Pet</ButtonText>
         </ButtonContainer>
         <ButtonContainer width={"300px"}>
           <ButtonText>Administração de Pets</ButtonText>
@@ -87,11 +83,7 @@ const TelaUser = ({ navigation }) => {
         </ButtonContainer>
 
         <ButtonContainer width={"300px"}>
-          <ButtonText onPress={handleNoticiasMundoPet}>Notícias Mundo Pet</ButtonText>
-        </ButtonContainer>
-
-        <ButtonContainer width={"300px"}>
-          <ButtonText onPress={handleNoticiasMundoPet}>Dicas de Saúde</ButtonText>
+          <ButtonText onPress={handleNoticiasMundoPet}>Notícias e Dicas de Saúde</ButtonText>
         </ButtonContainer>
       </ButtonsContainer2>
     </ContainerMain>

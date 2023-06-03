@@ -7,19 +7,31 @@ import {IconLoginPet} from './Style'
 const CarteirinhaPet = ({ route }) => {
   const { petId } = route.params;
 
-  // Função para buscar as informações do pet com base no petId
-  const getPetInfo = (petId) => {
-    // Lógica para buscar as informações do pet com base no petId
-    // Retorne um objeto com as informações encontradas, como por exemplo:
-    return {
-      nome: 'Nome do Pet',
-      raca: 'Raça do Pet',
-      cor: 'Cor do Pet',
+  const pets = [
+    {
+      id: 1,
+      nome: 'Pet 1',
+      raca: 'Raça do Pet 1',
+      cor: 'Cor do Pet 1',
       idade: 3,
-    };
-  };
+    },
+    {
+      id: 2,
+      nome: 'Pet 2',
+      raca: 'Raça do Pet 2',
+      cor: 'Cor do Pet 2',
+      idade: 4,
+    },
+    {
+      id: 3,
+      nome: 'Pet 3',
+      raca: 'Raça do Pet 3',
+      cor: 'Cor do Pet 3',
+      idade: 2,
+    },
+  ];
 
-  const petInfo = getPetInfo(petId); // Obtenha as informações do pet com base no petId
+  const petInfo = pets.find((pet) => pet.id === petId);
 
   return (
     <ContainerMain>
