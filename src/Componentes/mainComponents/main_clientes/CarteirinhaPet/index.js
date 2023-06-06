@@ -1,8 +1,8 @@
 import React from 'react';
-import { ContainerMain, PetTextContainer, View, PetText } from "../Style";
-import { WelcomeText, TextContainer } from '../../estilos_main.js';
+import { ContainerMain, View, PetText } from "../Style";
+import {TextContainer } from '../../estilos_main.js';
 import { Text } from 'react-native';
-import {IconLoginPet} from './Style'
+import {IconCarteiraPet, CarteiraContainer, CarteiraText, Text1} from './Style'
 
 const CarteirinhaPet = ({ route }) => {
   const { petId } = route.params;
@@ -14,6 +14,9 @@ const CarteirinhaPet = ({ route }) => {
       raca: 'Raça do Pet 1',
       cor: 'Cor do Pet 1',
       idade: 3,
+      data: '01/05/2020',
+      Tamanho: 'Pequeno',
+      Sexo: 'Feminino',
     },
     {
       id: 2,
@@ -21,6 +24,9 @@ const CarteirinhaPet = ({ route }) => {
       raca: 'Raça do Pet 2',
       cor: 'Cor do Pet 2',
       idade: 4,
+      data: '01/05/2020',
+      Tamanho: 'Pequeno',
+      Sexo: 'Feminino',
     },
     {
       id: 3,
@@ -28,6 +34,9 @@ const CarteirinhaPet = ({ route }) => {
       raca: 'Raça do Pet 3',
       cor: 'Cor do Pet 3',
       idade: 2,
+      data: '01/05/2020',
+      Tamanho: 'Pequeno',
+      Sexo: 'Feminino',
     },
   ];
 
@@ -36,22 +45,37 @@ const CarteirinhaPet = ({ route }) => {
   return (
     <ContainerMain>
       <TextContainer>
-        <IconLoginPet source={require("../../img/cara-de-cachorro.png")} />
-        <View>
-          <WelcomeText>{petInfo.nome}</WelcomeText>
-          <PetTextContainer>
-            <PetText>
-              <Text>Raça: {petInfo.raca}</Text>
-            </PetText>
-            <PetText>
-              <Text>Cor: {petInfo.cor}</Text>
-            </PetText>
-            <PetText>
-              <Text>Idade: {petInfo.idade}</Text>
-            </PetText>
-          </PetTextContainer>
-        </View>
+        <IconCarteiraPet source={require("../../img/cara-de-cachorro.png")} />
       </TextContainer>
+      <CarteiraText>{petInfo.nome}</CarteiraText>
+      <View>
+          <CarteiraContainer>
+            <PetText>
+              <Text1>Raça:</Text1>
+              <Text>{petInfo.raca}</Text>
+            </PetText>
+            <PetText>
+              <Text1>Cor:</Text1>
+              <Text>{petInfo.cor}</Text>
+            </PetText>
+            <PetText>
+              <Text1>Idade:</Text1>
+              <Text>{petInfo.idade}</Text>
+            </PetText>
+            <PetText>
+              <Text1>Data Nascimento:</Text1>
+              <Text>{petInfo.data}</Text>
+            </PetText>
+            <PetText>
+              <Text1>Tamanho:</Text1>
+              <Text>{petInfo.Tamanho}</Text>
+            </PetText>
+            <PetText>
+              <Text1>Sexo:</Text1>
+              <Text>{petInfo.Sexo}</Text>
+            </PetText>
+          </CarteiraContainer>
+        </View>
     </ContainerMain>
   );
 };

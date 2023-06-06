@@ -52,7 +52,7 @@ const TelaUser = ({ navigation }) => {
           <PetTextContainer>
             {pets.map((pet) => (
               <PetText key={pet.id} onPress={() => handlePetSelection(pet.id)}>
-                <Text>{pet.nome}</Text>
+                <PetText>{pet.nome}</PetText>
               </PetText>
             ))}
           </PetTextContainer>

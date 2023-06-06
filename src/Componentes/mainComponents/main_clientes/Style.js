@@ -18,7 +18,7 @@ export const PetContainer = styled.View`
 `;
 
 export const PetText = styled.TouchableOpacity`
-    margin-right: 8px;
+    margin-right: 12px;
 `;
 
 export const PetTextContainer = styled.View` //array de pets
@@ -32,5 +32,6 @@ export const PetTextContainer = styled.View` //array de pets
 export const View = styled.View`
   flex-direction: column;
   margin-bottom: 30px;
+  margin-top: 8px;
 `;
 
