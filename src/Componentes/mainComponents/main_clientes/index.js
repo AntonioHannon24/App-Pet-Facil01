@@ -3,6 +3,7 @@ import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "./Sty
 import { ButtonContainer, ButtonText } from "../../Estilos.js"
 import { WelcomeText, TextContainer, ButtonsContainer, ButtonsContainer2 } from '../estilos_main';
 import { Text, Linking } from 'react-native';
+import AdmPets from './AdmPets';
 
 const TelaUser = ({ navigation }) => {
   const width = "110px";
@@ -76,7 +77,7 @@ const TelaUser = ({ navigation }) => {
           <ButtonText onPress={() => navigation.navigate("CarteirinhaPet", { petId: selectedPetId })}>Carteirinha Meu Pet</ButtonText>
         </ButtonContainer>
         <ButtonContainer width={"300px"}>
-          <ButtonText>Administração de Pets</ButtonText>
+          <ButtonText onPress={() => navigation.navigate(AdmPets)}>Administração de Pets</ButtonText>
         </ButtonContainer>
         <ButtonContainer width={"300px"}>
           <ButtonText>Administração de Perfil</ButtonText>
