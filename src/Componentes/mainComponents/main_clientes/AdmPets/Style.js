@@ -26,11 +26,6 @@ export const DescriContainer2 = styled.View` //array de pets
    
 `;
 
-export const DescriText = styled.Text`
-    margin-right: 8px;
-    font-size: 17;
-`;
-
 export const ButtonContainer2 = styled.TouchableOpacity(props=>({
     
     padding:"10px",
@@ -58,24 +53,29 @@ export const ViewButon = styled.Text`
     margin-top: 15px;
 `;
 
-export const IconEmpresa = styled.Image`
-    width: 100px;
-    height: 100px;
+export const IconPet = styled.Image`
+    width: 80px;
+    height: 80px;
     margin-top: 12px;
     margin-left: 20px;
+    margin-right: 10px;
 `;
 
 export const NomePet = styled.Text`
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
-    width: 70%;
     justify-content: center;
     margin-top: 12px;
-    margin-left: 90px;
+    margin-left: 100px;
 `;
 
 export const TextAdm = styled.Text`
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin-right: 8px;
 `;    
+
+export const DescriText = styled.Text`
+    margin-right: 8px;
+    font-size: 17;
+`;

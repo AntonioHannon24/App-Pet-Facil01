@@ -77,10 +77,10 @@ const TelaUser = ({ navigation }) => {
           <ButtonText onPress={() => navigation.navigate("CarteirinhaPet", { petId: selectedPetId })}>Carteirinha Meu Pet</ButtonText>
         </ButtonContainer>
         <ButtonContainer width={"300px"}>
-          <ButtonText onPress={() => navigation.navigate(AdmPets)}>Administração de Pets</ButtonText>
+          <ButtonText onPress={() => navigation.navigate("AdmPets")}>Administração de Pets</ButtonText>
         </ButtonContainer>
         <ButtonContainer width={"300px"}>
-          <ButtonText>Administração de Perfil</ButtonText>
+          <ButtonText onPress={() => navigation.navigate("AdmPerfil")}>Administração de Perfil</ButtonText>
         </ButtonContainer>
 
         <ButtonContainer width={"300px"}>

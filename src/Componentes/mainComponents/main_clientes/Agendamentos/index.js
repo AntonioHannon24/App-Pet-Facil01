@@ -5,6 +5,7 @@ import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main
 import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine } from './Style';
 import Calendar from './Calendar'; // Importe o componente do calendário
 import FloatingScreen from './FloatingScreen';
+import MeusAgendamentos from './MeusAgendamentos';
 import { Text } from 'react-native';
 
 const width = "110px";
@@ -133,7 +134,7 @@ const AgendamentosClientes = ({ navigation }) => {
       </ButtonContainer2>
 
       <ButtonContainer2 width={width}>
-        <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Meus Agendamentos</ButtonText>
+        <ButtonText onPress={() => navigation.navigate("MeusAgendamentos")}>Meus Agendamentos</ButtonText>
       </ButtonContainer2>
     </ContainerMain>
   );

@@ -1,28 +1,28 @@
 import React from 'react';
 import { ContainerMain} from "../Style";
-import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonText2, ViewButon, IconEmpresa, NomeEmpresa, TextAdm } from './Style'
+import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonText2, ViewButon, IconEmpresa, NomePet, TextAdm, IconPet } from './Style'
 import { ScrollView} from 'react-native';
 
 const width = "110px";
 
 const data = [
   {
-    NomePet: 'Pet1',
-    Raça: 'Raça Pet1',
-    Cor: 'Cor Pet1',
-    Idade: 'Idade Pet1',
+    NomePet: 'Pet 1',
+    Raça: 'Raça Pet 1',
+    Cor: 'Cor Pet 1',
+    Idade: 'Idade Pet 1',
   },
   {
-    NomePet: 'Pet2',
-    Raça: 'Raça Pet2',
-    Cor: 'Cor Pet2',
-    Idade: 'Idade Pet2',
+    NomePet: 'Pet 2',
+    Raça: 'Raça Pet 2',
+    Cor: 'Cor Pet 2',
+    Idade: 'Idade Pet 2',
   },
   {
-    NomePet: 'Pet3',
-    Raça: 'Raça Pet3',
-    Cor: 'Cor Pet3',
-    Idade: 'Idade Pet3',
+    NomePet: 'Pet 3',
+    Raça: 'Raça Pet 3',
+    Cor: 'Cor Pet 3',
+    Idade: 'Idade Pet 3',
   },
 ];
 
@@ -32,7 +32,7 @@ const AdmPets = ({ navigation }) => {
       <ScrollView>
         {data.map((item, index) => (
           <TextContainer2 key={index}>
-            <IconEmpresa source={require("../../img/cara-de-cachorro.png")} />
+            <IconPet source={require("../../img/cara-de-cachorro.png")} />
             <View2>
               <NomePet>{item.NomePet}</NomePet>
               <DescriContainer2>
