@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "./Style";
-import { ButtonContainer, ButtonText } from "../../Estilos.js"
-import { WelcomeText, TextContainer, ButtonsContainer, ButtonsContainer2 } from '../estilos_main';
+import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
+import { ButtonContainer, ButtonText } from "../../../Estilos.js"
+import { WelcomeText, TextContainer, ButtonsContainer, ButtonsContainer2 } from '../../estilos_main.js';
 import { Text, Linking } from 'react-native';
-import AdmPets from './AdmPets';
 
-const TelaUser = ({ navigation }) => {
-  const width = "110px";
+const width = "110px";
+
+const TelaUsers = ({ navigation }) => {
+
 
   const pets = [
     {
@@ -47,7 +48,7 @@ const TelaUser = ({ navigation }) => {
   return (
     <ContainerMain>
       <TextContainer>
-        <IconLogin source={require('../img/profile.png')} />
+        <IconLogin source={require('../../img/profile.png')} />
         <View>
           <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
           <PetTextContainer>
@@ -91,4 +92,4 @@ const TelaUser = ({ navigation }) => {
   );
 };
 
-export default TelaUser;
+export default TelaUsers;

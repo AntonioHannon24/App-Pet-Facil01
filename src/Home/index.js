@@ -8,10 +8,10 @@ import TelaEstabelecimentos from '../Componentes/mainComponents/main_empresas';
 import LoginEstabelecimento from '../Componentes/loginComponents/login_empresa';
 import AgendamentosClientes from '../Componentes/mainComponents/main_clientes/Agendamentos';
 import PetHelpers from '../Componentes/mainComponents/main_clientes/PetHelpers';
-import TelaUser from '../Componentes/mainComponents/main_clientes';
 import CarteirinhaPet from '../Componentes/mainComponents/main_clientes/CarteirinhaPet';
 import AdmPets from '../Componentes/mainComponents/main_clientes/AdmPets';
 import AdmPerfil from '../Componentes/mainComponents/main_clientes/AdmPerfil';
+import TelaUsers from '../Componentes/mainComponents/main_clientes/TelaUser';
 
 const Stack = createStackNavigator();
 
@@ -26,10 +26,10 @@ export default function Home() {
         <Stack.Screen name="TelaEstabelecimentos" component={TelaEstabelecimentos}/>
         <Stack.Screen name="AgendamentosClientes" component={AgendamentosClientes} />
         <Stack.Screen name="PetHelpers" component={PetHelpers} />
-        <Stack.Screen name="TelaUsuarios" component={TelaUser}/>
         <Stack.Screen name="CarteirinhaPet" component={CarteirinhaPet}/>
         <Stack.Screen name="AdmPets" component={AdmPets}/>
         <Stack.Screen name="AdmPerfil" component={AdmPerfil}/>
+        <Stack.Screen name="TelaUsuarios" component={TelaUsers}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
