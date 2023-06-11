@@ -1,23 +1,53 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
+
+const Container = styled.View`
+  flex: 1;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-bottom: 100px;
+  margin-top: 100px;
+`;
+
+const Title = styled.Text`
+  font-size: 30px;
+  margin-top: 2px;
+  margin-bottom: 30px;
+`;
+
+const Option = styled.TouchableOpacity`
+font-size: 25px;
+
+`;
+
+const OptionText = styled.Text`
+font-size: 20px;
+margin-top: 5px;
+`;
+
+const OptionText1 = styled.Text`
+font-size: 20px;
+margin-top: 10px;
+font-weight: bold;
+`;
 
 const FloatingScreen = ({ pets, onPetSelect, onClose }) => {
   return (
-    // Container principal que ocupa todo o espaço disponível e define o estilo de fundo e alinhamento dos elementos
-    <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', marginRight: '30px', marginLeft: '30px', marginBottom: '80px', marginTop: '80px' }}>
-      <Text>Selecione um pet:</Text>
-      {/* Mapeia os pets para renderizar as opções */}
+    <Container>
+      <Title>Selecione um pet:</Title>
       {pets.map((pet) => (
-        // Componente TouchableOpacity usado para envolver cada opção de pet
-        <TouchableOpacity key={pet.id} onPress={() => onPetSelect(pet)}>
-          <Text>{pet.name}</Text>
-        </TouchableOpacity>
+        <Option key={pet.id} onPress={() => onPetSelect(pet)}>
+          <OptionText>{pet.name}</OptionText>
+        </Option>
       ))}
-      {/* Botão para fechar o componente */}
-      <TouchableOpacity onPress={onClose}>
-        <Text>Fechar</Text>
-      </TouchableOpacity>
-    </View>
+      <Option onPress={onClose}>
+        <OptionText1>Fechar</OptionText1>
+      </Option>
+    </Container>
   );
 };
 

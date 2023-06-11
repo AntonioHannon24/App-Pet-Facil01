@@ -27,6 +27,7 @@ export const CarteiraContainer = styled.View` //array de pets
   margin-right: 200px;
   margin-left: 10px;
   margin-top: 8px;
+  margin-bottom: 10px;
 `;
 
 export const CarteiraText = styled.Text`
@@ -40,9 +41,15 @@ export const CarteiraText = styled.Text`
 `;
 
 export const Text1 = styled.Text`
-    font-size: 12px;
+    font-size: 20px;
     font-weight: bold;
     flex-wrap: wrap;
+`;
+
+export const Text = styled.Text`
+    font-size: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
 `;
 
 

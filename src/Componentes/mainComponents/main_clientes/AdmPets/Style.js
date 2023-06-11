@@ -67,12 +67,14 @@ export const NomePet = styled.Text`
     justify-content: center;
     margin-top: 12px;
     margin-left: 100px;
+    margin-bottom: 10px;
 `;
 
 export const TextAdm = styled.Text`
     font-size: 18px;
     font-weight: bold;
     margin-right: 8px;
+    margin-bottom: 10px;
 `;    
 
 export const DescriText = styled.Text`

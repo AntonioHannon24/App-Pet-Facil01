@@ -1,8 +1,7 @@
 import React from 'react';
 import { ContainerMain, View, PetText } from "../Style";
 import {TextContainer } from '../../estilos_main.js';
-import { Text } from 'react-native';
-import {IconCarteiraPet, CarteiraContainer, CarteiraText, Text1} from './Style'
+import {IconCarteiraPet, CarteiraContainer, CarteiraText, Text1, Text} from './Style'
 
 const CarteirinhaPet = ({ route }) => {
   const { petId } = route.params;
@@ -61,10 +60,6 @@ const CarteirinhaPet = ({ route }) => {
             <PetText>
               <Text1>Idade:</Text1>
               <Text>{petInfo.idade}</Text>
-            </PetText>
-            <PetText>
-              <Text1>Data Nascimento:</Text1>
-              <Text>{petInfo.data}</Text>
             </PetText>
             <PetText>
               <Text1>Tamanho:</Text1>
