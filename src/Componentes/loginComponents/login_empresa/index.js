@@ -73,13 +73,6 @@ useEffect(()=>{
           <TextButtonLogin>Entrar</TextButtonLogin>
         </ButtonLogin>
 
-      
-
-
-        <ButtonGreen onPress={() => navigation.navigate('Cadastro_emp')}>
-          <ButtonText>Nova Empresa</ButtonText>
-        </ButtonGreen>
-
         <ButtonGreen onPress={() => navigation.navigate('Login')}>
           <ButtonText>Sou Cliente</ButtonText>
         </ButtonGreen>
