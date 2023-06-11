@@ -100,3 +100,9 @@ export const PressBox = styled.Pressable`
     width:100%;
     align-items:center
 `;
+
+export const View = styled.View`
+  flex-direction: column;
+  margin-bottom: 30px;
+  margin-top: 8px;
+`;
