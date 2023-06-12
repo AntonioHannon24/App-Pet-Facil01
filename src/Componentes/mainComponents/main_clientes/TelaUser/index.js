@@ -6,7 +6,7 @@ import { Text, Linking } from 'react-native';
 
 const width = "110px";
 
-const TelaUsers = ({ navigation }) => {
+const TelaUser = ({ navigation }) => {
 
 
   const pets = [
@@ -63,7 +63,7 @@ const TelaUsers = ({ navigation }) => {
 
       <ButtonsContainer>
         <ButtonContainer width={width}>
-          <ButtonText onPress={() => navigation.navigate("TelaUser")}>Meu perfil</ButtonText>
+          <ButtonText onPress={() => navigation.navigate("TelaUsuarios")}>Meu perfil</ButtonText>
         </ButtonContainer>
         <ButtonContainer width={width}>
           <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
@@ -92,4 +92,4 @@ const TelaUsers = ({ navigation }) => {
   );
 };
 
-export default TelaUsers;
+export default TelaUser;
