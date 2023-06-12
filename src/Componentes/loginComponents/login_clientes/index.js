@@ -34,7 +34,7 @@ useEffect(()=>{
   });
 
   function handleSignIn(data) { console.log(data) 
-    navigation.navigate('TelaUsuarios')}
+    navigation.navigate('TelaUser')}
 
   return (
     <Container>
