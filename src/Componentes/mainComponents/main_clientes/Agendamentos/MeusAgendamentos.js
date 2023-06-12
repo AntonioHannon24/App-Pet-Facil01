@@ -12,6 +12,8 @@ const Container = styled.View`
   margin-left: 30px;
   margin-bottom: 80px;
   margin-top: 80px;
+  border-radius: 20px;
+  border: 1px solid black;
 `;
 
 const Title = styled.Text`
@@ -52,7 +54,7 @@ const MeusAgendamentos = ({ onClose }) => {
           <DataText>Data: {agendamento.data}</DataText>
         </AgendamentoContainer>
       ))}
-      <TouchableOpacity onPress={onClose}>
+      <TouchableOpacity>
         <Text onPress={() => navigation.navigate("AgendamentosClientes")}>Fechar</Text>
       </TouchableOpacity>
     </Container>
