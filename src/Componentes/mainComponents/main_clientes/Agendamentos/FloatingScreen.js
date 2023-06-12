@@ -11,6 +11,8 @@ const Container = styled.View`
   margin-left: 30px;
   margin-bottom: 100px;
   margin-top: 100px;
+  border-radius: 20px;
+  border: 1px solid black;
 `;
 
 const Title = styled.Text`

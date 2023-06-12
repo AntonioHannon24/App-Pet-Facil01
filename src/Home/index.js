@@ -12,6 +12,7 @@ import CarteirinhaPet from '../Componentes/mainComponents/main_clientes/Carteiri
 import AdmPets from '../Componentes/mainComponents/main_clientes/AdmPets';
 import AdmPerfil from '../Componentes/mainComponents/main_clientes/AdmPerfil';
 import TelaUsers from '../Componentes/mainComponents/main_clientes/TelaUser';
+import MeusAgendamentos from '../Componentes/mainComponents/main_clientes/Agendamentos/MeusAgendamentos';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ export default function Home() {
         <Stack.Screen name="AdmPets" component={AdmPets}/>
         <Stack.Screen name="AdmPerfil" component={AdmPerfil}/>
         <Stack.Screen name="TelaUsuarios" component={TelaUsers}/>
+        <Stack.Screen name="MeusAgendamentos" component={MeusAgendamentos}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

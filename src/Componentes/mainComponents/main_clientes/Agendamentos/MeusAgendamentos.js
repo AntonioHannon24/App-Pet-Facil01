@@ -1,31 +1,61 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
+import styled from 'styled-components/native';
 import FloatingScreen from './FloatingScreen';
 
+const Container = styled.View`
+  flex: 1;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-bottom: 80px;
+  margin-top: 80px;
+`;
+
+const Title = styled.Text`
+  font-size: 25px;
+`;
+
+const AgendamentoContainer = styled.View`
+  margin-top: 40px;
+  margin-bottom: 100px;
+`;
+
+const PetText = styled.Text`
+  font-size: 20px;
+`;
+
+const DataText = styled.Text`
+  font-size: 20px;
+  margin-bottom: 10px;
+`;
+
+const Text = styled.Text`
+  font-size: 15px;
+  margin-top: 10px;
+  font-weight: bold;
+`;
+
 const MeusAgendamentos = ({ onClose }) => {
-  // Lista fictícia de agendamentos
   const agendamentos = [
-    { id: 1, pet: 'Pet 1', data: '2023-06-08' },
-    { id: 2, pet: 'Pet 2', data: '2023-06-09' },
-    { id: 3, pet: 'Pet 3', data: '2023-06-10' },
+    { id: 1, pet: 'Pet 1', data: '08/01/2023' },
   ];
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', marginRight: '30px', marginLeft: '30px', marginBottom: '80px', marginTop: '80px' }}>
-      <Text>Meus Agendamentos:</Text>
-      {/* Renderiza a lista de agendamentos */}
+    <Container>
+      <Title>Meus Agendamentos:</Title>
       {agendamentos.map((agendamento) => (
-        <View key={agendamento.id}>
-          <Text>Pet: {agendamento.pet}</Text>
-          <Text>Data: {agendamento.data}</Text>
-        </View>
+        <AgendamentoContainer key={agendamento.id}>
+          <PetText>Pet: {agendamento.pet}</PetText>
+          <DataText>Data: {agendamento.data}</DataText>
+        </AgendamentoContainer>
       ))}
-      
-      {/* Botão para fechar a tela */}
       <TouchableOpacity onPress={onClose}>
-        <Text>Fechar</Text>
+        <Text onPress={() => navigation.navigate("AgendamentosClientes")}>Fechar</Text>
       </TouchableOpacity>
-    </View>
+    </Container>
   );
 };
 

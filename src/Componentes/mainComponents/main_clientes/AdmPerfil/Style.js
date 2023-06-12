@@ -40,9 +40,10 @@ export const CarteiraText = styled.Text`
 `;
 
 export const Text1 = styled.Text`
-    font-size: 12px;
+    font-size: 20px;
     font-weight: bold;
     flex-wrap: wrap;
+    margin-top: 10px;
 `;
 
 export const PefilText = styled.TouchableOpacity`
