@@ -48,7 +48,7 @@ const TelaEstabelecimentos = ({ navigation }) => {
           <ButtonEdit>Editar Perfil</ButtonEdit>
         </View>
         <View>
-          <ButtonExit>Sair</ButtonExit>
+          <ButtonExit onPress={() => navigation.navigate("LoginEstabelecimento")}> Sair</ButtonExit>
         </View>
       </TextContainer>
       <ScrollView>

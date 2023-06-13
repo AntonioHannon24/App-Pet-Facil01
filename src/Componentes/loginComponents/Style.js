@@ -19,7 +19,7 @@ export const ButtonLogin = styled.TouchableOpacity`
     width:250px;
     border-radius:8px;
     align-items:flex-end;
-    background-color:#007bff;
+    background-color:#38512F;
     align-items:center;
 
 `;// ok 
@@ -61,6 +61,6 @@ export const InputAreaLogin = styled.TextInput`
     margin-bottom:15px;
     padding-horizontal:10px;
     border-radius:50px;
-    box-shadow :2px 2px 5px green;
+    box-shadow :2px 2px 5px #38512F;
 
 `;
