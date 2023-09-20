@@ -52,6 +52,7 @@ export const ButtonText = styled.Text(props=>({
     fontSize:"15px",
     paddingTop: "1px",
     height:props.height ||"20px",
+    borderColor: 'purple',
     
 
 

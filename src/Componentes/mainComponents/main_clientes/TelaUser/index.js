@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
+import { ContainerMain, IconLogin, PetTextContainer, View, PetText, HeaderContainer, HeaderText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js"
 import { WelcomeText, TextContainer, ButtonsContainer, ButtonsContainer2 } from '../../estilos_main.js';
 import { Text, Linking } from 'react-native';
@@ -47,10 +47,13 @@ const TelaUser = ({ navigation }) => {
 
   return (
     <ContainerMain>
+      <HeaderContainer>
+        <HeaderText>Bem-vindo usuário(a), e sua Pet Family</HeaderText>
+      </HeaderContainer> 
+
       <TextContainer>
-        <IconLogin source={require('../../img/profile.png')} />
+        <IconLogin source={require('../../img/dog1.png')} />
         <View>
-          <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
           <PetTextContainer>
             {pets.map((pet) => (
               <PetText key={pet.id} onPress={() => handlePetSelection(pet.id)}>

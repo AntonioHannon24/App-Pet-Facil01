@@ -7,10 +7,13 @@ export const ContainerMain = styled.View`
 `;
 
 export const IconLogin = styled.Image`
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     margin-right: 8px;
     margin-left: 20px;
+    border-radius: 200px; 
+    border-width: 3px;
+    border-color: purple; 
 `;
 
 export const PetContainer = styled.View`
@@ -20,6 +23,7 @@ export const PetContainer = styled.View`
 export const PetText = styled.TouchableOpacity`
     margin-right: 12px;
 `;
+
 
 export const PetTextContainer = styled.View` //array de pets
   flex-direction: row;
@@ -34,4 +38,19 @@ export const View = styled.View`
   margin-bottom: 30px;
   margin-top: 8px;
 `;
+
+export const HeaderContainer = styled.View`
+  backgroundColor: purple;
+  margin-bottom: 30px;
+  align-items: center;
+  height: 40px;
+`;
+
+export const HeaderText = styled.Text`
+  margin-top: 10px;
+  font-weight:bold;
+`;
+
+
+
 

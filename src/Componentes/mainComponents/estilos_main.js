@@ -62,7 +62,7 @@ export const ButtonsContainer = styled.View(props=>({
     paddingBottom:20,
     flexDirection: "row",
     alignItems:"center",
-   
+    borderColor: 'purple',
 }));
 
 export const ButtonsContainerPainel = styled.View`
@@ -78,6 +78,7 @@ export const ButtonsContainerPainel = styled.View`
 export const IconLogin = styled.Image`
     width: 100px;
     height: 100px;
+    margin-top: 15px;
     margin-right: 8px;
     margin-left: 20px;
 `;
@@ -88,6 +89,7 @@ export const ImageContainer = styled.View`
     flex:3;
 `;
 export const TextContainer = styled.View(props=>({
+    //backgroundColor: '#52489C',
     flexDirection: "row",
     marginTop: props.marginTop || "0",
 }));
