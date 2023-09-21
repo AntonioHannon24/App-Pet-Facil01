@@ -28,7 +28,7 @@ export const ButtonContainer = styled.TouchableOpacity(props=>({
     borderRadius:"8px",
     alignItems:"flex-end",
     backgroundColor:"#fff",
-    border:"1px solid black",
+    border:"1px purple",
     alignItems:"center",
     
   

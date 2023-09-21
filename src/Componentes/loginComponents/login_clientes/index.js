@@ -42,7 +42,7 @@ useEffect(()=>{
 
         <Title>Login</Title>
         <ImageContainer>
-          <LoginImage source={require('../img/login.png')}/>
+          <LoginImage source={require('../img/profile.png')}/>
         </ImageContainer>
 
         {errors.email && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
@@ -72,6 +72,7 @@ useEffect(()=>{
         <ButtonLogin onPress={handleSubmit(handleSignIn)}>
           <TextButtonLogin>Entrar</TextButtonLogin>
         </ButtonLogin>
+        
 
       
 

@@ -19,7 +19,7 @@ export const ButtonLogin = styled.TouchableOpacity`
     width:250px;
     border-radius:8px;
     align-items:flex-end;
-    background-color:#38512F;
+    background-color:purple;
     align-items:center;
 
 `;// ok 
