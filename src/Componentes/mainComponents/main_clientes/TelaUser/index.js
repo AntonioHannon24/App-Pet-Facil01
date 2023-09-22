@@ -48,7 +48,7 @@ const TelaUser = ({ navigation }) => {
   return (
     <ContainerMain>
       <HeaderContainer>
-        <HeaderText>Bem-vindo usuário(a), e sua Pet Family</HeaderText>
+        <HeaderText>PET HELPER</HeaderText>
       </HeaderContainer> 
 
       <TextContainer>
@@ -57,7 +57,7 @@ const TelaUser = ({ navigation }) => {
           <PetTextContainer>
             {pets.map((pet) => (
               <PetText key={pet.id} onPress={() => handlePetSelection(pet.id)}>
-                <Text>{pet.nome}</Text>
+                {/* <Text>{pet.nome}</Text> */}
               </PetText>
             ))}
           </PetTextContainer>
