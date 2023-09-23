@@ -82,38 +82,7 @@ const AgendamentosClientes = ({ navigation }) => {
 
       <Container>
         <CalendarContainer>
-          {/* Renderiza os itens de data no calendário */}
-          {renderDateItem('01')}
-          {renderDateItem('02')}
-          {renderDateItem('03')}
-          {renderDateItem('04')}
-          {renderDateItem('05')}
-          {renderDateItem('06')}
-          {renderDateItem('07')}
-          {renderDateItem('08')}
-          {renderDateItem('09')}
-          {renderDateItem('10')}
-          {renderDateItem('11')}
-          {renderDateItem('12')}
-          {renderDateItem('13')}
-          {renderDateItem('14')}
-          {renderDateItem('15')}
-          {renderDateItem('16')}
-          {renderDateItem('17')}
-          {renderDateItem('18')}
-          {renderDateItem('19')}
-          {renderDateItem('20')}
-          {renderDateItem('21')}
-          {renderDateItem('22')}
-          {renderDateItem('23')}
-          {renderDateItem('24')}
-          {renderDateItem('25')}
-          {renderDateItem('26')}
-          {renderDateItem('27')}
-          {renderDateItem('28')}
-          {renderDateItem('29')}
-          {renderDateItem('30')}
-          {renderDateItem('31')}
+        <Calendar />
         </CalendarContainer>
       </Container>
 
