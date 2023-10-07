@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native'; // Importe ScrollView
 import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js"
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
 import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonText2, ViewButon, IconEmpresa, NomeEmpresa } from './Style'
 import { ScrollView } from 'react-native';
+import {Text , Linking, PanResponder } from 'react-native';
 
 const width = "110px";
 
@@ -48,8 +48,25 @@ const data = [
 ];
 
 const PetHelpers = ({ navigation }) => {
+
+  const panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onPanResponderMove: (evt, gestureState) => {
+      if (gestureState.dx < -50) {
+        // Navegar para a tela "AgendamentosClientes" quando o gesto de deslizar para a esquerda for detectado
+        navigation.navigate('TelaUser');
+      } else if (gestureState.dx > 50) {
+        // Navegar para a tela "PetHelpers" quando o gesto de deslizar para a direita for detectado
+        navigation.navigate('AgendamentosClientes');
+      }  
+    },
+    onPanResponderRelease: () => {
+      // Reset do estado após o lançamento do gesto
+    },
+  });
+
   return (
-    <ContainerMain>
+    <ContainerMain {...panResponder.panHandlers}>
       <ScrollView>
         <TextContainer>
           <IconLogin source={require("../../img/profile.png")} />

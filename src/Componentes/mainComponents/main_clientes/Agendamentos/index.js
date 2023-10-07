@@ -6,7 +6,7 @@ import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, Con
 import Calendar from './Calendar'; // Importe o componente do calendário
 import FloatingScreen from './FloatingScreen';
 import MeusAgendamentos from './MeusAgendamentos';
-import { Text } from 'react-native';
+import {Text , Linking, PanResponder } from 'react-native';
 
 const width = "110px";
 
@@ -55,8 +55,24 @@ const AgendamentosClientes = ({ navigation }) => {
     { id: 3, name: 'Pet 3' },
   ];
 
+  const panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onPanResponderMove: (evt, gestureState) => {
+      if (gestureState.dx < -50) {
+        // Navegar para a tela "AgendamentosClientes" quando o gesto de deslizar para a esquerda for detectado
+        navigation.navigate('PetHelpers');
+      } else if (gestureState.dx > 50) {
+        // Navegar para a tela "PetHelpers" quando o gesto de deslizar para a direita for detectado
+        navigation.navigate('TelaUser');
+      }  
+    },
+    onPanResponderRelease: () => {
+      // Reset do estado após o lançamento do gesto
+    },
+  });
+
   return (
-    <ContainerMain>
+    <ContainerMain {...panResponder.panHandlers}>
       <TextContainer>
         <IconLogin source={require("../../img/profile.png")} />
         <View>

@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { ContainerMain, IconLogin, PetTextContainer, View, PetText, HeaderContainer, HeaderText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js"
 import { WelcomeText, TextContainer, ButtonsContainer, ButtonsContainer2 } from '../../estilos_main.js';
-import { Text, Linking } from 'react-native';
+import {Linking, PanResponder } from 'react-native';
 
 const width = "110px";
 
 const TelaUser = ({ navigation }) => {
-
-
   const pets = [
     {
       id: 1,
@@ -45,11 +43,28 @@ const TelaUser = ({ navigation }) => {
     Linking.openURL('https://gamma.app/docs/Untitled-p1nb84eemvqg38n');
   };
 
+  // Configurado o PanResponder para detectar o gesto de deslizar
+  const panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onPanResponderMove: (evt, gestureState) => {
+      if (gestureState.dx < -50) {
+        // Navegar para a tela "AgendamentosClientes" quando o gesto de deslizar para a esquerda for detectado
+        navigation.navigate('AgendamentosClientes');
+      } else if (gestureState.dx > 50) {
+        // Navegar para a tela "PetHelpers" quando o gesto de deslizar para a direita for detectado
+        navigation.navigate('PetHelpers');
+      }  
+    },
+    onPanResponderRelease: () => {
+      // Reset do estado após o lançamento do gesto
+    },
+  });
+
   return (
-    <ContainerMain>
+    <ContainerMain {...panResponder.panHandlers}>
       <HeaderContainer>
         <HeaderText>PET HELPER</HeaderText>
-      </HeaderContainer> 
+      </HeaderContainer>
 
       <TextContainer>
         <IconLogin source={require('../../img/dog1.png')} />
