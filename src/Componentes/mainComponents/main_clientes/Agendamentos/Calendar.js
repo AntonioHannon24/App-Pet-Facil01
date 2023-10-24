@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import styled from 'styled-components/native';
-
-const Container = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
+import {Container } from "./Style";
 
 const CalendarButton = styled(TouchableOpacity)`
   background-color: #007BFF;

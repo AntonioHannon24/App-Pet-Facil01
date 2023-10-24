@@ -48,3 +48,4 @@ export const ButtonContainer2 = styled.TouchableOpacity`
   justify-content: center;
   margin-bottom: 12px;
 `;
+

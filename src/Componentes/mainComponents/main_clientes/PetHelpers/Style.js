@@ -23,7 +23,7 @@ export const View2 = styled.View`
 `;
 
 export const DescriContainer2 = styled.View` //array de pets
-   
+    border-color: purple;
 `;
 
 export const DescriText = styled.Text`
@@ -40,7 +40,7 @@ export const ButtonContainer2 = styled.TouchableOpacity(props=>({
     marginBottom:"5px",
     borderRadius:"8px",
     backgroundColor:"#fff",
-    border:"1px solid black",
+    border:"1px purple",
     alignItems:"center",
     justifyContent: "center",
 
@@ -50,6 +50,7 @@ export const ButtonText2 = styled.Text`
     color:${props => props.theme.color};
     font-size:14px;
     padding-top: 1px;
+    
 
 `;
 
