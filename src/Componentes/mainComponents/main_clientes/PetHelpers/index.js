@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js"
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
-import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonText2, ViewButon, IconEmpresa, NomeEmpresa } from './Style'
+import { TextContainer2, View2, DescriContainer2, DescriText, IconEmpresa, NomeEmpresa } from './Style'
 import { ScrollView } from 'react-native';
-import {Text , Linking, PanResponder } from 'react-native';
+import {Text , Linking, PanResponder, TouchableOpacity } from 'react-native';
+import ServicosDisponiveis from './horarios';
+
 
 const width = "110px";
 
@@ -12,42 +14,36 @@ const data = [
   {
     nomeEmpresa: 'PetShop 1',
     localizacao: 'teste',
-    servicos: 'teste',
+    servicos: ['banho', 'tosa'],
     avaliacoes: 'teste',
   },
   {
     nomeEmpresa: 'PetShop 2',
-    localizacao: 'teste2',
-    servicos: 'teste2',
-    avaliacoes: 'teste2',
+    localizacao: 'teste',
+    servicos: ['banho', 'tosa', 'banho + tosa'],
+    avaliacoes: 'teste',
   },
   {
     nomeEmpresa: 'PetShop 3',
-    localizacao: 'teste3',
-    servicos: 'teste3',
-    avaliacoes: 'teste3',
-  },
-  {
-    nomeEmpresa: 'PetShop 4',
-    localizacao: 'teste4',
-    servicos: 'teste4',
-    avaliacoes: 'teste4',
-  },
-  {
-    nomeEmpresa: 'PetShop 5',
-    localizacao: 'teste5',
-    servicos: 'teste5',
-    avaliacoes: 'teste5',
-  },
-  {
-    nomeEmpresa: 'PetShop 6',
-    localizacao: 'teste6',
-    servicos: 'teste6',
-    avaliacoes: 'teste6',
+    localizacao: 'teste',
+    servicos: ['banho', 'tosa', 'banho + tosa'],
+    avaliacoes: 'teste',
   },
 ];
 
 const PetHelpers = ({ navigation }) => {
+
+  const [isServicosFlutuanteVisible, setServicosFlutuanteVisible] = useState(false);
+  const [selectedServico, setSelectedServico] = useState(null);
+
+  const handleOpenServicosFlutuante = () => {
+    setServicosFlutuanteVisible(true);
+  };
+
+  const handleSelectServico = (servico) => {
+    setSelectedServico(servico);
+    setServicosFlutuanteVisible(false);
+  };
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -71,12 +67,6 @@ const PetHelpers = ({ navigation }) => {
         <TextContainer>
           <IconLogin source={require("../../img/profile.png")} />
           <View>
-            <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
-            <PetTextContainer>
-              <PetText><Text>Pet 1</Text></PetText>
-              <PetText><Text>Pet 2</Text></PetText>
-              <PetText><Text>Pet 3</Text></PetText>
-            </PetTextContainer>
           </View>
         </TextContainer>
         <ButtonsContainer>
@@ -93,23 +83,33 @@ const PetHelpers = ({ navigation }) => {
 
         {data.map((item, index) => (
           <TextContainer2 key={index}>
-            <IconEmpresa source={require("../../img/profile.png")} />
+            <TouchableOpacity onPress={handleOpenServicosFlutuante}> 
+              <IconEmpresa source={require("../../img/profile.png")} />
+            </TouchableOpacity>
             <View2>
               <NomeEmpresa>{item.nomeEmpresa}</NomeEmpresa>
               <DescriContainer2>
                 <DescriText><Text>Localização:</Text> {item.localizacao}</DescriText>
-                <DescriText><Text>Serviços:</Text> {item.servicos}</DescriText>
-                <DescriText><Text>Avaliações:</Text>{item.avaliacoes}</DescriText>
-                <ViewButon>
-                  <ButtonContainer2 width={width}>
-                    <ButtonText2>Acessar</ButtonText2>
-                  </ButtonContainer2>
-                </ViewButon>
-              </DescriContainer2>
+                <DescriText><Text>Serviços:</Text> {item.servicos.join(', ')}</DescriText>
+                <DescriText><Text>Avaliações:</Text> {item.avaliacoes}</DescriText>
+                </DescriContainer2>
             </View2>
           </TextContainer2>
         ))}
       </ScrollView>
+      {isServicosFlutuanteVisible && (
+        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }}>
+          <ServicosDisponiveis
+            servicos={selectedServico ? selectedServico.servicos : []}
+            onSelectServico={handleSelectServico}
+            onClose={() => setServicosFlutuanteVisible(false)}
+          />
+        </View>
+      )}
+
+      {selectedServico && (
+        <Text>Serviço selecionado: {selectedServico}</Text>
+      )}
     </ContainerMain>
   );
 };

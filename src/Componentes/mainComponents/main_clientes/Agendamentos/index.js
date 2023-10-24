@@ -6,7 +6,7 @@ import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, Con
 import Calendar from './Calendar'; // Importe o componente do calendário
 import FloatingScreen from './FloatingScreen';
 import MeusAgendamentos from './MeusAgendamentos';
-import {Text , Linking, PanResponder } from 'react-native';
+import {Text , Linking, PanResponder, TouchableOpacity } from 'react-native';
 
 const width = "110px";
 
