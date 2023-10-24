@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { TouchableOpacity, Text } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -49,3 +50,13 @@ export const ButtonContainer2 = styled.TouchableOpacity`
   margin-bottom: 12px;
 `;
 
+export const CalendarButton = styled(TouchableOpacity)`
+  background-color: #007BFF;
+  padding: 10px 20px;
+  border-radius: 5px;
+`;
+
+export const ButtonText = styled(Text)`
+  color: white;
+  font-size: 18px;
+`;

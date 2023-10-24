@@ -1,19 +1,6 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, Text } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import styled from 'styled-components/native';
-import {Container } from "./Style";
-
-const CalendarButton = styled(TouchableOpacity)`
-  background-color: #007BFF;
-  padding: 10px 20px;
-  border-radius: 5px;
-`;
-
-const ButtonText = styled(Text)`
-  color: white;
-  font-size: 18px;
-`;
+import {Container, CalendarButton, ButtonText} from "./Style";
 
 const Calendar = () => {
   const [isDatePickerVisible, setDatePickerVisible] = useState(false);

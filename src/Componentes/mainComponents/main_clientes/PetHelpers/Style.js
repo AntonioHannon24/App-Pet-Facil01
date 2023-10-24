@@ -74,3 +74,27 @@ export const NomeEmpresa = styled.Text`
     margin-top: 12px;
     margin-left: 90px;
 `;
+
+export const Container = styled.View`
+  flex: 1;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+  border-radius: 50px;
+  border: 3px purple;
+`;
+
+export const Title = styled.Text`
+  font-size: 20px;
+  margin-top: 2px;
+  margin-bottom: 30px;
+`;
+
+export const ServicoItem = styled.TouchableOpacity`
+  margin: 10px;
+`;
+
+export const ServicoText = styled.Text`
+  font-size: 15px;
+`;
