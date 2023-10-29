@@ -1,27 +1,20 @@
-import { Container, ButtonText, ButtonContainer, ButtonContainerForm, Title, InputArea,
-          ErrorMessage, PressBox,ButtonText3 } from '../../Estilos';
+import {
+  Container, ButtonText, ButtonContainer, ButtonContainerForm, Title, InputArea,
+  ErrorMessage, PressBox, ButtonText3
+} from '../../Estilos';
 import { ButtonLogin, ButtonGreen, TextButtonLogin, ImageContainer, LoginImage, InputAreaLogin } from '../Style';
 import { Keyboard } from 'react-native';
 import { useForm, Controller } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
+export default function TelaLogin({ navigation }) {
 
-
-export default function TelaLogin  ({ navigation }) {
-
-const [data,setData] = useState([])
-
-/*
-useEffect(()=>{
-  fetch("http://192.168.1.106:3333/api/estabelecimentos")
-  .then(response=>response.json())
-  .then(data=>setData(data))
-  .catch(err=>console.log(err))
-})
-*/
+  const [data, setData] = useState([])
 
 
   const schema = yup.object({
@@ -33,8 +26,43 @@ useEffect(()=>{
     resolver: yupResolver(schema)
   });
 
-  function handleSignIn(data) { console.log(data) 
-    navigation.navigate('TelaUser')}
+  async function handleSignIn(data) {
+    console.log(data)
+    try {
+      const response = await axios.post('http://192.168.1.75:3333/api/login', {
+        email: data.email,
+        password: data.password
+      });
+
+      if (response.status === 200) {
+        
+        // AsyncStorage.setItem('apiToken', response.data.token.token)
+        // AsyncStorage.setItem('type', response.data.token.type)
+        // AsyncStorage.setItem('idUser', response.data.user.id);
+        // AsyncStorage.setItem('sessao', 1); // 0 ou null que dizer que o usuário esta deslogado; 1  logado
+
+        navigation.navigate('TelaUser');
+        console.log(response.data.message);
+      } else if (response.status === 401) {
+        console.log(response.data.message);
+      } else {
+        console.log("Erro desconhecido");
+      }
+      console.log(response.data.message);
+    } catch (error) {
+      if (error.response) {
+        // O servidor respondeu com um código de erro (por exemplo, 401 não autorizado).
+        console.error('Erro no servidor:', error.response.data);
+      } else if (error.request) {
+        // A solicitação foi feita, mas não houve resposta do servidor.
+        console.error('Sem resposta do servidor');
+      } else {
+        // Ocorreu um erro ao configurar a solicitação.
+        console.error('Erro ao configurar a solicitação', error.message);
+      }
+    }
+  }
+
 
   return (
     <Container>
@@ -42,7 +70,7 @@ useEffect(()=>{
 
         <Title>Login</Title>
         <ImageContainer>
-          <LoginImage source={require('../img/profile.png')}/>
+          <LoginImage source={require('../img/profile.png')} />
         </ImageContainer>
 
         {errors.email && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
@@ -50,8 +78,8 @@ useEffect(()=>{
           control={control}
           name='email'
           render={({ field: { onChange, onBlur, value } }) => (
-            <InputAreaLogin placeholder="E-mail" onChangeText={onChange} onBlur={onBlur} 
-                                  value={value} err={errors.email} textAlign="center"/>
+            <InputAreaLogin placeholder="E-mail" onChangeText={onChange} onBlur={onBlur}
+              value={value} err={errors.email} textAlign="center" />
           )}
         />
 
@@ -60,8 +88,8 @@ useEffect(()=>{
           control={control}
           name='password'
           render={({ field: { onChange, onBlur, value } }) => (
-            <InputAreaLogin secureTextEntry={true} placeholder="Digite sua senha" textAlign="center" 
-                                             onChangeText={onChange} onBlur={onBlur} value={value}/>
+            <InputAreaLogin secureTextEntry={true} placeholder="Digite sua senha" textAlign="center"
+              onChangeText={onChange} onBlur={onBlur} value={value} />
           )}
         />
 
@@ -72,10 +100,6 @@ useEffect(()=>{
         <ButtonLogin onPress={handleSubmit(handleSignIn)}>
           <TextButtonLogin>Entrar</TextButtonLogin>
         </ButtonLogin>
-        
-
-      
-
 
         <ButtonGreen onPress={() => navigation.navigate('Cadastro')}>
           <ButtonText>Cadastro</ButtonText>

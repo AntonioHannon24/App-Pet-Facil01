@@ -3,6 +3,7 @@ import { ContainerMain, IconLogin, PetTextContainer, View, PetText, HeaderContai
 import { ButtonContainer, ButtonText } from "../../../Estilos.js"
 import { WelcomeText, TextContainer, ButtonsContainer, ButtonsContainer2 } from '../../estilos_main.js';
 import {Linking, PanResponder } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const width = "110px";
 
@@ -31,6 +32,16 @@ const TelaUser = ({ navigation }) => {
     },
   ];
 
+  // Para recuperar o token
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('idUser');
+      console.log("aqui essa merda",jsonValue != null ? JSON.parse(jsonValue) : null);
+    } catch (e) {
+      // error reading value
+    }
+  };
+  getData()
   const [selectedPetId, setSelectedPetId] = useState(pets[0].id);
 
   const handlePetSelection = (id) => {
