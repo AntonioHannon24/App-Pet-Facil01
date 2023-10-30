@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import TelaLogin  from "../Componentes/loginComponents/login_clientes"
+import TelaLogin from "../Componentes/loginComponents/login_clientes"
 import CadastroClientes from "../Componentes/cadastroComponents/cadastro_clientes";
 import RecuperarSenha from '../Componentes/formulario_resenha';
 import TelaEstabelecimentos from '../Componentes/mainComponents/main_empresas';
@@ -20,22 +20,19 @@ export default function Home() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={TelaLogin} />
-        <Stack.Screen name="Login_Estabelecimento" component={LoginEstabelecimento}/>
-        <Stack.Screen name="Cadastro" component={CadastroClientes} />
-        <Stack.Screen name="RecuperarSenha" component={RecuperarSenha}/>
-        <Stack.Screen name="TelaEstabelecimentos" component={TelaEstabelecimentos}/>
-        <Stack.Screen name="AgendamentosClientes" component={AgendamentosClientes} />
-        <Stack.Screen name="PetHelpers" component={PetHelpers} />
-        <Stack.Screen name="CarteirinhaPet" component={CarteirinhaPet}/>
-        <Stack.Screen name="AdmPets" component={AdmPets}/>
-        <Stack.Screen name="AdmPerfil" component={AdmPerfil}/>
-        <Stack.Screen name="TelaUser" component={TelaUser}/>
-        <Stack.Screen name="MeusAgendamentos" component={MeusAgendamentos}/>
+        <Stack.Screen name="Login" component={TelaLogin} options={{ headerShown: false }} />
+        <Stack.Screen name="Login_Estabelecimento" component={LoginEstabelecimento} options={{ headerShown: false }} />
+        <Stack.Screen name="Cadastro" component={CadastroClientes} options={{ headerShown: false }} />
+        <Stack.Screen name="RecuperarSenha" component={RecuperarSenha} options={{ headerShown: false }} />
+        <Stack.Screen name="TelaEstabelecimentos" component={TelaEstabelecimentos} options={{ headerShown: false }} />
+        <Stack.Screen name="AgendamentosClientes" component={AgendamentosClientes} options={{ headerShown: false }} />
+        <Stack.Screen name="PetHelpers" component={PetHelpers} options={{ headerShown: false }} />
+        <Stack.Screen name="CarteirinhaPet" component={CarteirinhaPet} options={{ headerShown: false }} />
+        <Stack.Screen name="AdmPets" component={AdmPets} options={{ headerShown: false }} />
+        <Stack.Screen name="AdmPerfil" component={AdmPerfil} options={{ headerShown: false }} />
+        <Stack.Screen name="TelaUser" component={TelaUser} options={{ headerShown: false }} />
+        <Stack.Screen name="MeusAgendamentos" component={MeusAgendamentos} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-
-
