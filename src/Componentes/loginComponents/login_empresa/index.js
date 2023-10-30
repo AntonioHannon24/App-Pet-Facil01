@@ -14,15 +14,6 @@ export default function LoginEstabelecimento  ({ navigation }) {
 
 const [data,setData] = useState([])
 
-/*
-useEffect(()=>{
-  fetch("http://192.168.1.106:3333/api/estabelecimentos")
-  .then(response=>response.json())
-  .then(data=>setData(data))
-  .catch(err=>console.log(err))
-})
-*/
-
 
   const schema = yup.object({
     email: yup.string().email("E-mail invalido").required("Digite seu E-mail"),
@@ -42,7 +33,7 @@ useEffect(()=>{
 
         <Title>Bem vindo PetHelper</Title>
         <ImageContainer>
-          <LoginImage source={require('../img/login.png')}/>
+          <LoginImage source={require('../img/profile.png')}/>
         </ImageContainer>
 
         {errors.email && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
