@@ -27,7 +27,7 @@ const [data,setData] = useState([])
   async function handleSignIn(data) {
     console.log(data)
     try {
-      const response = await axios.post(URL+'loginEstabelecimento',{
+      const response = await axios.post(URL+'loginFuncionarios',{
         email: data.email,
         password: data.password
       });
