@@ -25,7 +25,7 @@ export default function Cadastro({ navigation }) {
   async function handleSignIn(data) {
     console.log(data)
     try {
-      const response = await axios.patch('http://192.168.1.75:3333/api/usuarios', {
+      const response = await axios.patch('http://127.0.0.1:3333/api/usuarios', {
         nome: data.nome,
         cpf: data.cpf,
         email: data.email,

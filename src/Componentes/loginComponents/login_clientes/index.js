@@ -10,6 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import URL from '../../../config';
 
 
 export default function TelaLogin({ navigation }) {
@@ -29,7 +30,7 @@ export default function TelaLogin({ navigation }) {
   async function handleSignIn(data) {
     console.log(data)
     try {
-      const response = await axios.post('http://192.168.1.75:3333/api/login', {
+      const response = await axios.post(URL+'login',{
         email: data.email,
         password: data.password
       });
