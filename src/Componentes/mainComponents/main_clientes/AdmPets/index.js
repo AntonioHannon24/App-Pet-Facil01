@@ -1,7 +1,8 @@
 import React from 'react';
 import { ContainerMain} from "../Style";
-import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonText2, ViewButon, IconEmpresa, NomePet, TextAdm, IconPet } from './Style'
+import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2,ButtonContainer3, ButtonText2, ViewButon, IconEmpresa, NomePet, TextAdm, IconPet } from './Style'
 import { ScrollView} from 'react-native';
+
 
 const width = "110px";
 
@@ -46,9 +47,12 @@ const AdmPets = ({ navigation }) => {
                 </ViewButon>
               </DescriContainer2>
             </View2>
-          </TextContainer2>
+          </TextContainer2> 
         ))}
       </ScrollView>
+      <ButtonContainer3 onPress={() => navigation.navigate('CadastroPets')}>
+            <ButtonText2>Cadastrar Pet</ButtonText2>
+      </ButtonContainer3>
     </ContainerMain>
   );
 };

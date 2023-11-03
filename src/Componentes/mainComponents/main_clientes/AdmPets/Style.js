@@ -35,9 +35,24 @@ export const ButtonContainer2 = styled.TouchableOpacity(props=>({
     marginBottom:"5px",
     borderRadius:"8px",
     backgroundColor:"#fff",
-    border:"1px solid black",
+    border:"1px purple",
     alignItems:"center",
     justifyContent: "center",
+
+}));// ok 
+
+export const ButtonContainer3 = styled.TouchableOpacity(props=>({
+    
+    padding:"10px",
+    height:"40px",
+    width:props.width || "200px",
+    marginTop:"10px",
+    marginBottom:"10px",
+    borderRadius:"8px",
+    backgroundColor:"#fff",
+    border:"1px purple",
+    alignItems:"center",
+
 
 }));// ok 
 
