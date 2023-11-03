@@ -43,13 +43,13 @@ const TelaEstabelecimentos = ({ navigation }) => {
     <ContainerMain>
        <TextContainer>
         <IconLogin source={require('../img/profile.png')} />
-        {/* <View>
-          <WelcomeText>Bem-vindo PetHelper!</WelcomeText>
-          <ButtonEdit>Editar Perfil</ButtonEdit>
-        </View>
-        <View>
-          <ButtonExit onPress={() => navigation.navigate("LoginEstabelecimento")}> Sair</ButtonExit>
-        </View> */}
+          <View>
+            <WelcomeText>Bem-vindo PetHelper!</WelcomeText>
+            <ButtonEdit>Editar Perfil</ButtonEdit>
+          </View> 
+            <View> 
+              <ButtonExit onPress={() => navigation.navigate("LoginEstabelecimento")}> Sair</ButtonExit>
+            </View> 
       </TextContainer>
       <ScrollView>
         {data.map((item, index) => (
