@@ -4,17 +4,18 @@ import { useForm, Controller } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios';
+import URL from '../../../../config'
+
 
 export default function CadastroPets({ navigation }) {
 
   const schema = yup.object({// verifica o erro e transmite a mensagem
-    nome: yup.string().required("Digite seu nome"),
-    cpf: yup.string().min(11, "O CPF tem 11 caracteres").required("Digite seu CPF"),
-    endereco: yup.string().required("Digite seu endereço"),
-    cidade: yup.string().required("Digite sua cidade"),
-    telefone: yup.string().min(11, "O numero deve conter DDD + 9 + oito digitos ").required("Digite seu telefone"),
-    email: yup.string().email("E-mail invalido").required("Digite seu E-mail"),
-    password: yup.string().required("Digite sua senha"),
+    nome: yup.string().required("Digite o nome do seu Pet"),
+    idade: yup.string().required("Digite a idade do seu Pet"),
+    cor: yup.string().required("Digite a cor do seu Pet"),
+    porte: yup.string().required("Digite o porte do seu Pet"),
+    peso: yup.string().required("Digite o peso do seu Pet"),
+    raça: yup.string().required("Digite a raça do seu Pet"),
   })
 
   // cria o formulario
@@ -25,12 +26,13 @@ export default function CadastroPets({ navigation }) {
   async function handleSignIn(data) {
     console.log(data)
     try {
-      const response = await axios.patch('http://127.0.0.1:3333/api/usuarios', {
+      const response = await axios.post(URL+'pets',{
         nome: data.nome,
-        cpf: data.cpf,
-        email: data.email,
-        cidade_id: data.cidade,
-        password: data.password,
+        idade: data.idade,
+        cor: data.cor,
+        porte: data.porte,
+        peso: data.peso,
+        raça: data.raça,
       });
 
       if (response.status === 200) {
@@ -69,58 +71,49 @@ export default function CadastroPets({ navigation }) {
         )}
       />
 
-      {errors.cpf && <ErrorMessage>{errors.cpf?.message}</ErrorMessage>}
+{errors.idade && <ErrorMessage>{errors.idade?.message}</ErrorMessage>}
       <Controller
         control={control}
-        name='cpf'
+        name='idade'
         render={({ field: { onChange, onBlur, value } }) => (
-          <InputArea placeholder="Cpf" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.cpf} />
+          <InputArea placeholder="idade" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.idade} />
         )}
       />
 
-      {errors.endereco && <ErrorMessage>{errors.endereco?.message}</ErrorMessage>}
+      {errors.cor && <ErrorMessage>{errors.cor?.message}</ErrorMessage>}
       <Controller
         control={control}
-        name='endereco'
+        name='cor'
         render={({ field: { onChange, onBlur, value } }) => (
-          <InputArea placeholder="Endereço" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.endereco} />
+          <InputArea placeholder="cor" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.cor} />
         )}
       />
 
-      {errors.cidade && <ErrorMessage>{errors.cidade?.message}</ErrorMessage>}
+      {errors.porte && <ErrorMessage>{errors.porte?.message}</ErrorMessage>}
       <Controller
         control={control}
-        name='cidade'
+        name='porte'
         render={({ field: { onChange, onBlur, value } }) => (
-          <InputArea placeholder="Cidade" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.cidade} />
+          <InputArea placeholder="porte" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.porte} />
         )}
       />
 
-      {errors.telefone && <ErrorMessage>{errors.telefone?.message}</ErrorMessage>}
+      {errors.peso && <ErrorMessage>{errors.peso?.message}</ErrorMessage>}
       <Controller
         control={control}
-        name='telefone'
+        name='peso'
         render={({ field: { onChange, onBlur, value } }) => (
-          <InputArea placeholder="Telefone" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.telefone} />
+        <InputArea placeholder="peso" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.peso} />
         )}
       />  
 
-      {errors.email && <ErrorMessage>{errors.email?.email}</ErrorMessage>}
+      {errors.raca && <ErrorMessage>{errors.raca?.message}</ErrorMessage>}
       <Controller
         control={control}
-        name='email'
+        name='raca'
         render={({ field: { onChange, onBlur, value } }) => (
-          <InputArea placeholder="email" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.email} />
-        )}
-      />
-
-      {errors.password && <ErrorMessage>{errors.password?.password}</ErrorMessage>}
-      <Controller
-        control={control}
-        name='password'
-        render={({ field: { onChange, onBlur, value } }) => (
-          <InputArea placeholder="password" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.password} />
-        )}
+        <InputArea placeholder="raca" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.raca} />
+      )}
       />
 
       <ButtonContainer >
