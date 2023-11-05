@@ -55,15 +55,13 @@ export const PerfilContainer = styled.View`
 `;
 
 
-export const ButtonsContainer = styled.View(props=>({
-    paddingTop:20,
-    paddingLeft:props.paddingLeft || 20,
-    paddingRight:20,
-    paddingBottom:20,
-    flexDirection: "row",
-    alignItems:"center",
-    borderColor: 'purple',
-}));
+export const ButtonsContainer = styled.View`
+    padding:25px;
+    flex-direction: row;
+    align-items:center;
+    display: flex;
+    justify-content: space-between;
+`;
 
 export const ButtonsContainerPainel = styled.View`
 

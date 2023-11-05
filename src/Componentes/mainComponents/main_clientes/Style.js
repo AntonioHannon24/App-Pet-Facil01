@@ -13,6 +13,7 @@ export const IconLogin = styled.Image`
     border-radius: 200px; 
     border-width: 3px;
     border-color: purple; 
+    margin-top: 20px;
 `;
 
 export const PetContainer = styled.View`
@@ -40,8 +41,8 @@ export const View = styled.View`
 `;
 
 export const HeaderContainer = styled.View`
-  backgroundColor: purple;
-  margin-bottom: 30px;
+  background-color: purple;
+  margin-top: 30px;
   align-items: center;
   height: 40px;
 `;

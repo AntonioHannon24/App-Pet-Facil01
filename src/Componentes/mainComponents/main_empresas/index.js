@@ -2,7 +2,7 @@ import React from "react";
 import { ContainerMain, IconLogin, TextContainer, WelcomeText, ButtonsContainer2 } from "../estilos_main";
 import {View} from "../../Estilos"
 import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonText2, ViewButon, IconEmpresa, NomePet, TextAdm, IconPet, ButtonEdit, ButtonExit } from './Style'
-import { ScrollView} from 'react-native';
+import { ScrollView,Text, TouchableOpacity} from 'react-native';
 
 const width = "110px";
 
@@ -43,13 +43,15 @@ const TelaEstabelecimentos = ({ navigation }) => {
     <ContainerMain>
        <TextContainer>
         <IconLogin source={require('../img/profile.png')} />
-          <View>
-            <WelcomeText>Bem-vindo PetHelper!</WelcomeText>
-            <ButtonEdit>Editar Perfil</ButtonEdit>
-          </View> 
-            <View> 
-              <ButtonExit onPress={() => navigation.navigate("LoginEstabelecimento")}> Sair</ButtonExit>
-            </View> 
+        <View>
+      <Text style={WelcomeText}>Bem-vindo PetHelper!</Text>
+      <TouchableOpacity style={ButtonEdit}>
+        <Text>Editar Perfil</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={ButtonExit} onPress={() => navigation.navigate("LoginEstabelecimento")}>
+        <Text>Sair</Text>
+      </TouchableOpacity>
+    </View>
       </TextContainer>
       <ScrollView>
         {data.map((item, index) => (

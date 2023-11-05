@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ContainerMain, IconLogin, PetTextContainer, View, PetText } from "../Style";
+import { ContainerMain, IconLogin, PetTextContainer, View, PetText,HeaderContainer, HeaderText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js";
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
 import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine } from './Style';
@@ -73,8 +73,11 @@ const AgendamentosClientes = ({ navigation }) => {
 
   return (
     <ContainerMain {...panResponder.panHandlers}>
+        <HeaderContainer>
+          <HeaderText>PET HELPER</HeaderText>
+        </HeaderContainer>
       <TextContainer>
-        <IconLogin source={require("../../img/profile.png")} />
+        <IconLogin source={require("../../img/dog1.png")} />
         <View>
           <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
           <PetTextContainer>
@@ -85,13 +88,13 @@ const AgendamentosClientes = ({ navigation }) => {
         </View>
       </TextContainer>
       <ButtonsContainer>
-        <ButtonContainer width={width}>
-          <ButtonText onPress={() => navigation.navigate("TelaUser")}>Meu perfil</ButtonText>
+      <ButtonContainer width={"120px"}>
+          <ButtonText onPress={() => navigation.navigate("TelaUsuarios")}>Meu perfil</ButtonText>
         </ButtonContainer>
-        <ButtonContainer width={width}>
+        <ButtonContainer width={"120px"}>
           <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
         </ButtonContainer>
-        <ButtonContainer width={width}>
+        <ButtonContainer width={"115px"}>
           <ButtonText onPress={() => navigation.navigate("PetHelpers")}>PetHelpers</ButtonText>
         </ButtonContainer>
       </ButtonsContainer>

@@ -4,6 +4,7 @@ import { useForm, Controller } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios';
+import URL from '../../../config'
 
 export default function Cadastro({ navigation }) {
 
@@ -25,7 +26,7 @@ export default function Cadastro({ navigation }) {
   async function handleSignIn(data) {
     console.log(data)
     try {
-      const response = await axios.patch('http://127.0.0.1:3333/api/usuarios', {
+      const response = await axios.post(URL+'usuarios',{
         nome: data.nome,
         cpf: data.cpf,
         email: data.email,

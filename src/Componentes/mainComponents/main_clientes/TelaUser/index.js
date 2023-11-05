@@ -91,13 +91,13 @@ const TelaUser = ({ navigation }) => {
       </TextContainer>
 
       <ButtonsContainer>
-        <ButtonContainer width={width}>
+        <ButtonContainer width={"120px"}>
           <ButtonText onPress={() => navigation.navigate("TelaUsuarios")}>Meu perfil</ButtonText>
         </ButtonContainer>
-        <ButtonContainer width={width}>
+        <ButtonContainer width={"120px"}>
           <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
         </ButtonContainer>
-        <ButtonContainer width={width}>
+        <ButtonContainer width={"115px"}>
           <ButtonText onPress={() => navigation.navigate("PetHelpers")}>PetHelpers</ButtonText>
         </ButtonContainer>
       </ButtonsContainer>
