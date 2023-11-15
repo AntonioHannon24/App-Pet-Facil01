@@ -71,7 +71,7 @@ export default function CadastroPets({ navigation }) {
         )}
       />
 
-{errors.idade && <ErrorMessage>{errors.idade?.message}</ErrorMessage>}
+      {errors.idade && <ErrorMessage>{errors.idade?.message}</ErrorMessage>}
       <Controller
         control={control}
         name='idade'

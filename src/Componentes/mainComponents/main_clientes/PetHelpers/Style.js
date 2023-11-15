@@ -80,15 +80,17 @@ export const Container = styled.View`
   background-color: white;
   justify-content: center;
   align-items: center;
-  margin: 50px;
-  border-radius: 50px;
-  border: 3px purple;
+  margin-top: 62px;
+  margin-bottom: -27px;
+  margin-left: -33px;
+  margin-right: 1px;
+  border-width: 3px;
+  border-color: purple;
 `;
 
 export const Title = styled.Text`
   font-size: 20px;
-  margin-top: 2px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `;
 
 export const ServicoItem = styled.TouchableOpacity`
@@ -97,4 +99,24 @@ export const ServicoItem = styled.TouchableOpacity`
 
 export const ServicoText = styled.Text`
   font-size: 15px;
+`;
+
+export const Container2 = styled.View`
+  flex: 1;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  margin-left: -20px;
+`;
+
+export const buttonStyle = styled.Text`
+  padding: 10;
+  border-Radius: 5;
+  margin: 50px;
+  font-size: 20px;
+`;
+
+export const TextDescri = styled.Text`
+  fontSize: 18;
+  margin-bottom: 5px;
 `;
