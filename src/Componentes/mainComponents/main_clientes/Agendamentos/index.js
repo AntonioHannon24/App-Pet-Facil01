@@ -101,7 +101,6 @@ const AgendamentosClientes = ({ navigation }) => {
 
       <Container>
         <CalendarContainer>
-        <Calendar />
         </CalendarContainer>
       </Container>
 

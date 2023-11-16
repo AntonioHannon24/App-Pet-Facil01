@@ -117,6 +117,17 @@ export const buttonStyle = styled.Text`
 `;
 
 export const TextDescri = styled.Text`
-  fontSize: 18;
+  font-Size: 17;
   margin-bottom: 5px;
+  margin-right: 5;
 `;
+
+export const Container3 = styled.View`
+  flex: 1;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  margin-left: -20px;
+  flex-direction: row;
+`;
+

@@ -21,9 +21,6 @@ const Calendar = () => {
 
   return (
     <Container>
-      <CalendarButton onPress={showDatePicker}>
-        <ButtonText>Calendário</ButtonText>
-      </CalendarButton>
       {selectedDate && <Text>Data selecionada: {selectedDate}</Text>}
       <DateTimePickerModal
         isVisible={isDatePickerVisible}

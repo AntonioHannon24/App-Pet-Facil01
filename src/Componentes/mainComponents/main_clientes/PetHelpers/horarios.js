@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {
   Container,
   Title,
@@ -7,6 +8,7 @@ import {
   ServicoText,
   View2,
   Container2,
+  Container3,
   ButtonContainer2,
   buttonStyle,
   TextDescri,
@@ -31,11 +33,13 @@ const petsData = [
 
 const horariosDisponiveis = ['9:00', '10:00', '11:00', '14:00', '15:00', '16:00'];
 
-const ServicosDisponiveis = ({ onSelectServico, onClose }) => {
+const ServicosDisponiveis = ({ onClose }) => {
   const [selectedPet, setSelectedPet] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedHorario, setSelectedHorario] = useState(null);
+
+  const navigation = useNavigation();
 
   const handlePetSelection = (petId) => {
     setSelectedPet(petId);
@@ -43,6 +47,26 @@ const ServicosDisponiveis = ({ onSelectServico, onClose }) => {
 
   const handleServiceSelection = (service) => {
     setSelectedService(service);
+  };
+
+  const handleHorarioSelection = (horario) => {
+    setSelectedHorario(horario);
+
+    // Abre a tela do calendário quando um horário é selecionado
+    navigation.navigate('Calendar', {
+      pet: selectedPet,
+      servico: selectedService,
+      horario: horario,
+    });
+  };
+
+  const handleConfirm = () => {
+    // Aqui você pode navegar para a próxima tela e passar as informações selecionadas
+    navigation.navigate('AgendamentosClientes', {
+      pet: selectedPet,
+      servico: selectedService,
+      horario: selectedHorario,
+    });
   };
 
   return (
@@ -79,13 +103,30 @@ const ServicosDisponiveis = ({ onSelectServico, onClose }) => {
         </Container2>
       )}
 
-      {/* Adicione aqui a seleção de data e horário */}
-      
+      {selectedService && (
+        <Container2>
+          <Title>Selecione um horário:</Title>
+          <Container3>
+            {horariosDisponiveis.map((horario) => (
+              <TouchableOpacity
+                key={horario}
+                onPress={() => handleHorarioSelection(horario)}
+                style={{
+                  ...buttonStyle,
+                  backgroundColor: selectedHorario === horario ? 'purple' : 'white',
+                }}>
+                <TextDescri>{horario}</TextDescri>
+              </TouchableOpacity>
+            ))}
+          </Container3>
+        </Container2>
+      )}
+
       <ButtonContainer2>
-        <TouchableOpacity onPress={onClose}>
+        <TouchableOpacity onPress={handleConfirm}>
           <Text>Confirmar</Text>
         </TouchableOpacity>
-      </ButtonContainer2>      
+      </ButtonContainer2>
 
       <ButtonContainer2>
         <TouchableOpacity onPress={onClose}>

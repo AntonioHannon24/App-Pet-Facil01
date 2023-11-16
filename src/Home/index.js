@@ -14,6 +14,7 @@ import AdmPerfil from '../Componentes/mainComponents/main_clientes/AdmPerfil';
 import MeusAgendamentos from '../Componentes/mainComponents/main_clientes/Agendamentos/MeusAgendamentos';
 import TelaUser from "../Componentes/mainComponents/main_clientes/TelaUser"
 import CadastroPets from '../Componentes/mainComponents/main_clientes/AdmPets/CadPets';
+import Calendar from '../Componentes/mainComponents/main_clientes/Agendamentos/Calendar';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,7 @@ export default function Home() {
         <Stack.Screen name="TelaUser" component={TelaUser} options={{ headerShown: false }} />
         <Stack.Screen name="MeusAgendamentos" component={MeusAgendamentos} options={{ headerShown: false }} />
         <Stack.Screen name="CadastroPets" component={CadastroPets} options={{ headerShown: false }} />
+        <Stack.Screen name="Calendar" component={Calendar} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
