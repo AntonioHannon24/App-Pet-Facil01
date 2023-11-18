@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import FloatingScreen from './FloatingScreen';
+
 
 const Container = styled.View`
   flex: 1;

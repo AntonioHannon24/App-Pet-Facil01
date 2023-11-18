@@ -4,7 +4,6 @@ import { ButtonContainer, ButtonText } from "../../../Estilos.js";
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
 import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine } from './Style';
 import Calendar from './Calendar'; // Importe o componente do calendário
-import FloatingScreen from './FloatingScreen';
 import MeusAgendamentos from './MeusAgendamentos';
 import {Text , Linking, PanResponder, TouchableOpacity } from 'react-native';
 
