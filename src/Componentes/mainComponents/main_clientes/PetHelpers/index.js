@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ContainerMain, IconLogin, PetTextContainer, View, PetText,HeaderContainer, HeaderText  } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js"
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
@@ -6,37 +6,39 @@ import { TextContainer2, View2, DescriContainer2, DescriText, IconEmpresa, NomeE
 import { ScrollView } from 'react-native';
 import {Text , Linking, PanResponder, TouchableOpacity } from 'react-native';
 import ServicosDisponiveis from './horarios';
+import axios from 'axios';
+import URL from '../../../../config'
 
 
 const width = "110px";
 
-const data = [
-  {
-    nomeEmpresa: 'PetShop 1',
-    localizacao: 'teste',
-    servicos: ['banho', 'tosa'],
-    avaliacoes: 'teste',
-  },
-  {
-    nomeEmpresa: 'PetShop 2',
-    localizacao: 'teste',
-    servicos: ['banho', 'tosa', 'banho + tosa'],
-    avaliacoes: 'teste',
-  },
-  {
-    nomeEmpresa: 'PetShop 3',
-    localizacao: 'teste',
-    servicos: ['banho', 'tosa', 'banho + tosa'],
-    avaliacoes: 'teste',
-  },
-];
-
 const PetHelpers = ({ navigation }) => {
-
   const [isServicosFlutuanteVisible, setServicosFlutuanteVisible] = useState(false);
   const [selectedServico, setSelectedServico] = useState(null);
+  const [petShops, setPetShops] = useState([]);
 
-  const handleOpenServicosFlutuante = () => {
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(URL+'allEstabs');
+
+        if (response.status === 200) {
+          setPetShops(response.data.data); // Update state with the correct data property
+          console.log('Dados da API obtidos com sucesso:', response.data.data);
+        } else {
+          console.log('Erro desconhecido ao obter dados da API:', response.data.message);
+        }
+      } catch (error) {
+        console.error('Erro ao obter dados da API:', error.message);
+      }
+    }
+
+    fetchData();
+  }, []); // Executa apenas uma vez no carregamento do componente
+
+
+  const handleOpenServicosFlutuante = (item) => {
+    setSelectedServico(item);
     setServicosFlutuanteVisible(true);
   };
 
@@ -85,21 +87,23 @@ const PetHelpers = ({ navigation }) => {
         </ButtonContainer>
         </ButtonsContainer>
 
-        {data.map((item, index) => (
-          <TextContainer2 key={index}>
-            <TouchableOpacity onPress={handleOpenServicosFlutuante}> 
-              <IconEmpresa source={require("../../img/profile.png")} />
-            </TouchableOpacity>
-            <View2>
-              <NomeEmpresa>{item.nomeEmpresa}</NomeEmpresa>
-              <DescriContainer2>
-                <DescriText><Text>Localização:</Text> {item.localizacao}</DescriText>
-                <DescriText><Text>Serviços:</Text> {item.servicos.join(', ')}</DescriText>
-                <DescriText><Text>Avaliações:</Text> {item.avaliacoes}</DescriText>
-                </DescriContainer2>
-            </View2>
-          </TextContainer2>
-        ))}
+    <ScrollView>   
+    {petShops.map((item, index) => (
+    <TextContainer2 key={index}>
+      <TouchableOpacity onPress={() => handleOpenServicosFlutuante(item)}>
+        <IconEmpresa source={require("../../img/profile.png")} />
+      </TouchableOpacity>
+    <View2>
+      <NomeEmpresa>Nome: {item.nome}</NomeEmpresa>
+      <DescriContainer2>
+        <DescriText>Endereço: {item.endereco}</DescriText>
+        <DescriText>Serviços: {item.servicos ? item.servicos.join(', ') : 'Nenhum serviço disponível'}</DescriText>
+      </DescriContainer2>
+    </View2>
+  </TextContainer2>
+))}
+    </ScrollView>
+
       </ScrollView>
       {isServicosFlutuanteVisible && (
         <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2 }}>

@@ -37,10 +37,9 @@ export default function TelaLogin({ navigation }) {
 
       if (response.status === 200) {
         
-        // AsyncStorage.setItem('apiToken', response.data.token.token)
-        // AsyncStorage.setItem('type', response.data.token.type)
-        // AsyncStorage.setItem('idUser', response.data.user.id);
-        // AsyncStorage.setItem('sessao', 1); // 0 ou null que dizer que o usuário esta deslogado; 1  logado
+        AsyncStorage.setItem('apiToken', response.data.token.token);
+        AsyncStorage.setItem('userId', response.data.user.id.toString());
+        // ... armazenar outras informações do usuário se necessário
 
         navigation.navigate('TelaUser');
         console.log(response.data.message);
