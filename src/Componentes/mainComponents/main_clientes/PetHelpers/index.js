@@ -4,6 +4,7 @@ import { ButtonContainer, ButtonText } from "../../../Estilos.js"
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
 import { TextContainer2, View2, DescriContainer2, DescriText, IconEmpresa, NomeEmpresa } from './Style'
 import { ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import {Text , Linking, PanResponder, TouchableOpacity } from 'react-native';
 import ServicosDisponiveis from './horarios';
 import axios from 'axios';
@@ -12,7 +13,8 @@ import URL from '../../../../config'
 
 const width = "110px";
 
-const PetHelpers = ({ navigation }) => {
+const PetHelpers = () => {
+  const navigation = useNavigation();
   const [isServicosFlutuanteVisible, setServicosFlutuanteVisible] = useState(false);
   const [selectedServico, setSelectedServico] = useState(null);
   const [petShops, setPetShops] = useState([]);
@@ -87,10 +89,9 @@ const PetHelpers = ({ navigation }) => {
         </ButtonContainer>
         </ButtonsContainer>
 
-    <ScrollView>   
-    {petShops.map((item, index) => (
+        {petShops.map((item, index) => (
     <TextContainer2 key={index}>
-      <TouchableOpacity onPress={() => handleOpenServicosFlutuante(item)}>
+      <TouchableOpacity>
         <IconEmpresa source={require("../../img/profile.png")} />
       </TouchableOpacity>
       <View2>
@@ -99,10 +100,14 @@ const PetHelpers = ({ navigation }) => {
           <DescriText>Endereço: {item.endereco}</DescriText>
           <DescriText>Serviços: {item.servico.length > 0 ? item.servico.map(servico => servico.nome).join(', ') : 'Nenhum serviço disponível'}</DescriText>
         </DescriContainer2>
+        <TouchableOpacity>
+          <ButtonContainer onPress={() => navigation.navigate("ServicosDisponiveis")}>
+            <ButtonText>Ver horários</ButtonText>
+          </ButtonContainer>
+        </TouchableOpacity>
       </View2>
     </TextContainer2>
   ))}
-    </ScrollView>
 
       </ScrollView>
       {isServicosFlutuanteVisible && (

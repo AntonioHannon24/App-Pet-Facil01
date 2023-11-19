@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {
-  Container,
-  Title,
-  ServicoItem,
-  ServicoText,
-  View2,
-  Container2,
-  Container3,
-  ButtonContainer2,
-  buttonStyle,
-  TextDescri,
-} from './Style';
+import {Container,Title,ServicoItem,ServicoText,View2,Container2,Container3,ButtonContainer2,buttonStyle,TextDescri} from './Style';
 
 const servicosDisponiveis = ['Banho', 'Banho e Tosa', 'Tosa Higiênica'];
 
