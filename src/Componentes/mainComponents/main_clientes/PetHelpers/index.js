@@ -20,7 +20,7 @@ const PetHelpers = ({ navigation }) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get(URL+'allEstabs');
+        const response = await axios.get(URL+'estabelecimentos');
 
         if (response.status === 200) {
           setPetShops(response.data.data); // Update state with the correct data property
@@ -93,15 +93,15 @@ const PetHelpers = ({ navigation }) => {
       <TouchableOpacity onPress={() => handleOpenServicosFlutuante(item)}>
         <IconEmpresa source={require("../../img/profile.png")} />
       </TouchableOpacity>
-    <View2>
-      <NomeEmpresa>Nome: {item.nome}</NomeEmpresa>
-      <DescriContainer2>
-        <DescriText>Endereço: {item.endereco}</DescriText>
-        <DescriText>Serviços: {item.servicos ? item.servicos.join(', ') : 'Nenhum serviço disponível'}</DescriText>
-      </DescriContainer2>
-    </View2>
-  </TextContainer2>
-))}
+      <View2>
+        <NomeEmpresa>Nome: {item.nome}</NomeEmpresa>
+        <DescriContainer2>
+          <DescriText>Endereço: {item.endereco}</DescriText>
+          <DescriText>Serviços: {item.servico.length > 0 ? item.servico.map(servico => servico.nome).join(', ') : 'Nenhum serviço disponível'}</DescriText>
+        </DescriContainer2>
+      </View2>
+    </TextContainer2>
+  ))}
     </ScrollView>
 
       </ScrollView>
