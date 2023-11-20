@@ -101,7 +101,7 @@ const PetHelpers = () => {
           <DescriText>Serviços: {item.servico.length > 0 ? item.servico.map(servico => servico.nome).join(', ') : 'Nenhum serviço disponível'}</DescriText>
         </DescriContainer2>
         <TouchableOpacity>
-          <ButtonContainer onPress={() => navigation.navigate("ServicosDisponiveis")}>
+          <ButtonContainer onPress={() => navigation.navigate("ServicosDisponiveis", { petshop: item })}>
             <ButtonText>Ver horários</ButtonText>
           </ButtonContainer>
         </TouchableOpacity>

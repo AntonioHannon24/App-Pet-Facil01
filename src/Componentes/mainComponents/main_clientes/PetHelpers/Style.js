@@ -80,9 +80,9 @@ export const Container = styled.View`
   background-color: white;
   justify-content: center;
   align-items: center;
-  margin-top: 62px;
-  margin-bottom: -27px;
-  margin-left: -33px;
+  margin-top: 40px;
+  margin-bottom: 2px;
+  margin-left: 2px;
   margin-right: 1px;
   border-width: 3px;
   border-color: purple;
