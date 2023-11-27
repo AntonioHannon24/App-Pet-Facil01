@@ -78,12 +78,6 @@ const AgendamentosClientes = ({ navigation }) => {
       <TextContainer>
         <IconLogin source={require("../../img/dog1.png")} />
         <View>
-          <WelcomeText>Bem-vindo usuário(a), e sua Pet Family</WelcomeText>
-          <PetTextContainer>
-            <PetText><Text>Pet 1</Text></PetText>
-            <PetText><Text>Pet 2</Text></PetText>
-            <PetText><Text>Pet 3</Text></PetText>
-          </PetTextContainer>
         </View>
       </TextContainer>
       <ButtonsContainer>

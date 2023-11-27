@@ -28,7 +28,6 @@ export default function TelaLogin({ navigation }) {
   });
 
   async function handleSignIn(data) {
-    console.log(data)
     try {
       const response = await axios.post(URL+'login',{
         email: data.email,
@@ -36,13 +35,22 @@ export default function TelaLogin({ navigation }) {
       });
 
       if (response.status === 200) {
+        //AsyncStorage.setItem('apiToken', response.data.token.token);
+       // AsyncStorage.setItem('userId', response.data.user.id.toString());
+
+
+      
+          try {
+            await AsyncStorage.setItem('userId', response.data.user.id.toString());
+            console.log('sucesso!!')
+          } catch (error) {
+             console.log(error.message);
+          }
         
-        AsyncStorage.setItem('apiToken', response.data.token.token);
-        AsyncStorage.setItem('userId', response.data.user.id.toString());
         // ... armazenar outras informações do usuário se necessário
 
         navigation.navigate('TelaUser');
-        console.log(response.data.message);
+        console.log(response.data.user.id + 'este aqui');
       } else if (response.status === 401) {
         console.log(response.data.message);
       } else {

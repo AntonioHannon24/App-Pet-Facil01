@@ -20,6 +20,8 @@ const PetHelpers = () => {
   const [petShops, setPetShops] = useState([]);
 
   useEffect(() => {
+
+
     async function fetchData() {
       try {
         const response = await axios.get(URL+'estabelecimentos');
