@@ -1,45 +1,63 @@
-import React from 'react';
-import { ContainerMain} from "../Style";
-import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2,ButtonContainer3, ButtonText2, ViewButon, IconEmpresa, NomePet, TextAdm, IconPet } from './Style'
-import { ScrollView} from 'react-native';
-
+import React, { useState, useEffect } from 'react';
+import { ContainerMain } from "../Style";
+import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonContainer3, ButtonText2, ViewButon, IconPet, NomePet, TextAdm } from './Style'
+import { ScrollView } from 'react-native';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import URL from '../../../../config'
 
 const width = "110px";
 
-const data = [
-  {
-    NomePet: 'Pet 1',
-    Raça: 'Raça Pet 1',
-    Cor: 'Cor Pet 1',
-    Idade: 'Idade Pet 1',
-  },
-  {
-    NomePet: 'Pet 2',
-    Raça: 'Raça Pet 2',
-    Cor: 'Cor Pet 2',
-    Idade: 'Idade Pet 2',
-  },
-  {
-    NomePet: 'Pet 3',
-    Raça: 'Raça Pet 3',
-    Cor: 'Cor Pet 3',
-    Idade: 'Idade Pet 3',
-  },
-];
-
 const AdmPets = ({ navigation }) => {
+  const [userId, setUserId] = useState(null);
+  const [pets, setPets] = useState([]);
+
+  // Exemplo de recuperação do token na tela de Serviços Disponíveis
+  useEffect(() => {
+    const getUserid = async () => {
+      try {
+        const userId = await AsyncStorage.getItem('userId');
+        if (userId) {
+          setUserId(userId);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    getUserid();
+  }, []);
+
+  useEffect(() => {
+    if (userId) {
+      fetchUserPets();
+    }
+  }, [userId]);
+
+  const fetchUserPets = async () => {
+    try {
+      const url = `${URL}usuarios/${userId}/pets`;
+      console.log('URL da requisição:', url);
+      const response = await axios.get(url);
+      setPets(response.data.data);
+      console.log('Dados da API obtidos com sucesso:', response.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <ContainerMain>
       <ScrollView>
-        {data.map((item, index) => (
+        {pets.map((pet, index) => (
           <TextContainer2 key={index}>
             <IconPet source={require("../../img/cara-de-cachorro.png")} />
             <View2>
-              <NomePet>{item.NomePet}</NomePet>
+              <NomePet>{pet.nome}</NomePet>
               <DescriContainer2>
-                <DescriText><TextAdm>Raça:</TextAdm>{item.Raça}</DescriText>
-                <DescriText><TextAdm>Cor:</TextAdm>{item.Cor}</DescriText>
-                <DescriText><TextAdm>Idade:</TextAdm>{item.Idade}</DescriText>
+                <DescriText><TextAdm>Idade:</TextAdm>{pet.idade}</DescriText>
+                <DescriText><TextAdm>Cor:</TextAdm>{pet.cor}</DescriText>
+                {/* Adicione mais propriedades conforme necessário */}
                 <ViewButon>
                   <ButtonContainer2 width={width}>
                     <ButtonText2>Editar</ButtonText2>
@@ -47,11 +65,11 @@ const AdmPets = ({ navigation }) => {
                 </ViewButon>
               </DescriContainer2>
             </View2>
-          </TextContainer2> 
+          </TextContainer2>
         ))}
       </ScrollView>
       <ButtonContainer3 onPress={() => navigation.navigate('CadastroPets')}>
-            <ButtonText2>Cadastrar Pet</ButtonText2>
+        <ButtonText2>Cadastrar Pet</ButtonText2>
       </ButtonContainer3>
     </ContainerMain>
   );

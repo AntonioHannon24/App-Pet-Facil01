@@ -41,26 +41,25 @@ export const ButtonContainer2 = styled.TouchableOpacity(props=>({
 
 }));// ok 
 
-export const ButtonContainer3 = styled.TouchableOpacity(props=>({
-    
-    padding:"10px",
-    height:"40px",
-    width:props.width || "200px",
-    marginTop:"10px",
-    marginBottom:"10px",
-    borderRadius:"8px",
-    backgroundColor:"#fff",
-    border:"1px purple",
-    alignItems:"center",
+export const ButtonContainer3 = styled.TouchableOpacity(props => ({
+    padding: "10px",
+    height: "40px",
+    width: props.width || "200px",
+    marginTop: "10px",
+    marginBottom: "10px",
+    borderRadius: "8px",
+    backgroundColor: "#fff",
+    borderWidth: "1px", // Corrigido para "borderWidth"
+    borderColor: "purple", // Corrigido para "borderColor"
+    alignItems: "center",
+    justifyContent: "center", // Adicionado para centralizar verticalmente
+  }));
 
-
-}));// ok 
-
-export const ButtonText2 = styled.Text`
-    color:${props => props.theme.color};
-    font-size:14px;
-    padding-top: 1px;
-
+  export const ButtonText2 = styled.Text`
+  color: ${props => props.theme.color};
+  font-size: 14px;
+  padding-top: 1px;
+  text-align: center; /* Adicionado para centralizar o texto horizontalmente */
 `;
 
 export const ViewButon = styled.Text`
