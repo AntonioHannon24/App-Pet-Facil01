@@ -15,7 +15,8 @@ export default function CadastroPets({ navigation }) {
     cor: yup.string().required("Digite a cor do seu Pet"),
     porte: yup.string().required("Digite o porte do seu Pet"),
     peso: yup.string().required("Digite o peso do seu Pet"),
-    raça: yup.string().required("Digite a raça do seu Pet"),
+    raca_id: yup.string().required("Digite a raça do seu Pet"),
+    
   })
 
   // cria o formulario
@@ -24,7 +25,7 @@ export default function CadastroPets({ navigation }) {
   
   //botao de envio
   async function handleSignIn(data) {
-    console.log(data)
+  
     try {
       const response = await axios.post(URL+'pets',{
         nome: data.nome,
@@ -32,7 +33,8 @@ export default function CadastroPets({ navigation }) {
         cor: data.cor,
         porte: data.porte,
         peso: data.peso,
-        raça: data.raça,
+        raca_id: data.raca_id,
+        usuario_id: 1,
       });
 
       if (response.status === 200) {
@@ -107,12 +109,12 @@ export default function CadastroPets({ navigation }) {
         )}
       />  
 
-      {errors.raca && <ErrorMessage>{errors.raca?.message}</ErrorMessage>}
+      {errors.raca_id && <ErrorMessage>{errors.raca_id?.message}</ErrorMessage>}
       <Controller
         control={control}
-        name='raca'
+        name='raca_id'
         render={({ field: { onChange, onBlur, value } }) => (
-        <InputArea placeholder="raca" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.raca} />
+        <InputArea placeholder="raca_id" onChangeText={onChange} onBlur={onBlur} value={value} err={errors.raca_id} />
       )}
       />
 

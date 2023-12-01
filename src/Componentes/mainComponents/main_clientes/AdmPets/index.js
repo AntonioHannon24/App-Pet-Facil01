@@ -24,23 +24,25 @@ const AdmPets = ({ navigation }) => {
         console.log(error.message);
       }
     };
-
+  
     getUserid();
   }, []);
-
+  
   useEffect(() => {
     if (userId) {
       fetchUserPets();
     }
   }, [userId]);
 
+
+
   const fetchUserPets = async () => {
     try {
-      const url = `${URL}usuarios/${userId}/pets`;
-      console.log('URL da requisição:', url);
-      const response = await axios.get(url);
-      setPets(response.data.data);
-      console.log('Dados da API obtidos com sucesso:', response.data.data);
+        const urls = `${URL}usuarios/${userId}`;
+        const response = await axios.get(urls);
+        setPets(response.data.data.pets); 
+        console.log('Dados da API obtidos com sucesso:', response.data.data.pets);
+
     } catch (error) {
       console.error(error);
     }
