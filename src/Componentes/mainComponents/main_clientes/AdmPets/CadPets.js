@@ -40,6 +40,7 @@ export default function CadastroPets({ navigation }) {
       if (response.status === 200) {
         //navigation.navigate('te');
         console.log(response.data.message);
+      navigation.navigate('AdmPets');
       } else if (response.status === 401) {
         console.log(response.data.message);
       } else {

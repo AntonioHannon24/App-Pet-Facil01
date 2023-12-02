@@ -28,7 +28,6 @@ const PetHelpers = () => {
 
         if (response.status === 200) {
           setPetShops(response.data.data); // Update state with the correct data property
-          console.log('Dados da API obtidos com sucesso:', response.data.data);
         } else {
           console.log('Erro desconhecido ao obter dados da API:', response.data.message);
         }
@@ -41,11 +40,23 @@ const PetHelpers = () => {
   }, []); // Executa apenas uma vez no carregamento do componente
 
 
-  const handleOpenServicosFlutuante = (item) => {
+  const handleOpenServicosFlutuante = async (item) => {
     setSelectedServico(item);
     setServicosFlutuanteVisible(true);
+
+    try {
+      // Buscar os horários disponíveis para o estabelecimento
+      const response = await axios.get(URL + 'horario');
+      const horariosDisponiveis = response.data;
+
+      // Passar os horários disponíveis como props para o componente ServicosDisponiveis
+      setHorariosDoPetshop(horariosDisponiveis);
+    } catch (error) {
+      console.error('Erro ao obter horários disponíveis:', error.message);
+    }
   };
 
+  
   const handleSelectServico = (servico) => {
     setSelectedServico(servico);
     setServicosFlutuanteVisible(false);
@@ -91,7 +102,7 @@ const PetHelpers = () => {
         </ButtonContainer>
         </ButtonsContainer>
 
-        {petShops.map((item, index) => (
+    {petShops.map((item, index) => (
     <TextContainer2 key={index}>
       <TouchableOpacity>
         <IconEmpresa source={require("../../img/profile.png")} />

@@ -36,7 +36,6 @@ const TelaUser = ({ navigation }) => {
   const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('idUser');
-      console.log("token recuperado",jsonValue != null ? JSON.parse(jsonValue) : null);
     } catch (e) {
       // error reading value
     }

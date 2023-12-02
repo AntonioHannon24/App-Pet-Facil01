@@ -21,14 +21,6 @@ export const Divider = styled.View`
   margin-horizontal: 1px;
 `;
 
-export const CarteiraContainer = styled.View` //array de pets
-  flex-direction: row;
-  align-items: left;
-  margin-right: 200px;
-  margin-left: 10px;
-  margin-top: 8px;
-`;
-
 export const CarteiraText = styled.Text`
     font-size: 15px;
     font-weight: bold;
@@ -49,6 +41,10 @@ export const Text1 = styled.Text`
 export const PefilText = styled.TouchableOpacity`
     margin-right: 12px;
     margin-bottom: 10px;
-    font-size: 15;
 `;
 
+export const TextContainer2 = styled.View`
+    flex-direction: column;
+    margin-top: 50px;
+    margin-left: 50px;
+`;

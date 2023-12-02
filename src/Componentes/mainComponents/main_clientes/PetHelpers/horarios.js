@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {Container,Title,ServicoItem,ServicoText,View2,Container2,Container3,ButtonContainer2,buttonStyle,TextDescri} from './Style';
+import { Container, Title, ServicoItem, ServicoText, View2, Container2, Container3, ButtonContainer2, buttonStyle, TextDescri } from './Style';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import URL from '../../../../config';
 
-const servicosDisponiveis = ['Banho', 'Banho e Tosa', 'Tosa Higiênica'];
-
-const horariosDisponiveis = ['9:00', '10:00', '11:00', '14:00', '15:00', '16:00'];
-
-const ServicosDisponiveis = ({ route, onClose }) => {
+const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
   const [selectedPet, setSelectedPet] = useState(null);
   const [selectedService, setSelectedService] = useState(null);
   const [userId, setUserId] = useState(null);
- 
+  const [horariosDoPetshop, setHorariosDoPetshop] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedHorario, setSelectedHorario] = useState(null);
   const [pets, setPets] = useState([]);
+  const { petshop } = route.params;
 
-  const [servicosDoPetshop, setServicosDoPetshop] = useState([]);
-  const [horariosDoPetshop, setHorariosDoPetshop] = useState([]);
+  const [servicosDoPetshop, setServicosDoPetshop] = useState(petshop.servico);
 
   const navigation = useNavigation();
 
@@ -31,9 +27,6 @@ const ServicosDisponiveis = ({ route, onClose }) => {
       setSelectedPetshop(route.params.petshop);
     }
   }, [route.params]);
-
-  
-
 
   // Exemplo de recuperação do token na tela de Serviços Disponíveis
   useEffect(() => {
@@ -47,74 +40,56 @@ const ServicosDisponiveis = ({ route, onClose }) => {
         console.log(error.message);
       }
     };
-  
+
     getUserid();
   }, []);
-  
+
   useEffect(() => {
     if (userId) {
       fetchUserPets();
     }
   }, [userId]);
 
-
-
   const fetchUserPets = async () => {
     try {
-        const urls = `${URL}usuarios/${userId}`;
-        const response = await axios.get(urls);
-        setPets(response.data.data.pets); 
-        console.log('Dados da API obtidos com sucesso:', response.data.data.pets);
-
+      const urls = `${URL}usuarios/${userId}`;
+      const response = await axios.get(urls);
+      setPets(response.data.data.pets);
     } catch (error) {
       console.error(error);
     }
   };
 
-
   const handlePetSelection = async (petId) => {
-  setSelectedPet(petId);
-
-  try {
-    // Substitua 'ID_DO_SEU_PETSHOP' pelo ID do petshop selecionado.
-    const response = await axios.get(URL + 'estabelecimentos');
-
-    if (response.data && response.data.servicos) {
-      setServicosDoPetshop(response.data.servicos);
-    } else {
-      console.log('Dados de response ou servicos estão indefinidos');
-    }
-  } catch (error) {
-    console.error('Erro ao obter serviços do petshop:', error.message);
-  }
+    setSelectedPet(petId);
   };
 
-  const handleServiceSelection = (service) => {
-    setSelectedService(service);
-  // Substitua 'ID_DO_SEU_PETSHOP' e 'ID_DO_SEU_SERVICO' pelos IDs do petshop e serviço selecionados.
-  if (selectedPetshop && service) {
-    axios.get(URL + `estabelecimentos/${selectedPetshop.id}/horarios?servico=${service.id}`)
-      .then((response) => {
-        setHorariosDoPetshop(response.data.horarios);
-      })
-      .catch((error) => {
-        console.error('Erro ao obter horários do petshop:', error.message);
+  const handleServiceSelection = (servico) => {
+    setSelectedService(servico);
+    // Substitua 'ID_DO_SEU_PETSHOP' e 'ID_DO_SEU_SERVICO' pelos IDs do petshop e serviço selecionados.
+    if (selectedPetshop && servico) {
+      axios
+        .get(URL + 'horario')
+        .then((response) => {
+          setHorariosDoPetshop(response.data); // Corrigido para usar setHorariosDoPetshop
+        })
+        .catch((error) => {
+          console.error('Erro ao obter horários do petshop:', error.message);
+        });
+    }
+  };
+
+  const handleHorarioSelection = (horario) => {
+    setSelectedHorario(horario);
+
+    if (selectedPet && selectedService && horario) {
+      navigation.navigate('Calendar', {
+        pet: selectedPet,
+        servico: selectedService,
+        horario: horario,
       });
-  }
-};
-
-const handleHorarioSelection = (horario) => {
-  setSelectedHorario(horario);
-
-  if (selectedPet && selectedService && horario) {
-    navigation.navigate('Calendar', {
-      pet: selectedPet,
-      servico: selectedService,
-      horario: horario,
-    });
-  }
-};
-
+    }
+  };
 
   const handleConfirm = () => {
     // Aqui você pode navegar para a próxima tela e passar as informações selecionadas
@@ -155,7 +130,7 @@ const handleHorarioSelection = (horario) => {
             backgroundColor: selectedService === servico ? 'purple' : 'white',
           }}
         >
-          <TextDescri>{servico.nome}</TextDescri>
+        <TextDescri>Serviços: {petshop.servico.length > 0 ? petshop.servico.map(servico => servico.nome).join(', ') : 'Nenhum serviço disponível'}</TextDescri>
         </TouchableOpacity>
       ))
     ) : (
@@ -168,22 +143,23 @@ const handleHorarioSelection = (horario) => {
   <Container2>
     <Title>Selecione um horário:</Title>
     <Container3>
-      {horariosDoPetshop && horariosDoPetshop.length > 0 ? (
-        horariosDoPetshop.map((horario) => (
-          <TouchableOpacity
-            key={horario}
-            onPress={() => handleHorarioSelection(horario)}
-            style={{
-              ...buttonStyle,
-              backgroundColor: selectedHorario === horario ? 'purple' : 'white',
-            }}
-          >
-            <TextDescri>{horario}</TextDescri>
-          </TouchableOpacity>
-        ))
-      ) : (
-        <TextDescri>Nenhum horário disponível</TextDescri>
-      )}
+    {horariosDoPetshop.length > 0 ? (
+  horariosDoPetshop.map((horario) => (
+    <TouchableOpacity
+      key={horario}
+      onPress={() => handleHorarioSelection(horario)}
+      style={{
+        ...buttonStyle,
+        backgroundColor: selectedHorario === horario ? 'purple' : 'white',
+      }}
+    >
+      <TextDescri>{horario}</TextDescri>
+    </TouchableOpacity>
+  ))
+) : (
+  <TextDescri>Nenhum horário disponível</TextDescri>
+)}
+
     </Container3>
   </Container2>
 )}

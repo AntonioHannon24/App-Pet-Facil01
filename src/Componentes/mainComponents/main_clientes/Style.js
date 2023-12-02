@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 
 export const ContainerMain = styled.View`
     flex: 1;
+    margin-top: 50px;
 `;
 
 export const IconLogin = styled.Image`

@@ -42,7 +42,6 @@ export default function TelaLogin({ navigation }) {
       
           try {
             await AsyncStorage.setItem('userId', response.data.user.id.toString());
-            console.log('sucesso!!')
           } catch (error) {
              console.log(error.message);
           }

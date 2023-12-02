@@ -41,7 +41,6 @@ const AdmPets = ({ navigation }) => {
         const urls = `${URL}usuarios/${userId}`;
         const response = await axios.get(urls);
         setPets(response.data.data.pets); 
-        console.log('Dados da API obtidos com sucesso:', response.data.data.pets);
 
     } catch (error) {
       console.error(error);
