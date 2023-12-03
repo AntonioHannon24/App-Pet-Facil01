@@ -76,7 +76,7 @@ export const IconPet = styled.Image`
 `;
 
 export const NomePet = styled.Text`
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     justify-content: center;
     margin-top: 12px;
@@ -93,5 +93,5 @@ export const TextAdm = styled.Text`
 
 export const DescriText = styled.Text`
     margin-right: 8px;
-    font-size: 17;
+    font-size: 16;
 `;

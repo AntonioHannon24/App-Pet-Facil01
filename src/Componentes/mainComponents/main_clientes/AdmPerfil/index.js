@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ContainerMain, View } from "../Style";
 import { TextContainer } from '../../estilos_main.js';
-import { Text } from 'react-native';
-import { IconCarteiraPet, CarteiraContainer, CarteiraText, Text1, PefilText, TextContainer2 } from './Style';
+import { Text, Image, TouchableOpacity } from 'react-native';
+import { IconCarteiraPet, CarteiraContainer, CarteiraText, Text1, PefilText, TextContainer2, TutorInfoContainer, EditButton, EditButtonText } from './Style';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import URL from '../../../../config';
@@ -32,13 +32,15 @@ const AdmPerfil = ({ navigation }) => {
       fetchUser();
     }
   }, [userId]);
-
+  
   const fetchUser = async () => {
     try {
       const response = await axios.get(`${URL}usuarios/${userId}`);
       if (response.status === 200) {
         setUser(response.data.data);
-        console.log('Dados do usuário obtidos com sucesso:', response.data.data);
+        // Certifique-se de que a propriedade "image" está presente antes de acessá-la
+        const userImage = response.data.data.image || null;
+        console.log('URL da imagem:', userImage);
       } else if (response.status === 401) {
         console.log(response.data.message);
       } else {
@@ -55,23 +57,31 @@ const AdmPerfil = ({ navigation }) => {
     }
   }
 
+  useEffect(() => {
+  }, [user]);
+
+
   return (
     <ContainerMain>
-      <TextContainer>
-        <IconCarteiraPet source={require("../../img/profile.png")} />
-        <CarteiraText>Editar</CarteiraText>
-
-        <TextContainer2>
-          <Text1>Email:</Text1>
-          <Text>{user.email}</Text>
-          <Text1>Nome: </Text1>
-          <Text>{user.nome}</Text>
-          <Text1>CPF: </Text1>
-          <Text>{user.cpf}</Text>
-          <Text1>Cidade ID: </Text1>
-          <Text>{user.cidade_id}</Text>
-        </TextContainer2>
-      </TextContainer>
+    <TouchableOpacity>
+    <Image
+  style={{ width: 80, height: 80, borderRadius: 40 }}
+  source={{ uri: user.imageUrl || null }}
+  alt="Imagem do usuário"
+/>
+    </TouchableOpacity>
+      <EditButton>
+        <EditButtonText>Editar</EditButtonText>
+      </EditButton>
+      <TextContainer2>
+        <Text1>Email:</Text1>
+        <Text>{user.email || 'N/A'}</Text>
+        <Text1>Nome:</Text1>
+        <Text>{user.nome || 'N/A'}</Text>
+        <Text1>CPF:</Text1>
+        <Text>{user.cpf || 'N/A'}</Text>
+        {/* Adicione mais informações conforme necessário */}
+      </TextContainer2>
     </ContainerMain>
   );
 };

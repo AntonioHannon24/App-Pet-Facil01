@@ -1,19 +1,17 @@
 import styled from "styled-components/native";
 
 export const IconCarteiraPet = styled.Image`
-    align-items: center;
+    align-items: center; /* Adicionado para centralizar a imagem */
     width: 80px;
     height: 80px;
-    margin-right: 30px;
-    margin-left: 150px;
     margin-top: 20px;
 `;
 
 export const TutorInfoContainer = styled.View`
-  flex-direction: row; // Define a direção das colunas
-  align-items: center;
+  align-items: center; /* Adicionado para centralizar o TutorInfoContainer */
   margin-top: 20px;
 `;
+
 
 export const Divider = styled.View`
   flex: 1;
@@ -24,17 +22,13 @@ export const Divider = styled.View`
 export const CarteiraText = styled.Text`
     font-size: 15px;
     font-weight: bold;
-    flex-wrap: wrap;
-    width: 70%;
-    margin-right: 30px;
-    margin-left: 170px;
     margin-top: 12px;
+    text-align: center;
 `;
 
 export const Text1 = styled.Text`
     font-size: 20px;
     font-weight: bold;
-    flex-wrap: wrap;
     margin-top: 10px;
 `;
 
@@ -45,6 +39,18 @@ export const PefilText = styled.TouchableOpacity`
 
 export const TextContainer2 = styled.View`
     flex-direction: column;
+    align-items: center; /* Adicionado para centralizar os elementos na coluna */
     margin-top: 50px;
-    margin-left: 50px;
 `;
+
+// Adicionando um novo estilo para o botão Editar
+export const EditButton = styled.TouchableOpacity`
+    margin-top: 20px;
+`;
+
+// Adicionando estilo para o texto dentro do botão Editar
+export const EditButtonText = styled.Text`
+    font-size: 16px;
+    color: #007BFF; /* Cor do texto pode ser ajustada conforme necessário */
+`;
+
