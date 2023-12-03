@@ -34,9 +34,10 @@ export default function CadastroPets({ navigation }) {
         porte: data.porte,
         peso: data.peso,
         raca_id: data.raca_id,
-        usuario_id: 1,
+        usuario_id: 3,
       });
 
+      console.log(response)
       if (response.status === 200) {
         //navigation.navigate('te');
         console.log(response.data.message);
@@ -123,7 +124,7 @@ export default function CadastroPets({ navigation }) {
         <ButtonText onPress={handleSubmit(handleSignIn)}>Cadastrar</ButtonText>
       </ButtonContainer>
 
-      <ButtonContainer onPress={() => navigation.navigate('Login')}>
+      <ButtonContainer onPress={() => navigation.navigate('AdmPets')}>
         <ButtonText>Voltar</ButtonText>
       </ButtonContainer>
       

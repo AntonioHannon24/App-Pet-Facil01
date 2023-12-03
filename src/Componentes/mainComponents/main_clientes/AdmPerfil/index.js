@@ -11,6 +11,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 const AdmPerfil = ({ navigation }) => {
   const [userId, setUserId] = useState(null);
   const [user, setUser] = useState({});
+  const [image, setImage] = useState("")
 
   useEffect(() => {
     const getUserid = async () => {
@@ -39,8 +40,7 @@ const AdmPerfil = ({ navigation }) => {
       if (response.status === 200) {
         setUser(response.data.data);
         // Certifique-se de que a propriedade "image" está presente antes de acessá-la
-        const userImage = response.data.data.image || null;
-        console.log('URL da imagem:', userImage);
+        setImage(response.data.data.image || null);
       } else if (response.status === 401) {
         console.log(response.data.message);
       } else {
@@ -60,14 +60,12 @@ const AdmPerfil = ({ navigation }) => {
   useEffect(() => {
   }, [user]);
 
-
   return (
     <ContainerMain>
     <TouchableOpacity>
     <Image
   style={{ width: 80, height: 80, borderRadius: 40 }}
-  source={{ uri: user.imageUrl || null }}
-  alt="Imagem do usuário"
+  source={{ uri: "http://192.168.1.105:3333/uploads//" + image || null }}
 />
     </TouchableOpacity>
       <EditButton>
