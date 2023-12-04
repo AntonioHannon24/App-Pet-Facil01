@@ -18,6 +18,7 @@ const PetHelpers = () => {
   const [isServicosFlutuanteVisible, setServicosFlutuanteVisible] = useState(false);
   const [selectedServico, setSelectedServico] = useState(null);
   const [petShops, setPetShops] = useState([]);
+  const [horarios, setHorarios] = useState([]);
 
   useEffect(() => {
 
@@ -35,26 +36,22 @@ const PetHelpers = () => {
         console.error('Erro ao obter dados da API:', error.message);
       }
     }
+    const gethorarios = async () => {
+      try {
+       axios.get(URL + 'horario').then((response)=>{
+          //console.log(response.data)
+          setHorarios(response.data)
 
+       })
+      } catch (error) {
+        console.error('Erro ao obter horários do petshop:', error.message);
+      }
+    };
+    gethorarios()
     fetchData();
   }, []); // Executa apenas uma vez no carregamento do componente
 
 
-  const handleOpenServicosFlutuante = async (item) => {
-    setSelectedServico(item);
-    setServicosFlutuanteVisible(true);
-
-    try {
-      // Buscar os horários disponíveis para o estabelecimento
-      const response = await axios.get(URL + 'horario');
-      const horariosDisponiveis = response.data;
-
-      // Passar os horários disponíveis como props para o componente ServicosDisponiveis
-      setHorariosDoPetshop(horariosDisponiveis);
-    } catch (error) {
-      console.error('Erro ao obter horários disponíveis:', error.message);
-    }
-  };
 
   
   const handleSelectServico = (servico) => {
@@ -114,7 +111,7 @@ const PetHelpers = () => {
           <DescriText>Serviços: {item.servico.length > 0 ? item.servico.map(servico => servico.nome).join(', ') : 'Nenhum serviço disponível'}</DescriText>
         </DescriContainer2>
         <TouchableOpacity>
-          <ButtonContainer onPress={() => navigation.navigate("ServicosDisponiveis", { petshop: item })}>
+          <ButtonContainer onPress={() => navigation.navigate("ServicosDisponiveis", { petshop: item, horarios:horarios })}>
             <ButtonText>Ver horários</ButtonText>
           </ButtonContainer>
         </TouchableOpacity>

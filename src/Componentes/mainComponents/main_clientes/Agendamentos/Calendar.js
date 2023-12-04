@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import {Container, CalendarButton, ButtonText} from "./Style";
+import {Text} from 'react-native'
 
 const Calendar = () => {
   const [isDatePickerVisible, setDatePickerVisible] = useState(false);
