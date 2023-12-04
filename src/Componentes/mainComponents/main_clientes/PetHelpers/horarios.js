@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Container, Title, ServicoItem, ServicoText, View2, Container2, Container3, ButtonContainer2, buttonStyle, TextDescri } from './Style';
 import axios from 'axios';
@@ -13,23 +13,19 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [pets, setPets] = useState([]);
   const { petshop } = route.params.petshop;
-  const { horarios } = route.params.horarios
-  const [selectedHorario, setSelectedHorario] = useState(route.params.horarios.data)
-  const [hour,setHour] = useState(horarios)
-  const [selectHorarios, setSelectHorarios] = useState(null);
-
+  const { horarios } = route.params.horarios;
+  const [selectedHorarios, setSelectedHorarios] = useState(route.params.horarios.data);
+  const [hour, setHour] = useState(horarios);
   const [servicosDoPetshop, setServicosDoPetshop] = useState(route.params.petshop.servico);
 
   const navigation = useNavigation();
-
-  const [selectedPetshop, setSelectedPetshop] = useState(null);
 
   // Exemplo de recuperação do token na tela de Serviços Disponíveis
   useEffect(() => {
     const getUserid = async () => {
       try {
         const userId = await AsyncStorage.getItem('userId');
-        console.log(selectedHorario.length)
+        console.log(selectedHorarios.length);
         if (userId) {
           setUserId(userId);
         }
@@ -38,7 +34,6 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
       }
     };
     getUserid();
-
   }, []);
 
   useEffect(() => {
@@ -62,19 +57,20 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
   };
 
   const handleServiceSelection = (servico) => {
-      setSelectedService(servico);
+    setSelectedService(servico);
   };
 
   const handleHorarioSelection = (horario) => {
-      setSelectHorarios(horario);
-  
-    if (selectedPet && selectedService && horario) {
-      navigation.navigate('Calendar', {
-        pet: selectedPet,
-        servico: selectedService,
-        horario: horario,
-      });
-    }
+    setSelectedHorarios((prevSelectedHorarios) => {
+      if (prevSelectedHorarios.includes(horario)) {
+        return prevSelectedHorarios.filter((h) => h !== horario);
+      } else {
+        return [...prevSelectedHorarios, horario];
+      }
+    });
+
+    // Navegue para a tela 'Calendar' aqui
+    navigation.navigate('Calendar', { selectedHorario: horario });
   };
 
   const handleConfirm = () => {
@@ -82,7 +78,7 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
     navigation.navigate('AgendamentosClientes', {
       pet: selectedPet,
       servico: selectedService,
-      horario: selectedHorario,
+      horario: selectedHorarios,
     });
   };
 
@@ -97,7 +93,8 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
             style={{
               ...buttonStyle,
               backgroundColor: selectedPet === pet.id ? 'purple' : 'white',
-            }}>
+            }}
+          >
             <TextDescri>{pet.nome}</TextDescri>
           </TouchableOpacity>
         ))}
@@ -107,45 +104,50 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
         <Container2>
           <Title>Selecione um serviço:</Title>
           {servicosDoPetshop && servicosDoPetshop.length > 0 ? (
-          servicosDoPetshop.map((servico) => (
-      <TouchableOpacity
-          key={servico.id}
-          onPress={() => handleServiceSelection(servico)}
-          style={{
-          ...buttonStyle,
-          backgroundColor: selectedService === servico ? 'purple' : 'white',
-          }}
-       >
-        <TextDescri>Serviço: {servico.nome}</TextDescri>
-      </TouchableOpacity>
-  ))
-) : (
-  <TextDescri>Nenhum serviço disponível</TextDescri>
-  )}
+            servicosDoPetshop.map((servico) => (
+              <TouchableOpacity
+                key={servico.id}
+                onPress={() => handleServiceSelection(servico)}
+                style={{
+                  ...buttonStyle,
+                  backgroundColor: selectedService === servico ? 'purple' : 'white',
+                }}
+              >
+                <TextDescri>Serviço: {servico.nome}</TextDescri>
+              </TouchableOpacity>
+            ))
+          ) : (
+            <TextDescri>Nenhum serviço disponível</TextDescri>
+          )}
         </Container2>
       )}
 
       {selectedService && (
         <Container2>
           <Title>Selecione um horário:</Title>
-          <Container3>
-          {selectedHorario.length > 0 ? (
-          selectedHorario.map((horario) => (
-        <TouchableOpacity
-          key={horario.id}
-          onPress={() => handleHorarioSelection(horario)}
-          style={{
-          ...buttonStyle,
-          backgroundColor: selectedHorario.includes(horario) ? 'purple' : 'white',
-          }}>
-          <TextDescri>{horario.horario}</TextDescri>
-        </TouchableOpacity>
-  ))
-) : (
-  <TextDescri>Nenhum horário disponível</TextDescri>
-)}
-
-          </Container3>
+          {/* Use ScrollView para a lista de horários disponíveis */}
+          <ScrollView
+            contentContainerStyle={{ alignItems: 'center' }}
+            showsVerticalScrollIndicator={false}
+          >
+            {selectedHorarios.length > 0 ? (
+              selectedHorarios.map((horario) => (
+                <TouchableOpacity
+                  key={horario.id}
+                  onPress={() => handleHorarioSelection(horario)}
+                  style={{
+                    ...buttonStyle,
+                    backgroundColor: selectedHorarios.includes(horario) ? 'purple' : 'white',
+                    marginBottom: 10, // Ajuste a margem conforme necessário
+                  }}
+                >
+                  <TextDescri>{horario.horario}</TextDescri>
+                </TouchableOpacity>
+              ))
+            ) : (
+              <TextDescri>Nenhum horário disponível</TextDescri>
+            )}
+          </ScrollView>
         </Container2>
       )}
 
