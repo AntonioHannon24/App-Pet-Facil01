@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import {Container, CalendarButton, ButtonText} from "./Style";
-import {Text} from 'react-native'
+import { Container, CalendarButton, ButtonText } from "./Style";
+import { Text } from 'react-native';
 
-const Calendar = () => {
-  const [isDatePickerVisible, setDatePickerVisible] = useState(false);
+const Calendar = ({ route }) => {
+  const [isDatePickerVisible, setDatePickerVisible] = useState(true);
   const [selectedDate, setSelectedDate] = useState(null);
+  const navigation = route.params.navigation;
+
+  useEffect(() => {
+    showDatePicker(); // Chama automaticamente ao renderizar o componente
+  }, []);
 
   const showDatePicker = () => {
     setDatePickerVisible(true);
@@ -16,19 +21,20 @@ const Calendar = () => {
   };
 
   const handleConfirm = (date) => {
-    setSelectedDate(date.toISOString()); // Armazene a data no formato desejado
+    // Altere esta linha para formatar a data conforme necessário
+    setSelectedDate(date.toISOString());
     hideDatePicker();
+  
+    // Volte para a tela anterior passando a data selecionada
+    navigation.goBack();
   };
 
   return (
     <Container>
-      <CalendarButton onPress={showDatePicker}>
-        <ButtonText>Calendário</ButtonText>
-      </CalendarButton>
       {selectedDate && <Text>Data selecionada: {selectedDate}</Text>}
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
-        mode="date" // Pode ser "date", "time" ou "datetime"
+        mode="date"
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
       />

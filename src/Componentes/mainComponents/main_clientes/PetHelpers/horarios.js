@@ -68,18 +68,40 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
         return [...prevSelectedHorarios, horario];
       }
     });
-
-    // Navegue para a tela 'Calendar' aqui
-    navigation.navigate('Calendar', { selectedHorario: horario });
+  
+    // Passe o objeto de navegação para a tela 'Calendar' aqui
+    navigation.navigate('Calendar', { navigation });
   };
 
-  const handleConfirm = () => {
-    // Aqui você pode navegar para a próxima tela e passar as informações selecionadas
-    navigation.navigate('AgendamentosClientes', {
-      pet: selectedPet,
-      servico: selectedService,
-      horario: selectedHorarios,
-    });
+  const handleConfirm = async () => {
+    try {
+      console.log('Selected Pet:', selectedPet);
+      console.log('Selected Service:', selectedService);
+      console.log('Selected Horarios:', selectedHorarios);
+      console.log('Selected Date:', selectedDate);
+      console.log('User ID:', userId);
+  
+      const agendamentoData = {
+        pet: selectedPet,
+        servico: selectedService,
+        horario: selectedHorarios,
+        data: selectedDate,
+        userId: userId,
+      };
+  
+      console.log('Agendamento Data:', agendamentoData);
+  
+      // Faça a solicitação POST à sua API
+      const response = await axios.post(`${URL}agendamentos`, agendamentoData);
+      console.log('Response:', response.data);
+  
+      // Verifique a resposta da API e tome as medidas apropriadas
+  
+      // Navegue para a próxima tela se necessário
+      navigation.navigate('AgendamentosClientes');
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
