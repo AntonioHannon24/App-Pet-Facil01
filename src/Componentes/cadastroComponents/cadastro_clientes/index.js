@@ -35,7 +35,6 @@ export default function Cadastro({ navigation }) {
       });
 
       if (response.status === 200) {
-        //navigation.navigate('te');
         console.log(response.data.message);
       } else if (response.status === 401) {
         console.log(response.data.message);
@@ -124,7 +123,7 @@ export default function Cadastro({ navigation }) {
         )}
       />
 
-      <ButtonContainer >
+      <ButtonContainer onPress={() => navigation.navigate('Login')} >
         <ButtonText onPress={handleSubmit(handleSignIn)}>Cadastrar</ButtonText>
       </ButtonContainer>
 

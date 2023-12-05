@@ -120,7 +120,7 @@ export default function CadastroPets({ navigation }) {
       )}
       />
 
-      <ButtonContainer >
+      <ButtonContainer onPress={() => navigation.navigate('AdmPets')}>
         <ButtonText onPress={handleSubmit(handleSignIn)}>Cadastrar</ButtonText>
       </ButtonContainer>
 

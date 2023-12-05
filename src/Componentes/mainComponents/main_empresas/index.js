@@ -57,7 +57,7 @@ const TelaEstabelecimentos = ({ navigation }) => {
       <Text style={WelcomeText}>Bem-vindo PetHelper!</Text>
       <TouchableOpacity style={ButtonEdit}>
       </TouchableOpacity>
-      <TouchableOpacity style={ButtonExit} onPress={() => navigation.navigate("LoginEstabelecimento")}>
+      <TouchableOpacity style={ButtonExit} onPress={() => navigation.navigate("Login")}>
         <Text>Sair</Text>
       </TouchableOpacity>
     </View>
