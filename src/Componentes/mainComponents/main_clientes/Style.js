@@ -43,7 +43,6 @@ export const View = styled.View`
 
 export const HeaderContainer = styled.View`
   background-color: purple;
-  margin-top: 30px;
   align-items: center;
   height: 40px;
 `;

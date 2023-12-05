@@ -89,7 +89,7 @@ const PetHelpers = () => {
         </TextContainer>
         <ButtonsContainer>
         <ButtonContainer width={"120px"}>
-          <ButtonText onPress={() => navigation.navigate("TelaUsuarios")}>Meu perfil</ButtonText>
+          <ButtonText onPress={() => navigation.navigate("TelaUser")}>Meu perfil</ButtonText>
         </ButtonContainer>
         <ButtonContainer width={"120px"}>
           <ButtonText onPress={() => navigation.navigate("AgendamentosClientes")}>Agendamentos</ButtonText>
