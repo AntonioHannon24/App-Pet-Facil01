@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
-import { ContainerMain, IconLogin, PetTextContainer, View, PetText,HeaderContainer, HeaderText } from "../Style";
+import React, { useState, useEffect } from 'react';
+import { ContainerMain, IconLogin, PetTextContainer, View, HeaderContainer, HeaderText, Title, AgendamentoContainer, PetText, DataText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js";
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
 import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine } from './Style';
+import { TextContainer2, View2, DescriContainer2, DescriText, IconEmpresa, NomeEmpresa } from '../PetHelpers/Style.js';
 import Calendar from './Calendar'; // Importe o componente do calendário
 import MeusAgendamentos from './MeusAgendamentos';
-import {Text , Linking, PanResponder, TouchableOpacity } from 'react-native';
+import { Text, Linking, PanResponder, TouchableOpacity, ScrollView } from 'react-native';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import URL from '../../../../config.js'
 
 const width = "110px";
 
@@ -15,6 +19,8 @@ const AgendamentosClientes = ({ navigation }) => {
   const [selectedPet, setSelectedPet] = useState(null);
   const [confirmedDate, setConfirmedDate] = useState(null);
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [agendaClientes, setAgendaClientes] = useState([]);
 
   const handleDatePress = (date) => {
     if (isConfirmed) {
@@ -34,9 +40,45 @@ const AgendamentosClientes = ({ navigation }) => {
     setFloatingScreenVisible(false);
   };
 
+  useEffect(() => {
+    const getUserid = async () => {
+      try {
+        const userId = await AsyncStorage.getItem('userId');
+        if (userId) {
+          setUserId(userId);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+  
+    getUserid();
+  }, []);
+  
+  useEffect(() => {
+    if (userId) {
+      fetchAgendasUser();
+    }
+  }, [userId]);
+
+
+
+  const fetchAgendasUser = async () => {
+    try {
+        const urls = `${URL}agendaClientes/${userId}`;
+        const response = await axios.get(urls);
+        setAgendaClientes(response.data.data); 
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const renderDateItem = (date) => {
     const isSelected = selectedDate === date;
     const confirmed = isConfirmed && isSelected;
+
+    
 
     return (
       <DateItem onPress={() => handleDatePress(date)}>
@@ -48,11 +90,6 @@ const AgendamentosClientes = ({ navigation }) => {
     );
   };
 
-  const pets = [
-    { id: 1, name: 'Pet 1' },
-    { id: 2, name: 'Pet 2' },
-    { id: 3, name: 'Pet 3' },
-  ];
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -63,7 +100,7 @@ const AgendamentosClientes = ({ navigation }) => {
       } else if (gestureState.dx > 50) {
         // Navegar para a tela "PetHelpers" quando o gesto de deslizar para a direita for detectado
         navigation.navigate('TelaUser');
-      }  
+      }
     },
     onPanResponderRelease: () => {
       // Reset do estado após o lançamento do gesto
@@ -72,16 +109,16 @@ const AgendamentosClientes = ({ navigation }) => {
 
   return (
     <ContainerMain {...panResponder.panHandlers}>
-        <HeaderContainer>
-          <HeaderText>PET HELPER</HeaderText>
-        </HeaderContainer>
+      <HeaderContainer>
+        <HeaderText>PET HELPER</HeaderText>
+      </HeaderContainer>
       <TextContainer>
         <IconLogin source={require("../../img/dog1.png")} />
         <View>
         </View>
       </TextContainer>
       <ButtonsContainer>
-      <ButtonContainer width={"120px"}>
+        <ButtonContainer width={"120px"}>
           <ButtonText onPress={() => navigation.navigate("TelaUsuarios")}>Meu perfil</ButtonText>
         </ButtonContainer>
         <ButtonContainer width={"120px"}>
@@ -94,6 +131,21 @@ const AgendamentosClientes = ({ navigation }) => {
 
       <Container>
         <CalendarContainer>
+        <ScrollView>
+        {agendaClientes.map((agenda, index) => (
+          <TextContainer2 key={index}>
+            <View2>
+              <Text>Meus Agendamentos</Text>
+              <DescriContainer2>
+                <Text><Text>Data e Hora:</Text>{agenda.data_hora}</Text>
+                <Text><Text>status:</Text>{agenda.status}</Text>
+                <Text><Text>Pet:</Text>{agenda.pet_id}</Text>
+                <Text><Text>Estabelecimento:</Text>{agenda.estabelecimento_id}</Text>
+              </DescriContainer2>
+            </View2>
+          </TextContainer2>
+        ))}
+      </ScrollView>
         </CalendarContainer>
       </Container>
 

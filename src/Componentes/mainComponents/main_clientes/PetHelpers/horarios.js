@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { useNavigation } from '@react-navigation/native';
 import { Container, Title, ServicoItem, ServicoText, View2, Container2, Container3, ButtonContainer2, buttonStyle, TextDescri } from './Style';
 import axios from 'axios';
@@ -14,10 +15,27 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
   const [pets, setPets] = useState([]);
   const [selectedHorarios, setSelectedHorarios] = useState(route.params.horarios.data);
   const [servicosDoPetshop, setServicosDoPetshop] = useState(route.params.petshop.servico);
+  const [isDatePickerVisible, setDatePickerVisible] = useState(false);
+  const [petshopId, setpetshopId] = useState(route.params.petshop.id);
+
+  
+
+  const showDatePicker = () => {
+    setDatePickerVisible(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisible(false);
+  };
+
+  const agendaConfirm = (date) => {
+    setSelectedDate(date.toISOString());
+    hideDatePicker();
+  };
+
 
   const navigation = useNavigation();
 
-  // Exemplo de recuperação do token na tela de Serviços Disponíveis
   useEffect(() => {
     const getUserid = async () => {
       try {
@@ -60,37 +78,27 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
   const handleHorarioSelection = (horario) => {
     setSelectedHorarios(horario)
 
-  
-    // Passe o objeto de navegação para a tela 'Calendar' aqui
-    navigation.navigate('Calendar', { navigation });
+    showDatePicker()
   };
 
   const handleConfirm = async () => {
     try {
-      //console.log('Selected Pet:', selectedPet);
-      //console.log('Selected Service:', selectedService.id);
-      //console.log('User ID:', userId);
-      console.log('Selected Horarios:', selectedHorarios.horario);
-      //console.log('Selected Date:', selectedDate);
-      
-  
+
       const agendamentoData = {
-        pet: selectedPet,
-        servico: selectedService,
-        horario: selectedHorarios,
-        data: selectedDate,
-        userId: userId,
+        pet_id: selectedPet,
+        servico_id: selectedService.id,
+        data_hora: selectedDate.slice(0, 10)+' '+selectedHorarios.horario,
+        usuario_id: userId,
+        estabelecimento_id: petshopId,
       };
-  
-      //console.log('Agendamento Data:', agendamentoData);
-  
-      // Faça a solicitação POST à sua API
-      //const response = await axios.post(`${URL}agendamentos`, agendamentoData);
-      //console.log('Response:', response.data);
-  
+
+      const response = await axios.post(`${URL}agendamentos`, agendamentoData);
+      console.log('Response:', response.data);
+
 
       navigation.navigate('AgendamentosClientes');
     } catch (error) {
+      console.log(error)
     }
   };
 
@@ -149,7 +157,7 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
                   style={{
                     ...buttonStyle,
                     backgroundColor: selectedHorarios.includes(horario) ? 'purple' : 'white',
-                    marginBottom: 10, // Ajuste a margem conforme necessário
+                    marginBottom: 10, 
                   }}
                 >
                   <TextDescri>{horario.horario}</TextDescri>
@@ -159,6 +167,19 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
               <TextDescri>Nenhum horário disponível</TextDescri>
             )}
           </ScrollView>
+        </Container2>
+      )}
+
+
+      {selectedHorarios && (
+        <Container2>
+          {selectedDate && <Text>Data selecionada: {selectedDate}</Text>}
+          <DateTimePickerModal
+            isVisible={isDatePickerVisible}
+            mode="date"
+            onConfirm={agendaConfirm}
+            onCancel={hideDatePicker}
+          />
         </Container2>
       )}
 

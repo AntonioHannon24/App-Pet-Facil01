@@ -46,7 +46,7 @@ export default function Cadastro({ navigation }) {
     } catch (error) {
       if (error.response) {
         // O servidor respondeu com um código de erro (por exemplo, 401 não autorizado).
-        console.error('Erro no servidor:', error.response.data);
+        window.alert(error.response.data.message);
       } else if (error.request) {
         // A solicitação foi feita, mas não houve resposta do servidor.
         console.error('Sem resposta do servidor');
