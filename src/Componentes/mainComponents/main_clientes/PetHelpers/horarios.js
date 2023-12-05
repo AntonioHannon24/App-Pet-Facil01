@@ -33,6 +33,11 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
     hideDatePicker();
   };
 
+  const handleFechar = () => {
+    // Use the navigation.goBack() method to navigate back to the previous screen
+    navigation.navigate('PetHelpers');
+  };
+
 
   const navigation = useNavigation();
 
@@ -190,7 +195,7 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
       </ButtonContainer2>
 
       <ButtonContainer2>
-        <TouchableOpacity onPress={onClose}>
+        <TouchableOpacity onPress={handleFechar}>
           <Text>Fechar</Text>
         </TouchableOpacity>
       </ButtonContainer2>
