@@ -21,12 +21,10 @@ const Calendar = ({ route }) => {
   };
 
   const handleConfirm = (date) => {
-    // Altere esta linha para formatar a data conforme necessário
     setSelectedDate(date.toISOString());
     hideDatePicker();
   
-    // Volte para a tela anterior passando a data selecionada
-    navigation.goBack();
+
   };
 
   return (

@@ -12,10 +12,7 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
   const [userId, setUserId] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [pets, setPets] = useState([]);
-  const { petshop } = route.params.petshop;
-  const { horarios } = route.params.horarios;
   const [selectedHorarios, setSelectedHorarios] = useState(route.params.horarios.data);
-  const [hour, setHour] = useState(horarios);
   const [servicosDoPetshop, setServicosDoPetshop] = useState(route.params.petshop.servico);
 
   const navigation = useNavigation();
@@ -61,13 +58,8 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
   };
 
   const handleHorarioSelection = (horario) => {
-    setSelectedHorarios((prevSelectedHorarios) => {
-      if (prevSelectedHorarios.includes(horario)) {
-        return prevSelectedHorarios.filter((h) => h !== horario);
-      } else {
-        return [...prevSelectedHorarios, horario];
-      }
-    });
+    setSelectedHorarios(horario)
+
   
     // Passe o objeto de navegação para a tela 'Calendar' aqui
     navigation.navigate('Calendar', { navigation });
@@ -75,11 +67,12 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
 
   const handleConfirm = async () => {
     try {
-      console.log('Selected Pet:', selectedPet);
-      console.log('Selected Service:', selectedService);
-      console.log('Selected Horarios:', selectedHorarios);
-      console.log('Selected Date:', selectedDate);
-      console.log('User ID:', userId);
+      //console.log('Selected Pet:', selectedPet);
+      //console.log('Selected Service:', selectedService.id);
+      //console.log('User ID:', userId);
+      console.log('Selected Horarios:', selectedHorarios.horario);
+      //console.log('Selected Date:', selectedDate);
+      
   
       const agendamentoData = {
         pet: selectedPet,
@@ -89,18 +82,15 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
         userId: userId,
       };
   
-      console.log('Agendamento Data:', agendamentoData);
+      //console.log('Agendamento Data:', agendamentoData);
   
       // Faça a solicitação POST à sua API
-      const response = await axios.post(`${URL}agendamentos`, agendamentoData);
-      console.log('Response:', response.data);
+      //const response = await axios.post(`${URL}agendamentos`, agendamentoData);
+      //console.log('Response:', response.data);
   
-      // Verifique a resposta da API e tome as medidas apropriadas
-  
-      // Navegue para a próxima tela se necessário
+
       navigation.navigate('AgendamentosClientes');
     } catch (error) {
-      console.error('Error:', error);
     }
   };
 
@@ -147,7 +137,6 @@ const ServicosDisponiveis = ({ servicos, onSelectServico, onClose, route }) => {
       {selectedService && (
         <Container2>
           <Title>Selecione um horário:</Title>
-          {/* Use ScrollView para a lista de horários disponíveis */}
           <ScrollView
             contentContainerStyle={{ alignItems: 'center' }}
             showsVerticalScrollIndicator={false}
