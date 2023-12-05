@@ -2,20 +2,17 @@ import styled from 'styled-components/native';
 import { TouchableOpacity, Text } from 'react-native';
 
 export const Container = styled.View`
-  flex: 1;
-  align-items: center;
   justify-content: center;
 `;
 
 export const CalendarContainer = styled.View`
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 40px;
-  border: 1px solid black;
-  border-radius: 8px;
+margin-top: 5px;
+border: solid;
+border-radius: 8px;
+border-bottom-left-radius: 10px;
+margin-left: 10px;
+margin-right: 10px;
+border-color: purple;
 `;
 
 export const DateItem = styled.TouchableOpacity`
@@ -59,5 +56,16 @@ export const CalendarButton = styled(TouchableOpacity)`
 export const ButtonText = styled(Text)`
   color: white;
   font-size: 18px;
+`;
+
+export const TextContainer3 = styled.View`
+    margin-top: 5px;
+    border: solid;
+    border-color: purple;
+    border-radius: 8px;
+    border-bottom-left-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
 `;
 

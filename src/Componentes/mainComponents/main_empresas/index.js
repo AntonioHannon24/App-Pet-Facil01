@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { ContainerMain, IconLogin, TextContainer, WelcomeText, ButtonsContainer2 } from "../estilos_main";
 import {View} from "../../Estilos"
-import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonText2, ViewButon, IconEmpresa, NomePet, TextAdm, IconPet, ButtonEdit, ButtonExit } from './Style'
+import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonText2, ViewButon, IconEmpresa, NomePet, TextAdm, IconPet, ButtonEdit, ButtonExit, TextTop} from './Style'
 import { Text, TouchableOpacity, ScrollView } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import URL from '../../../config'
-import { CalendarContainer } from "../main_clientes/Agendamentos/Style";
+import { CalendarContainer, Container } from "../main_clientes/Agendamentos/Style";
 
 const width = "110px";
 
@@ -56,7 +56,6 @@ const TelaEstabelecimentos = ({ navigation }) => {
     <View>
       <Text style={WelcomeText}>Bem-vindo PetHelper!</Text>
       <TouchableOpacity style={ButtonEdit}>
-        <Text>Editar Perfil</Text>
       </TouchableOpacity>
       <TouchableOpacity style={ButtonExit} onPress={() => navigation.navigate("LoginEstabelecimento")}>
         <Text>Sair</Text>
@@ -69,12 +68,11 @@ const TelaEstabelecimentos = ({ navigation }) => {
         {agendaClientes.map((agenda, index) => (
           <TextContainer2 key={index}>
             <View2>
-              <Text>Meus Agendamentos</Text>
               <DescriContainer2>
-                <Text><Text>Data e Hora:</Text>{agenda.data_hora}</Text>
-                <Text><Text>status:</Text>{agenda.status}</Text>
-                <Text><Text>Pet:</Text>{agenda.pet_id}</Text>
-                <Text><Text>Estabelecimento:</Text>{agenda.estabelecimento_id}</Text>
+                <Text><TextTop>Data e Hora:</TextTop>{agenda.data_hora}</Text>
+                <Text><TextTop>status:</TextTop>{agenda.status}</Text>
+                <Text><TextTop>Pet:</TextTop>{agenda.pet_id}</Text>
+                <Text><TextTop>Estabelecimento:</TextTop>{agenda.estabelecimento_id}</Text>
               </DescriContainer2>
             </View2>
           </TextContainer2>

@@ -112,10 +112,6 @@ export default function TelaLogin({ navigation }) {
           <ButtonText>Cadastro</ButtonText>
         </ButtonGreen>
 
-        <ButtonGreen onPress={() => navigation.navigate('Login_Estabelecimento')}>
-          <ButtonText>Sou Empresa</ButtonText>
-        </ButtonGreen>
-
       </PressBox>
     </Container>
   );

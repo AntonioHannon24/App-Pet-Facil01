@@ -5,7 +5,7 @@ export const TextContainer2 = styled.View`
     flex-direction: row-reverse;
     margin-top: 5px;
     border: solid;
-    border-color: black;
+    border-color: purple;
     border-radius: 8px;
     border-bottom-left-radius: 10px;
     margin-left: 10px;

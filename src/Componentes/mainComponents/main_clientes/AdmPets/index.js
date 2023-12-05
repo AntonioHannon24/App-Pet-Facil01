@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ContainerMain } from "../Style";
 import { TextContainer2, View2, DescriContainer2, DescriText, ButtonContainer2, ButtonContainer3, ButtonText2, ViewButon, IconPet, NomePet, TextAdm } from './Style'
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import URL from '../../../../config'
@@ -56,22 +56,22 @@ const AdmPets = ({ navigation }) => {
             <View2>
               <NomePet>{pet.nome}</NomePet>
               <DescriContainer2>
-                <DescriText><TextAdm>Idade:</TextAdm>{pet.idade}</DescriText>
-                <DescriText><TextAdm>Cor:</TextAdm>{pet.cor}</DescriText>
-                {/* Adicione mais propriedades conforme necessário */}
-                <ViewButon>
-                  <ButtonContainer2 width={width}>
-                    <ButtonText2>Editar</ButtonText2>
-                  </ButtonContainer2>
-                </ViewButon>
+                <DescriText><TextAdm>Idade: </TextAdm>{pet.idade}</DescriText>
+                <DescriText><TextAdm>Cor: </TextAdm>{pet.cor}</DescriText>
+                <DescriText><TextAdm>Porte: </TextAdm>{pet.porte}</DescriText>
+                <DescriText><TextAdm>Peso:  </TextAdm>{pet.peso}</DescriText>
               </DescriContainer2>
             </View2>
           </TextContainer2>
         ))}
       </ScrollView>
+
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginRight: 30, marginBottom: 30}}>
       <ButtonContainer3 onPress={() => navigation.navigate('CadastroPets')}>
         <ButtonText2>Cadastrar Pet</ButtonText2>
       </ButtonContainer3>
+      </View>
+
     </ContainerMain>
   );
 };

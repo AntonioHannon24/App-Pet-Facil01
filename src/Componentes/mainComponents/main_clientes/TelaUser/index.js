@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { ContainerMain, IconLogin, PetTextContainer, View, PetText, HeaderContainer, HeaderText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js"
 import { WelcomeText, TextContainer, ButtonsContainer, ButtonsContainer2 } from '../../estilos_main.js';
-import {Linking, PanResponder } from 'react-native';
+import { Linking, PanResponder, TouchableOpacity, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const width = "110px";
 
@@ -31,6 +32,7 @@ const TelaUser = ({ navigation }) => {
       idade: 2,
     },
   ];
+
 
   // Para recuperar o token
   const getData = async () => {
@@ -63,7 +65,7 @@ const TelaUser = ({ navigation }) => {
       } else if (gestureState.dx > 50) {
         // Navegar para a tela "PetHelpers" quando o gesto de deslizar para a direita for detectado
         navigation.navigate('PetHelpers');
-      }  
+      }
     },
     onPanResponderRelease: () => {
       // Reset do estado após o lançamento do gesto
@@ -78,6 +80,9 @@ const TelaUser = ({ navigation }) => {
 
       <TextContainer>
         <IconLogin source={require('../../img/dog1.png')} />
+        <TouchableOpacity onPress={() => navigation.navigate('TelaLogin')}>
+          <Text style={{ color: '#000', fontSize: 14, marginLeft:100 }}>Sair</Text>
+        </TouchableOpacity>
         <View>
           <PetTextContainer>
             {pets.map((pet) => (
@@ -102,9 +107,6 @@ const TelaUser = ({ navigation }) => {
       </ButtonsContainer>
 
       <ButtonsContainer2>
-        <ButtonContainer width={"300px"}>
-          <ButtonText onPress={() => navigation.navigate("CarteirinhaPet", { petId: selectedPetId })}>Carteirinha Meu Pet</ButtonText>
-        </ButtonContainer>
         <ButtonContainer width={"300px"}>
           <ButtonText onPress={() => navigation.navigate("AdmPets")}>Administração de Pets</ButtonText>
         </ButtonContainer>

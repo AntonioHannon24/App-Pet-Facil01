@@ -2,16 +2,15 @@ import styled from 'styled-components/native';
 
 
 export const TextContainer2 = styled.View`
-    flex-direction: row-reverse;
     margin-top: 5px;
     border: solid;
-    border-color: black;
     border-radius: 8px;
     border-bottom-left-radius: 10px;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 5px;
     margin-top: 25px;
+    border-color: purple;
 `;
 
 export const View2 = styled.View`
@@ -94,3 +93,8 @@ export const ButtonExit = styled.TouchableOpacity`
     margin-left: 40px;
 `;
 
+export const TextTop = styled.Text`
+    margin-top: 5px;
+    font-size: 15px;
+    justify-content: center;
+`;

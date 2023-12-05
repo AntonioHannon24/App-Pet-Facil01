@@ -7,11 +7,17 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import URL from '../../../../config';
 import { ScrollView } from 'react-native-gesture-handler';
+import { ButtonContainer2 } from '../PetHelpers/Style.js';
 
 const AdmPerfil = ({ navigation }) => {
   const [userId, setUserId] = useState(null);
   const [user, setUser] = useState({});
   const [image, setImage] = useState("")
+
+  const handleFechar = () => {
+    // Use the navigation.goBack() method to navigate back to the previous screen
+    navigation.navigate('TelaUser');
+  };
 
   useEffect(() => {
     const getUserid = async () => {
@@ -63,14 +69,13 @@ const AdmPerfil = ({ navigation }) => {
   return (
     <ContainerMain>
     <TouchableOpacity>
-    <Image
-  style={{ width: 80, height: 80, borderRadius: 40 }}
-  source={{ uri: "http://192.168.1.105:3333/uploads//" + image || null }}
-/>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',}}>
+      <Image
+        style={{ width: 120, height: 120, borderRadius: 40, marginTop: 150, marginRight: 30}}
+        source={{ uri: "http://192.168.1.105:3333/uploads//" + (image || null) }}
+      />
+    </View>
     </TouchableOpacity>
-      <EditButton>
-        <EditButtonText>Editar</EditButtonText>
-      </EditButton>
       <TextContainer2>
         <Text1>Email:</Text1>
         <Text>{user.email || 'N/A'}</Text>
@@ -78,9 +83,22 @@ const AdmPerfil = ({ navigation }) => {
         <Text>{user.nome || 'N/A'}</Text>
         <Text1>CPF:</Text1>
         <Text>{user.cpf || 'N/A'}</Text>
+        <Text1>Cidade:</Text1>
+        <Text>{user.cidade_id || 'N/A'}</Text>
         {/* Adicione mais informações conforme necessário */}
       </TextContainer2>
+
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginRight: 30}}>
+        <ButtonContainer2>
+          <TouchableOpacity onPress={handleFechar}>
+            <Text>Fechar</Text>
+          </TouchableOpacity>
+        </ButtonContainer2>
+      </View>
+
     </ContainerMain>
+
+    
   );
 };
 

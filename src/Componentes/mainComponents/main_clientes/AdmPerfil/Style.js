@@ -40,17 +40,20 @@ export const PefilText = styled.TouchableOpacity`
 export const TextContainer2 = styled.View`
     flex-direction: column;
     align-items: center; /* Adicionado para centralizar os elementos na coluna */
-    margin-top: 50px;
+    margin-top: 150px;
 `;
 
 // Adicionando um novo estilo para o botão Editar
 export const EditButton = styled.TouchableOpacity`
     margin-top: 20px;
+    align-items: center;
+    align-items: center;
+    
 `;
 
 // Adicionando estilo para o texto dentro do botão Editar
 export const EditButtonText = styled.Text`
     font-size: 16px;
-    color: #007BFF; /* Cor do texto pode ser ajustada conforme necessário */
+    color: #007BFF; 
 `;
 

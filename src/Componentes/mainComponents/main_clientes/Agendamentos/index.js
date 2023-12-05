@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ContainerMain, IconLogin, PetTextContainer, View, HeaderContainer, HeaderText, Title, AgendamentoContainer, PetText, DataText } from "../Style";
 import { ButtonContainer, ButtonText } from "../../../Estilos.js";
 import { WelcomeText, TextContainer, ButtonsContainer } from '../../estilos_main.js';
-import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine } from './Style';
+import { Container, CalendarContainer, DateItem, DateText, ButtonContainer2, ConfirmationLine, TextContainer3 } from './Style';
 import { TextContainer2, View2, DescriContainer2, DescriText, IconEmpresa, NomeEmpresa } from '../PetHelpers/Style.js';
 import Calendar from './Calendar'; // Importe o componente do calendário
 import MeusAgendamentos from './MeusAgendamentos';
@@ -51,10 +51,10 @@ const AgendamentosClientes = ({ navigation }) => {
         console.log(error.message);
       }
     };
-  
+
     getUserid();
   }, []);
-  
+
   useEffect(() => {
     if (userId) {
       fetchAgendasUser();
@@ -65,9 +65,9 @@ const AgendamentosClientes = ({ navigation }) => {
 
   const fetchAgendasUser = async () => {
     try {
-        const urls = `${URL}agendaClientes/${userId}`;
-        const response = await axios.get(urls);
-        setAgendaClientes(response.data.data); 
+      const urls = `${URL}agendaClientes/${userId}`;
+      const response = await axios.get(urls);
+      setAgendaClientes(response.data.data);
 
     } catch (error) {
       console.error(error);
@@ -78,7 +78,7 @@ const AgendamentosClientes = ({ navigation }) => {
     const isSelected = selectedDate === date;
     const confirmed = isConfirmed && isSelected;
 
-    
+
 
     return (
       <DateItem onPress={() => handleDatePress(date)}>
@@ -130,23 +130,29 @@ const AgendamentosClientes = ({ navigation }) => {
       </ButtonsContainer>
 
       <Container>
-        <CalendarContainer>
         <ScrollView>
-        {agendaClientes.map((agenda, index) => (
-          <TextContainer2 key={index}>
-            <View2>
-              <Text>Meus Agendamentos</Text>
-              <DescriContainer2>
-                <Text><Text>Data e Hora:</Text>{agenda.data_hora}</Text>
-                <Text><Text>status:</Text>{agenda.status}</Text>
-                <Text><Text>Pet:</Text>{agenda.pet_id}</Text>
-                <Text><Text>Estabelecimento:</Text>{agenda.estabelecimento_id}</Text>
-              </DescriContainer2>
-            </View2>
-          </TextContainer2>
-        ))}
-      </ScrollView>
-        </CalendarContainer>
+        <Text style={{ fontWeight: 'bold', fontSize: 20, marginBottom: 10, marginLeft: 100 }}>Meus Agendamentos</Text>
+          {agendaClientes.map((agenda, index) => (
+            <TextContainer3 key={index}>
+              <View>
+                <DescriContainer2>
+                  <Text style={{ marginBottom: 5 }}>
+                    <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Data e Hora:</Text>{agenda.data_hora}
+                  </Text>
+                  <Text style={{ marginBottom: 5 }}>
+                    <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Status:</Text>{agenda.status}
+                  </Text>
+                  <Text style={{ marginBottom: 5 }}>
+                    <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Pet:</Text>{agenda.pet_id}
+                  </Text>
+                  <Text style={{ marginBottom: 5 }}>
+                    <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Estabelecimento:</Text>{agenda.estabelecimento_id}
+                  </Text>
+                </DescriContainer2>
+              </View>
+            </TextContainer3>
+          ))}
+        </ScrollView>
       </Container>
 
       {/* Verifica se o FloatingScreen deve ser exibido */}
@@ -159,15 +165,6 @@ const AgendamentosClientes = ({ navigation }) => {
           />
         </View>
       )}
-
-      {/* Botão para confirmar o agendamento */}
-      <ButtonContainer2 width={width}>
-        <ButtonText onPress={() => setIsConfirmed(true)}>Confirmar agendamento</ButtonText>
-      </ButtonContainer2>
-
-      <ButtonContainer2 width={width}>
-        <ButtonText onPress={() => navigation.navigate("MeusAgendamentos")}>Meus Agendamentos</ButtonText>
-      </ButtonContainer2>
     </ContainerMain>
   );
 };
